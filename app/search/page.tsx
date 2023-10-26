@@ -21,7 +21,12 @@ import { products, Product } from '@/lib/temp/products'
 import { VCard } from '@/theme/components/product/card'
 import Range from '@/theme/components/range'
 import Image from 'next/image'
-import { Filter, DefaultFilter, FilterSection, Category } from '@/lib/temp/filter'
+import {
+  Filter,
+  DefaultFilter,
+  FilterSection,
+  Category,
+} from '@/lib/temp/filter'
 import Search from '@/lib/temp/search'
 
 export default function Home() {
