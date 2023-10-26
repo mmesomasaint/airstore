@@ -14,11 +14,11 @@ export function InputBarIcon({
 }) {
   return (
     <div className='relative h-fit w-full group'>
-      <RiSearchLine className='text-xl z-10 absolute top-[50%] -translate-y-[50%] left-5 pointer-events-none text-apple-store-faded  group-focus-within:text-apple-store-pri' />
+      <RiSearchLine className='text-xl z-10 absolute top-[50%] -translate-y-[50%] left-5 pointer-events-none text-store-faded  group-focus-within:text-store-pri' />
       <input
         name='searchText'
         value={searchText}
-        className='w-full rounded-full p-3 pl-12 pr-2 placeholder:text-apple-store-faded placeholder:text-base placeholder:font-semibold text-apple-store-faded font-semibold text-base border border-apple-store-outline-faded-max group-focus-within:outline-apple-store-pri'
+        className='w-full rounded-full p-3 pl-12 pr-2 placeholder:text-store-faded placeholder:text-base placeholder:font-semibold text-store-faded font-semibold text-base border border-store-outline-faded-max group-focus-within:outline-store-pri'
         placeholder='Search Store'
         onChange={(e) => setSearchText?.(e.target.value)}
       />
@@ -63,14 +63,14 @@ export function InputBarButton({
         value={searchText}
         className={`grow ${reverse && 'order-last'} ${
           reverse ? 'rounded-r-2xl' : 'rounded-l-full'
-        } w-full p-2 placeholder:text-apple-store-faded placeholder:text-sm placeholder:font-semibold text-apple-store-faded font-semibold text-sm border border-apple-store-outline-faded-max focus:outline-none focus:border-apple-store-pri`}
+        } w-full p-2 placeholder:text-store-faded placeholder:text-sm placeholder:font-semibold text-store-faded font-semibold text-sm border border-store-outline-faded-max focus:outline-none focus:border-store-pri`}
         onChange={(e) => setSearchText?.(e.target.value)}
       />
       <button
         className={`self-stretch px-4 ${
           faded
-            ? 'bg-apple-store-outline-faded-max'
-            : 'bg-apple-store-pri/80 hover:bg-apple-store-pri'
+            ? 'bg-store-outline-faded-max'
+            : 'bg-store-pri/80 hover:bg-store-pri'
         } text-white ${reverse ? 'rounded-l-full' : 'rounded-r-full'}`}
       >
         {textSize}

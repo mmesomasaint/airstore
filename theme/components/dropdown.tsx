@@ -24,7 +24,7 @@ export default function DropDown({
     <div className={`cursor-pointer inline-block relative w-[25%] ${full && 'grow'}`}>
       <div
         className={`flex justify-between items-center gap-5 p-3 border ${
-          open ? 'border-apple-store-pri' : 'border-apple-store-outline-faded-max'
+          open ? 'border-store-pri' : 'border-store-outline-faded-max'
         } rounded-t-2xl ${open ? 'rounded-b-none' : 'rounded-2xl'}`}
         onClick={() => setOpen((prev) => !prev)}
       >
@@ -36,13 +36,13 @@ export default function DropDown({
         <IoIosArrowDown
           className={`shrink-0 text-xs ${
             large && 'text-sm'
-          } text-apple-store-pri ${open && 'rotate-180'}`}
+          } text-store-pri ${open && 'rotate-180'}`}
         />
       </div>
       <div
         className={`${
           open ? 'block' : 'hidden'
-        } w-full absolute left-0 top-[100%] border-y border-apple-store-faded-max border-t-0 border-b-0 rounded-b-2xl flex flex-col`}
+        } w-full absolute left-0 top-[100%] border-y border-store-faded-max border-t-0 border-b-0 rounded-b-2xl flex flex-col`}
       >
         {items.map((item) => {
           const isSelected = selected === item
@@ -104,15 +104,15 @@ export function DropDownMultiple({
         onClick={() => setOpen((prev) => !prev)}
       >
         <div
-          className={`flex justify-start items-center gap-1 text-apple-store-faded-max ${
-            open && 'text-apple-store-pri'
+          className={`flex justify-start items-center gap-1 text-store-faded-max ${
+            open && 'text-store-pri'
           }`}
         >
           <TbCategory2 className='text-xl' />
           <TextLabel>{title}</TextLabel>
         </div>
         <IoIosArrowDown
-          className={`shrink-0 text-sm text-apple-store-pri ${
+          className={`shrink-0 text-sm text-store-pri ${
             open && 'rotate-180'
           }`}
         />
@@ -120,7 +120,7 @@ export function DropDownMultiple({
       <div
         className={`${
           open ? 'block' : 'hidden'
-        } w-full absolute z-30 left-0 top-[100%] border-y border-apple-store-faded-max border-t-0 border-b-0 rounded-b-2xl flex flex-col`}
+        } w-full absolute z-30 left-0 top-[100%] border-y border-store-faded-max border-t-0 border-b-0 rounded-b-2xl flex flex-col`}
       >
         {items.map((item) => {
           const isSelected = selectedItems.includes(item)
@@ -159,9 +159,9 @@ function DropItem({
       onClick={() => setValue(children)}
       className={`bg-white last:rounded-b-2xl p-5 border ${
         isSelected
-          ? 'border-apple-store-pri text-apple-store-pri'
-          : 'last:border-b-apple-store-faded-max border-x-apple-store-faded-max text-apple-store-faded-max'
-      } ${full && 'w-full'} hover:border-y hover:border-apple-store-pri`}
+          ? 'border-store-pri text-store-pri'
+          : 'last:border-b-store-faded-max border-x-store-faded-max text-store-faded-max'
+      } ${full && 'w-full'} hover:border-y hover:border-store-pri`}
     >
       {large ? (
         <TextLabel>{children}</TextLabel>

@@ -19,10 +19,10 @@ export default function CheckBox({
     >
       <div
         className={`w-[1.18rem] h-[1.18rem] rounded-md flex justify-center items-center border ${
-          check ? 'border-apple-store-pri' : 'border-apple-store-faded'
+          check ? 'border-store-pri' : 'border-store-faded'
         }`}
       >
-        {check && <BsCheckLg className={`text-lg text-apple-store-pri`} />}
+        {check && <BsCheckLg className={`text-lg text-store-pri`} />}
       </div>
       <TextTiny faded={!check} primary={check}>
         {children}

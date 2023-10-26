@@ -21,8 +21,8 @@ export default function Slider({ srcList }: { srcList: string[] }) {
               alt={`thumbnail-${id + 1}`}
               className={`transform duration-700 rounded-xl border-2 ${
                 src === activeSrc
-                  ? 'border-apple-store-pri'
-                  : 'border-apple-store-outline-faded-max'
+                  ? 'border-store-pri'
+                  : 'border-store-outline-faded-max'
               }`}
             />
           </div>

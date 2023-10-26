@@ -50,8 +50,8 @@ export function OutlineButton({
         large && 'p-5 rounded-3xl'
       } ${
         selected
-          ? 'border-apple-store-pri text-apple-store-pri'
-          : 'border-apple-store-outline-faded-max text-apple-store-faded'
+          ? 'border-store-pri text-store-pri'
+          : 'border-store-outline-faded-max text-store-faded'
       }`}
     >
       <TextLabel faded={!selected} primary={selected} large={large}>

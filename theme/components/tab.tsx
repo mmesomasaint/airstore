@@ -21,7 +21,7 @@ export default function Tab({
 
   return (
     <div>
-      <div className='flex justify-start items-center gap-2 border-b border-apple-store-outline-faded-max w-full'>
+      <div className='flex justify-start items-center gap-2 border-b border-store-outline-faded-max w-full'>
         {titles.map((title) => (
           <TabTitle
             key='title'
@@ -55,7 +55,7 @@ function TabTitle({
       </TextXSmall>
       <div
         className={`absolute top-[100%] w-full border ${
-          active ? 'border-apple-store-pri' : 'border-transparent'
+          active ? 'border-store-pri' : 'border-transparent'
         }`}
       />
     </div>

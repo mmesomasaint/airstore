@@ -22,7 +22,7 @@ export function VCard({
   amountSold: number
 }) {
   return (
-    <div className='flex flex-col w-[21.999999%] border border-apple-store-outline-faded-max rounded-xl shadow-sm'>
+    <div className='flex flex-col w-[21.999999%] border border-store-outline-faded-max rounded-xl shadow-sm'>
       <Image
         src={src}
         width={100}
@@ -45,7 +45,7 @@ export function VCard({
           {colors.map((color) => (
             <div
               key={color}
-              className='w-4 h-4 rounded-full border border-apple-store-outline-faded-max'
+              className='w-4 h-4 rounded-full border border-store-outline-faded-max'
               style={{ backgroundColor: color }}
             />
           ))}
@@ -85,7 +85,7 @@ export function HCard({
 
   return (
     <div className='grow grid grid-cols-[repeat(14,_minmax(0,_1fr))] gap-7 items-center'>
-      <div className='col-span-3 rounded-2xl border border-apple-store-outline-faded-max'>
+      <div className='col-span-3 rounded-2xl border border-store-outline-faded-max'>
         <Image
           src={src}
           width={400}
