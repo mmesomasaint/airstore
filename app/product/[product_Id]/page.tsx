@@ -5,25 +5,25 @@ import { TbShoppingBag } from 'react-icons/tb'
 import { IoMdNotificationsOutline } from 'react-icons/io'
 import { MdOutlineEmail } from 'react-icons/md'
 import { FiMapPin } from 'react-icons/fi'
-import { DropDownMultiple } from '../../pack/components/dropdown'
-import { InputBarIcon } from '../../pack/components/inputBar'
+import { DropDownMultiple } from '@/theme/components/dropdown'
+import { InputBarIcon } from '@/theme/components/inputBar'
 import {
   TextIntro,
   TextLabel,
   TextMid,
   TextTiny,
   TextXSmall,
-} from '../../pack/elements/text'
-import { HR } from '../../pack/elements/rule'
+} from '@/theme/elements/text'
+import { HR } from '@/theme/elements/rule'
 import { products, Product } from '../lib/products'
 import Image from 'next/image'
 import { Filter, DefaultFilter, FilterSection, Category } from '../lib/filter'
 import { BsStar, BsStarFill } from 'react-icons/bs'
-import Slider from '../../pack/components/product/slider'
-import { OutlineButton } from '../../pack/components/outline-btns'
-import Button from '../../pack/elements/button'
-import EditAmount from '../../pack/components/editAmount'
-import Tab from '../../pack/components/tab'
+import Slider from '@/theme/components/product/slider'
+import { OutlineButton } from '@/theme/components/outline-btns'
+import Button from '@/theme/elements/button'
+import EditAmount from '@/theme/components/editAmount'
+import Tab from '@/theme/components/tab'
 
 export default function Home() {
   const [searchText, setSearchText] = useState('')
