@@ -55,7 +55,7 @@ export default function Home() {
 
   return (
     <main className='min-h-screen flex flex-col'>
-      <div className='flex border-y border-apple-store-outline-faded-max justify-between items-center gap-40 px-7 py-4'>
+      <div className='flex border-y border-store-outline-faded-max justify-between items-center gap-40 px-7 py-4'>
         <TextIntro primary>iStore</TextIntro>
         <div className='grow flex justify-center items-center gap-5'>
           <DropDownMultiple
@@ -76,12 +76,12 @@ export default function Home() {
           />
           <InputBarIcon searchText={searchText} setSearchText={setSearchText} />
         </div>
-        <div className='flex justify-end items-center gap-3 text-apple-store-outline-faded-max'>
-          <TbShoppingBag className='text-apple-store-faded-max text-xl' />
-          <IoMdNotificationsOutline className='text-apple-store-faded-max text-xl' />
-          <MdOutlineEmail className='text-apple-store-faded-max text-xl' />
+        <div className='flex justify-end items-center gap-3 text-store-outline-faded-max'>
+          <TbShoppingBag className='text-store-faded-max text-xl' />
+          <IoMdNotificationsOutline className='text-store-faded-max text-xl' />
+          <MdOutlineEmail className='text-store-faded-max text-xl' />
           <TextLabel>|</TextLabel>
-          <div className='relative w-7 h-7 rounded-full border border-apple-store-outline-faded-max'>
+          <div className='relative w-7 h-7 rounded-full border border-store-outline-faded-max'>
             <Image
               src='/imgs/woman-avatar.jpg'
               fill
@@ -91,7 +91,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className='border-b flex justify-between items-center gap-10 border-apple-store-outline-faded-max px-7 py-4'>
+      <div className='border-b flex justify-between items-center gap-10 border-store-outline-faded-max px-7 py-4'>
         <div className='flex justify-start items-center gap-5'>
           <TextTiny fadedMax>Macbook M2 Air</TextTiny>
           <TextTiny fadedMax>Macbook M2 Pro</TextTiny>
@@ -101,7 +101,7 @@ export default function Home() {
         </div>
         <div className='flex justify-start items-center gap-2'>
           <span className='flex justify-start items-center gap-1'>
-            <FiMapPin className='text-sm text-apple-store-faded-max' />
+            <FiMapPin className='text-sm text-store-faded-max' />
             <TextXSmall fadedMax>Ships to</TextXSmall>
           </span>
           <TextXSmall>Umuajonisi River, Port Harcourt</TextXSmall>
@@ -160,7 +160,7 @@ export default function Home() {
                     {['gray', 'lime', 'red'].map((color) => (
                       <div
                         key={color}
-                        className='w-6 h-6 rounded-full border border-apple-store-outline-faded-max'
+                        className='w-6 h-6 rounded-full border border-store-outline-faded-max'
                         style={{ backgroundColor: color }}
                       />
                     ))}
@@ -189,21 +189,21 @@ export default function Home() {
             <HR>
               <div className='flex flex-col gap-3'>
                 <div className='flex justify-start items-center gap-2'>
-                  <BsStar className='text-base text-apple-store-faded' />
+                  <BsStar className='text-base text-store-faded' />
                   <div className='flex justify-start items-center gap-1'>
                     <TextTiny faded>Sent from</TextTiny>
                     <TextXSmall>Umuaguduani Street, Port Harcourt</TextXSmall>
                   </div>
                 </div>
                 <div className='flex justify-start items-center gap-2'>
-                  <BsStar className='text-base text-apple-store-faded' />
+                  <BsStar className='text-base text-store-faded' />
                   <div className='flex justify-start items-center gap-1'>
                     <TextTiny faded>Shipping Cost</TextTiny>
                     <TextXSmall>$20</TextXSmall>
                   </div>
                 </div>
                 <div className='flex justify-start items-center gap-2'>
-                  <BsStar className='text-base text-apple-store-faded' />
+                  <BsStar className='text-base text-store-faded' />
                   <div className='flex justify-start items-center gap-1'>
                     <TextTiny faded>Estimated Delivery</TextTiny>
                     <TextXSmall>3 days</TextXSmall>
@@ -220,7 +220,7 @@ export default function Home() {
                 display and a range of pro ports, you can't just imagine this
                 feeling. You experience it.
               </TextTiny>
-              <div className='flex flex-col gap-2 text-apple-store-faded'>
+              <div className='flex flex-col gap-2 text-store-faded'>
                 <div className='flex justify-start items-center gap-1'>
                   <TextTiny>Display</TextTiny>
                   <TextXSmall fadedMax>14-inch XDR display</TextXSmall>
@@ -252,7 +252,7 @@ export default function Home() {
               </div>
             </Tab>
           </div>
-          <div className='col-span-3 h-fit w-full flex flex-col gap-5 bg-white rounded-xl border border-apple-store-outline-faded-max p-5'>
+          <div className='col-span-3 h-fit w-full flex flex-col gap-5 bg-white rounded-xl border border-store-outline-faded-max p-5'>
             <HR>
               <div className='flex flex-col gap-2'>
                 <TextXSmall>Set Quantity</TextXSmall>
@@ -269,7 +269,7 @@ export default function Home() {
                 <TextXSmall>Add Notes</TextXSmall>
                 <textarea
                   rows={6}
-                  className='p-2 border border-apple-store-outline-faded-max rounded-xl text-xs'
+                  className='p-2 border border-store-outline-faded-max rounded-xl text-xs'
                   placeholder='Type here..'
                 />
               </div>
@@ -283,19 +283,19 @@ export default function Home() {
                 <Button fillPrimary>Buy Now</Button>
                 <Button outlinePrimary>Add to Cart</Button>
               </div>
-              <div className='flex justify-between items-center gap-2 text-apple-store-outline-faded-max'>
+              <div className='flex justify-between items-center gap-2 text-store-outline-faded-max'>
                 <div className='flex justify-start items-center gap-1'>
-                  <BsStar className='text-base text-apple-store-faded-max' />
+                  <BsStar className='text-base text-store-faded-max' />
                   <TextTiny faded>Chat</TextTiny>
                 </div>
                 <TextLabel>|</TextLabel>
                 <div className='flex justify-start items-center gap-1'>
-                  <BsStar className='text-base text-apple-store-faded-max' />
+                  <BsStar className='text-base text-store-faded-max' />
                   <TextTiny faded>Wishlist</TextTiny>
                 </div>
                 <TextLabel>|</TextLabel>
                 <div className='flex justify-start items-center gap-1'>
-                  <BsStar className='text-base text-apple-store-faded-max' />
+                  <BsStar className='text-base text-store-faded-max' />
                   <TextTiny faded>Share</TextTiny>
                 </div>
               </div>

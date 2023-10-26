@@ -73,7 +73,7 @@ export default function Home() {
 
   return (
     <main className='min-h-screen flex flex-col'>
-      <div className='flex border-y border-apple-store-outline-faded-max justify-between items-center gap-40 px-7 py-4'>
+      <div className='flex border-y border-store-outline-faded-max justify-between items-center gap-40 px-7 py-4'>
         <TextIntro primary>iStore</TextIntro>
         <div className='grow flex justify-center items-center gap-5'>
           <DropDownMultiple
@@ -94,12 +94,12 @@ export default function Home() {
           />
           <InputBarIcon searchText={searchText} setSearchText={setSearchText} />
         </div>
-        <div className='flex justify-end items-center gap-3 text-apple-store-outline-faded-max'>
-          <TbShoppingBag className='text-apple-store-faded-max text-xl' />
-          <IoMdNotificationsOutline className='text-apple-store-faded-max text-xl' />
-          <MdOutlineEmail className='text-apple-store-faded-max text-xl' />
+        <div className='flex justify-end items-center gap-3 text-store-outline-faded-max'>
+          <TbShoppingBag className='text-store-faded-max text-xl' />
+          <IoMdNotificationsOutline className='text-store-faded-max text-xl' />
+          <MdOutlineEmail className='text-store-faded-max text-xl' />
           <TextLabel>|</TextLabel>
-          <div className='relative w-7 h-7 rounded-full border border-apple-store-outline-faded-max'>
+          <div className='relative w-7 h-7 rounded-full border border-store-outline-faded-max'>
             <Image
               src='/imgs/woman-avatar.jpg'
               fill
@@ -109,7 +109,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className='border-b flex justify-between items-center gap-10 border-apple-store-outline-faded-max px-7 py-4'>
+      <div className='border-b flex justify-between items-center gap-10 border-store-outline-faded-max px-7 py-4'>
         <div className='flex justify-start items-center gap-5'>
           <TextTiny fadedMax>Macbook M2 Air</TextTiny>
           <TextTiny fadedMax>Macbook M2 Pro</TextTiny>
@@ -119,14 +119,14 @@ export default function Home() {
         </div>
         <div className='flex justify-start items-center gap-2'>
           <span className='flex justify-start items-center gap-1'>
-            <FiMapPin className='text-sm text-apple-store-faded-max' />
+            <FiMapPin className='text-sm text-store-faded-max' />
             <TextXSmall fadedMax>Ships to</TextXSmall>
           </span>
           <TextXSmall>Umuajonisi River, Port Harcourt</TextXSmall>
         </div>
       </div>
       <div className='bg-gray-100/70 px-7 py-4 min-h-full grow grid grid-cols-11 gap-5 place-items-start'>
-        <div className='col-span-3 h-fit w-full flex flex-col gap-5 bg-white rounded-xl border border-apple-store-outline-faded-max p-5'>
+        <div className='col-span-3 h-fit w-full flex flex-col gap-5 bg-white rounded-xl border border-store-outline-faded-max p-5'>
           <TextMid>Filters</TextMid>
           <HR>
             <Accordion title='Categories' defaultOpen>
