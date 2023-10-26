@@ -14,7 +14,7 @@ const config: Config = {
         'store-faded-max': '#9ca3af',
         'store-outline-faded': '#d1d5db',
         'store-outline-faded-max': '#e5e7eb',
-      }
+      },
     },
   },
   plugins: [],
