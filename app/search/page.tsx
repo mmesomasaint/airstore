@@ -17,12 +17,12 @@ import {
 import Accordion from '@/theme/components/accordion'
 import CheckBox from '@/theme/components/checkbox'
 import { HR } from '@/theme/elements/rule'
-import { products, Product } from './lib/products'
+import { products, Product } from '@/lib/temp/products'
 import { VCard } from '@/theme/components/product/card'
 import Range from '@/theme/components/range'
 import Image from 'next/image'
-import { Filter, DefaultFilter, FilterSection, Category } from './lib/filter'
-import Search from './lib/search'
+import { Filter, DefaultFilter, FilterSection, Category } from '@/lib/temp/filter'
+import Search from '@/lib/temp/search'
 
 export default function Home() {
   const [searchText, setSearchText] = useState('')

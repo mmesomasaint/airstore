@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { TbShoppingBag } from 'react-icons/tb'
 import { IoMdNotificationsOutline } from 'react-icons/io'
 import { MdOutlineEmail } from 'react-icons/md'
@@ -15,9 +15,8 @@ import {
   TextXSmall,
 } from '@/theme/elements/text'
 import { HR } from '@/theme/elements/rule'
-import { products, Product } from '../lib/products'
 import Image from 'next/image'
-import { Filter, DefaultFilter, FilterSection, Category } from '../lib/filter'
+import { Filter, DefaultFilter, FilterSection, Category } from '@/lib/temp/filter'
 import { BsStar, BsStarFill } from 'react-icons/bs'
 import Slider from '@/theme/components/product/slider'
 import { OutlineButton } from '@/theme/components/outline-btns'
