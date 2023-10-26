@@ -9,11 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'apple-store-pri': '#2563eb',
-        'apple-store-faded': '#6b7280',
-        'apple-store-faded-max': '#9ca3af',
-        'apple-store-outline-faded': '#d1d5db',
-        'apple-store-outline-faded-max': '#e5e7eb',
+        'store-pri': '#2563eb',
+        'store-faded': '#6b7280',
+        'store-faded-max': '#9ca3af',
+        'store-outline-faded': '#d1d5db',
+        'store-outline-faded-max': '#e5e7eb',
       }
     },
   },
