@@ -16,7 +16,12 @@ import {
 } from '@/theme/elements/text'
 import { HR } from '@/theme/elements/rule'
 import Image from 'next/image'
-import { Filter, DefaultFilter, FilterSection, Category } from '@/lib/temp/filter'
+import {
+  Filter,
+  DefaultFilter,
+  FilterSection,
+  Category,
+} from '@/lib/temp/filter'
 import { BsStar, BsStarFill } from 'react-icons/bs'
 import Slider from '@/theme/components/product/slider'
 import { OutlineButton } from '@/theme/components/outline-btns'
