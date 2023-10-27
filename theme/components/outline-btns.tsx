@@ -32,11 +32,25 @@ export default function OutlineButtons({
   )
 }
 
-export function oneOptionSelector({selected, options, setSelected}: {selected: string, options: string[], setSelected: (value: string) => void}) {
+export function oneOptionSelector({
+  selected,
+  options,
+  setSelected,
+}: {
+  selected: string
+  options: string[]
+  setSelected: (value: string) => void
+}) {
   return (
     <div className='flex justify-start items-center gap-3'>
       {options.map((option) => (
-        <OutlineButton key={option} selected={option === selected} setSelected={() => setSelected(option)}>{option}</OutlineButton>
+        <OutlineButton
+          key={option}
+          selected={option === selected}
+          setSelected={() => setSelected(option)}
+        >
+          {option}
+        </OutlineButton>
       ))}
     </div>
   )
@@ -65,8 +79,8 @@ export function OutlineButton({
       }`}
     >
       <TextLabel faded={!selected} primary={selected} large={large}>
-          {children}
-        </TextLabel>
+        {children}
+      </TextLabel>
     </div>
   )
 }
