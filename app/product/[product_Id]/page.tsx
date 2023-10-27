@@ -32,90 +32,14 @@ import {
 import Button from '@/theme/elements/button'
 import EditAmount from '@/theme/components/editAmount'
 import Tab from '@/theme/components/tab'
+import useHeader from '@/theme/components/useHeader'
 
 export default function Home() {
-  const [searchText, setSearchText] = useState('')
-  const [filter, setFilter] = useState<Filter>(DefaultFilter)
-  const categories = useMemo<string[]>(
-    () => Object.keys(filter.categories),
-    [filter]
-  )
-
-  // Filter Setters
-  const setSectionValue = (
-    value: boolean | number,
-    section: FilterSection,
-    id: string
-  ) => {
-    setFilter((prev) => ({
-      ...prev,
-      [section]: { ...prev[section], [id]: value },
-    }))
-  }
-
-  const setCategory = (value: boolean, category: string) => {
-    setSectionValue(value, 'categories', category)
-  }
-
-  const resetCategories = () => {
-    const categories = Object.keys(filter.categories)
-    return categories.forEach((category) => setCategory(false, category))
-  }
+  const {HeaderPanel} = useHeader()
 
   return (
     <main className='min-h-screen flex flex-col'>
-      <div className='flex border-y border-store-outline-faded-max justify-between items-center gap-40 px-7 py-4'>
-        <TextIntro primary>Airstore</TextIntro>
-        <div className='grow flex justify-center items-center gap-5'>
-          <DropDownMultiple
-            title={'Categories'}
-            selectedItems={[
-              ...categories.filter((category) => {
-                // Return only categories with `true` value
-                return filter.categories[category as Category] === true
-              }),
-            ]}
-            items={categories}
-            setSelectedItems={(values: string[]) => {
-              // Reset the categories(Set all categories to default value i.e false).
-              resetCategories()
-              // Set the categories in `values` to true.
-              return values.forEach((category) => setCategory(true, category))
-            }}
-          />
-          <InputBarIcon searchText={searchText} setSearchText={setSearchText} />
-        </div>
-        <div className='flex justify-end items-center gap-3 text-store-outline-faded-max'>
-          <TbShoppingBag className='text-store-faded-max text-xl' />
-          <IoMdNotificationsOutline className='text-store-faded-max text-xl' />
-          <MdOutlineEmail className='text-store-faded-max text-xl' />
-          <TextLabel>|</TextLabel>
-          <div className='relative w-7 h-7 rounded-full border border-store-outline-faded-max'>
-            <Image
-              src='/imgs/woman-avatar.jpg'
-              fill
-              alt='avatar'
-              className='rounded-full'
-            />
-          </div>
-        </div>
-      </div>
-      <div className='border-b flex justify-between items-center gap-10 border-store-outline-faded-max px-7 py-4'>
-        <div className='flex justify-start items-center gap-5'>
-          <TextTiny fadedMax>Macbook M2 Air</TextTiny>
-          <TextTiny fadedMax>Macbook M2 Pro</TextTiny>
-          <TextTiny fadedMax>Apple Watch Ultra</TextTiny>
-          <TextTiny fadedMax>Airpods Max</TextTiny>
-          <TextTiny fadedMax>iPad Pro</TextTiny>
-        </div>
-        <div className='flex justify-start items-center gap-2'>
-          <span className='flex justify-start items-center gap-1'>
-            <FiMapPin className='text-sm text-store-faded-max' />
-            <TextXSmall fadedMax>Ships to</TextXSmall>
-          </span>
-          <TextXSmall>Umuajonisi River, Port Harcourt</TextXSmall>
-        </div>
-      </div>
+      <HeaderPanel />
       <div className='bg-gray-100/70 px-7 py-4 min-h-full grow gap-5 flex flex-col w-full'>
         <div className='flex justify-between items-center gap-10'>
           <span className='flex justify-start items-center gap-10'>
