@@ -18,7 +18,7 @@ export default function OutlineButtons({
 
   return (
     <div
-      className={`flex ${col && 'flex-col'} items-center justify-start gap-5`}
+      className={`flex ${col && 'flex-col'} items-center justify-start gap-3`}
     >
       {Object.keys(options).map((option) => (
         <OutlineButton
@@ -27,6 +27,16 @@ export default function OutlineButtons({
         >
           {option}
         </OutlineButton>
+      ))}
+    </div>
+  )
+}
+
+export function oneOptionSelector({selected, options, setSelected}: {selected: string, options: string[], setSelected: (value: string) => void}) {
+  return (
+    <div className='flex justify-start items-center gap-3'>
+      {options.map((option) => (
+        <OutlineButton key={option} selected={option === selected} setSelected={() => setSelected(option)}>{option}</OutlineButton>
       ))}
     </div>
   )
