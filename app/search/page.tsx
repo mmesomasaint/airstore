@@ -1,21 +1,13 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
-import { TbShoppingBag } from 'react-icons/tb'
-import { IoMdNotificationsOutline } from 'react-icons/io'
-import { MdOutlineEmail } from 'react-icons/md'
-import { FiMapPin } from 'react-icons/fi'
-import DropDown, { DropDownMultiple } from '@/theme/components/dropdown'
-import { InputBarIcon } from '@/theme/components/inputBar'
-import {
-  TextTiny
-} from '@/theme/elements/text'
+import DropDown from '@/theme/components/dropdown'
+import { TextTiny } from '@/theme/elements/text'
 import { Product } from '@/lib/temp/products'
 import { VCard } from '@/theme/components/product/card'
 import useHeader from '@/theme/components/useHeader'
 
 export default function Home() {
-  const {HeaderPanel, FilterPanel, searchResults} = useHeader()
+  const { HeaderPanel, FilterPanel, searchResults } = useHeader()
 
   return (
     <main className='min-h-screen flex flex-col'>
