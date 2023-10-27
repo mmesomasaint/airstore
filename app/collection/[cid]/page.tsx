@@ -1,23 +1,7 @@
 'use client'
 
 import { IoIosArrowForward } from 'react-icons/io'
-import { MdOutlineEmail, MdOutlineLocalShipping } from 'react-icons/md'
-import { FiShare } from 'react-icons/fi'
-import {
-  TextIntro,
-  TextLabel,
-  TextMid,
-  TextTiny,
-  TextXSmall,
-} from '@/theme/elements/text'
-import { HR } from '@/theme/elements/rule'
-import { BsStarFill } from 'react-icons/bs'
-import { LuCircleDollarSign, LuPackageCheck, LuHeart } from 'react-icons/lu'
-import Slider from '@/theme/components/product/slider'
-import { OneOptionSelector } from '@/theme/components/outline-btns'
-import Button from '@/theme/elements/button'
-import EditAmount from '@/theme/components/editAmount'
-import Tab from '@/theme/components/tab'
+import { TextTiny } from '@/theme/elements/text'
 import useHeader from '@/theme/components/useHeader'
 
 export default function Home() {
