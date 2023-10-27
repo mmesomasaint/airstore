@@ -61,7 +61,7 @@ export default function Home() {
   return (
     <main className='min-h-screen flex flex-col'>
       <div className='flex border-y border-store-outline-faded-max justify-between items-center gap-40 px-7 py-4'>
-        <TextIntro primary>airStore</TextIntro>
+        <TextIntro primary>Airstore</TextIntro>
         <div className='grow flex justify-center items-center gap-5'>
           <DropDownMultiple
             title={'Categories'}
