@@ -14,16 +14,14 @@ import { HR } from '@/theme/elements/rule'
 import { BsStarFill } from 'react-icons/bs'
 import { LuCircleDollarSign, LuPackageCheck, LuHeart } from 'react-icons/lu'
 import Slider from '@/theme/components/product/slider'
-import {
-  OneOptionSelector,
-} from '@/theme/components/outline-btns'
+import { OneOptionSelector } from '@/theme/components/outline-btns'
 import Button from '@/theme/elements/button'
 import EditAmount from '@/theme/components/editAmount'
 import Tab from '@/theme/components/tab'
 import useHeader from '@/theme/components/useHeader'
 
 export default function Home() {
-  const {HeaderPanel} = useHeader()
+  const { HeaderPanel } = useHeader()
 
   return (
     <main className='min-h-screen flex flex-col'>
