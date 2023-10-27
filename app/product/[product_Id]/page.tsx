@@ -2,9 +2,9 @@
 
 import { useState, useMemo } from 'react'
 import { TbShoppingBag } from 'react-icons/tb'
-import { IoMdNotificationsOutline } from 'react-icons/io'
-import { MdOutlineEmail } from 'react-icons/md'
-import { FiMapPin } from 'react-icons/fi'
+import { IoMdNotificationsOutline, IoIosArrowForward } from 'react-icons/io'
+import { MdOutlineEmail, MdOutlineLocalShipping } from 'react-icons/md'
+import { FiMapPin, FiShare } from 'react-icons/fi'
 import { DropDownMultiple } from '@/theme/components/dropdown'
 import { InputBarIcon } from '@/theme/components/inputBar'
 import {
@@ -22,7 +22,8 @@ import {
   FilterSection,
   Category,
 } from '@/lib/temp/filter'
-import { BsStar, BsStarFill } from 'react-icons/bs'
+import { BsStarFill } from 'react-icons/bs'
+import { LuCircleDollarSign, LuPackageCheck, LuHeart } from 'react-icons/lu'
 import Slider from '@/theme/components/product/slider'
 import { OutlineButton } from '@/theme/components/outline-btns'
 import Button from '@/theme/elements/button'
@@ -117,11 +118,11 @@ export default function Home() {
           <span className='flex justify-start items-center gap-10'>
             <TextTiny faded>Home</TextTiny>
             <TextTiny faded>
-              <BsStar className='text-base' />
+              <IoIosArrowForward className='text-base' />
             </TextTiny>
             <TextTiny faded>Macbook</TextTiny>
             <TextTiny faded>
-              <BsStar className='text-base' />
+              <IoIosArrowForward className='text-base' />
             </TextTiny>
             <TextTiny>Apple Macbook Pro 14'' 2022 | M2 Max Chip</TextTiny>
           </span>
@@ -193,21 +194,21 @@ export default function Home() {
             <HR>
               <div className='flex flex-col gap-3'>
                 <div className='flex justify-start items-center gap-2'>
-                  <BsStar className='text-base text-store-faded' />
+                  <MdOutlineLocalShipping className='text-base text-store-faded' />
                   <div className='flex justify-start items-center gap-1'>
                     <TextTiny faded>Sent from</TextTiny>
                     <TextXSmall>Umuaguduani Street, Port Harcourt</TextXSmall>
                   </div>
                 </div>
                 <div className='flex justify-start items-center gap-2'>
-                  <BsStar className='text-base text-store-faded' />
+                  <LuCircleDollarSign className='text-base text-store-faded' />
                   <div className='flex justify-start items-center gap-1'>
                     <TextTiny faded>Shipping Cost</TextTiny>
                     <TextXSmall>$20</TextXSmall>
                   </div>
                 </div>
                 <div className='flex justify-start items-center gap-2'>
-                  <BsStar className='text-base text-store-faded' />
+                  <LuPackageCheck className='text-base text-store-faded' />
                   <div className='flex justify-start items-center gap-1'>
                     <TextTiny faded>Estimated Delivery</TextTiny>
                     <TextXSmall>3 days</TextXSmall>
@@ -289,17 +290,17 @@ export default function Home() {
               </div>
               <div className='flex justify-between items-center gap-2 text-store-outline-faded-max'>
                 <div className='flex justify-start items-center gap-1'>
-                  <BsStar className='text-base text-store-faded-max' />
+                  <MdOutlineEmail className='text-base text-store-faded-max' />
                   <TextTiny faded>Chat</TextTiny>
                 </div>
                 <TextLabel>|</TextLabel>
                 <div className='flex justify-start items-center gap-1'>
-                  <BsStar className='text-base text-store-faded-max' />
+                  <LuHeart className='text-base text-store-faded-max' />
                   <TextTiny faded>Wishlist</TextTiny>
                 </div>
                 <TextLabel>|</TextLabel>
                 <div className='flex justify-start items-center gap-1'>
-                  <BsStar className='text-base text-store-faded-max' />
+                  <FiShare className='text-base text-store-faded-max' />
                   <TextTiny faded>Share</TextTiny>
                 </div>
               </div>
