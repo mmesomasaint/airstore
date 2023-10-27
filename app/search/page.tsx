@@ -8,26 +8,10 @@ import { FiMapPin } from 'react-icons/fi'
 import DropDown, { DropDownMultiple } from '@/theme/components/dropdown'
 import { InputBarIcon } from '@/theme/components/inputBar'
 import {
-  TextIntro,
-  TextLabel,
-  TextMid,
-  TextTiny,
-  TextXSmall,
+  TextTiny
 } from '@/theme/elements/text'
-import Accordion from '@/theme/components/accordion'
-import CheckBox from '@/theme/components/checkbox'
-import { HR } from '@/theme/elements/rule'
-import { products, Product } from '@/lib/temp/products'
+import { Product } from '@/lib/temp/products'
 import { VCard } from '@/theme/components/product/card'
-import Range from '@/theme/components/range'
-import Image from 'next/image'
-import {
-  Filter,
-  DefaultFilter,
-  FilterSection,
-  Category,
-} from '@/lib/temp/filter'
-import Search from '@/lib/temp/search'
 import useHeader from '@/theme/components/useHeader'
 
 export default function Home() {
