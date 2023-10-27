@@ -14,7 +14,7 @@ export const products: Product[] = [
   {
     title: 'Apple iPhone 14 pro',
     variants: ['64GB', '128GB', '256GB', '512GB'],
-    src: '/imgs/iphone-red-fv.webp',
+    src: 'https://istore.com.ng/cdn/shop/products/iPhone14Pro_Gold_cf2d9f84-35c5-4097-92a8-cbdfcfb50719_2048x.png?v=1668767187',
     price: 524,
     discount: 852,
     colors: ['white', 'gray', 'red'],
@@ -25,7 +25,7 @@ export const products: Product[] = [
   {
     title: 'Apple Airpods Max',
     variants: ['Noise Cancellation'],
-    src: '/imgs/airpods-max-snowy.webp',
+    src: 'https://istore.com.ng/cdn/shop/products/amsb_2048x.jpg?v=1616762774',
     price: 122,
     discount: 385,
     colors: ['blue', 'yellow', 'red', 'black', 'white', 'lime'],
@@ -36,7 +36,7 @@ export const products: Product[] = [
   {
     title: 'Apple iPhone 14 pro',
     variants: ['64GB', '128GB', '256GB'],
-    src: '/imgs/iphone-white-fv.webp',
+    src: 'https://istore.com.ng/cdn/shop/products/iPhone14Pro_Gold_cf2d9f84-35c5-4097-92a8-cbdfcfb50719_2048x.png?v=1668767187',
     price: 342,
     discount: 815,
     colors: ['white', 'gray', 'red'],
@@ -47,7 +47,7 @@ export const products: Product[] = [
   {
     title: 'Apple iPad Pro',
     variants: ['128GB', '256GB'],
-    src: '/imgs/ipad-sv.webp',
+    src: 'https://istore.com.ng/cdn/shop/products/iPad_ProM2_WiFi_Silver_Position3_2048x.png?v=1667318609',
     price: 352,
     discount: 585,
     colors: ['lime', 'gray', 'zinc'],
@@ -58,7 +58,7 @@ export const products: Product[] = [
   {
     title: 'Apple Airpods Max',
     variants: ['Noice Cancellation'],
-    src: '/imgs/airpods-max-black.webp',
+    src: 'https://istore.com.ng/cdn/shop/products/amsb_2048x.jpg?v=1616762774',
     price: 352,
     discount: 585,
     colors: ['blue', 'yellow', 'red', 'black', 'white', 'lime'],
@@ -69,7 +69,7 @@ export const products: Product[] = [
   {
     title: 'Apple Macbook Pro M1',
     variants: ['256GB', '512GB', '1TB'],
-    src: '/imgs/macbook-pro-fv-1.webp',
+    src: 'https://istore.com.ng/cdn/shop/products/MacBookPro_SpaceGrey_61b5fbea-0a1d-4239-8219-441310f70ee3_2048x.png?v=1671640275',
     price: 1552,
     discount: 2585,
     colors: ['silver', 'gray', 'brown'],
@@ -78,9 +78,9 @@ export const products: Product[] = [
     category: 'Macbook',
   },
   {
-    title: 'Apple iWatch Ultra',
+    title: 'Apple Watch Ultra 2',
     variants: ['32GB', '64GB', '128GB'],
-    src: '/imgs/iwatch-yellow-sv.webp',
+    src: 'https://istore.com.ng/cdn/shop/files/Apple_Watch_Ultra_2_LTE_49mm_Titanium_Blue_Alpine_Loop_PDP_Image_Position-1__WWEN_2048x.jpg?v=1696641289',
     price: 352,
     discount: 585,
     colors: ['lime', 'gray', 'zinc'],
@@ -91,7 +91,7 @@ export const products: Product[] = [
   {
     title: 'Airpods Pro 2nd Gen',
     variants: ['Noice Cancellation'],
-    src: '/imgs/airpods-pro-2nd-gen-singleton-sv.webp',
+    src: 'https://istore.com.ng/cdn/shop/products/AirPodsPro_2ndGen_Main_2048x.png?v=1664885521',
     price: 152,
     discount: 285,
     colors: ['black', 'gray', 'zinc', 'yellow'],
@@ -102,7 +102,7 @@ export const products: Product[] = [
   {
     title: 'Apple Airpods Max',
     variants: ['16GB', '32GB', '64GB'],
-    src: '/imgs/airpods-max-blue.webp',
+    src: 'https://istore.com.ng/cdn/shop/products/amsb_2048x.jpg?v=1616762774',
     price: 352,
     discount: 585,
     colors: ['blue', 'yellow', 'red', 'black', 'white', 'lime'],
