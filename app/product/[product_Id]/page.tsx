@@ -125,7 +125,7 @@ export default function Home() {
           <div className='col-span-4 w-full '>
             <Slider
               srcList={[
-                '/imgs/macbook-pro-fv-1.webp',
+                'https://istore.com.ng/cdn/shop/products/macbook_pro_13_in_space_gray_pdp_image_position-1__wwen_1_1_2048x.jpg?v=1657300024',
                 '/imgs/macbook-pro-sv.jpg',
                 '/imgs/mackbook-pro-tv.webp',
                 '/imgs/macbook-pro-sv-3.jpeg',

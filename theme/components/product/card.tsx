@@ -24,6 +24,7 @@ export function VCard({
   return (
     <div className='flex flex-col w-[21.999999%] border border-store-outline-faded-max rounded-xl shadow-sm'>
       <Image
+        loader={() => src}
         src={src}
         width={100}
         height={100}
