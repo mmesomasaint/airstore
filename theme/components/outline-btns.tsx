@@ -32,7 +32,7 @@ export default function OutlineButtons({
   )
 }
 
-export function oneOptionSelector({
+export function OneOptionSelector({
   selected,
   options,
   setSelected,
