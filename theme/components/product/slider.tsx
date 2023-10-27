@@ -19,6 +19,7 @@ export default function Slider({ srcList }: { srcList: string[] }) {
               loader={() => src}
               src={src}
               fill
+              unoptimized
               alt={`thumbnail-${id + 1}`}
               className={`transform duration-700 rounded-xl border-2 ${
                 src === activeSrc
