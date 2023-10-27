@@ -9,7 +9,7 @@ export function HR({
     <div
       className={`border-b ${
         dashed && 'border-dashed'
-      } border-apple-store-outline-faded-max w-full ${children && 'pb-3'}`}
+      } border-store-outline-faded-max w-full ${children && 'pb-3'}`}
     >
       {children}
     </div>

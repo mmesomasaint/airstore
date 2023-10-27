@@ -20,11 +20,9 @@ export default function Button({
       className={`inline-block p-5 rounded-3xl border ${
         large && 'p-6 rounded-3xl'
       } ${full && 'w-full'} ${
-        outlinePrimary && 'border-apple-store-pri text-apple-store-pri'
-      } ${
-        fillPrimary && 'bg-apple-store-pri border-apple-store-pri text-white'
-      } ${
-        fillFaded && 'bg-white text-apple-store-faded border-apple-store-faded'
+        outlinePrimary && 'border-store-pri text-store-pri'
+      } ${fillPrimary && 'bg-store-pri border-store-pri text-white'} ${
+        fillFaded && 'bg-white text-store-faded border-store-faded'
       }`}
     >
       <TextLabel large={large}>{children}</TextLabel>

@@ -15,9 +15,9 @@ export function TextHeadline({
     <p
       className={`${
         copy ? 'leading-snug' : 'leading-none'
-      } text-3xl font-semibold ${primary && 'text-apple-store-pri'} ${
-        faded && 'text-apple-store-faded'
-      } ${fadedMax && 'text-apple-store-faded-max'}`}
+      } text-3xl font-semibold ${primary && 'text-store-pri'} ${
+        faded && 'text-store-faded'
+      } ${fadedMax && 'text-store-faded-max'}`}
     >
       {children}
     </p>
@@ -41,9 +41,9 @@ export function TextIntro({
     <p
       className={`${
         copy ? 'leading-snug' : 'leading-none'
-      } text-2xl font-semibold ${primary && 'text-apple-store-pri'} ${
-        faded && 'text-apple-store-faded'
-      } ${fadedMax && 'text-apple-store-faded-max'}`}
+      } text-2xl font-semibold ${primary && 'text-store-pri'} ${
+        faded && 'text-store-faded'
+      } ${fadedMax && 'text-store-faded-max'}`}
     >
       {children}
     </p>
@@ -67,9 +67,9 @@ export function TextMid({
     <p
       className={`${
         copy ? 'leading-snug' : 'leading-none'
-      } text-xl font-semibold ${primary && 'text-apple-store-pri'} ${
-        faded && 'text-apple-store-faded'
-      } ${fadedMax && 'text-apple-store-faded-max'}`}
+      } text-xl font-semibold ${primary && 'text-store-pri'} ${
+        faded && 'text-store-faded'
+      } ${fadedMax && 'text-store-faded-max'}`}
     >
       {children}
     </p>
@@ -93,9 +93,9 @@ export function TextBase({
     <p
       className={`${
         copy ? 'leading-snug' : 'leading-none'
-      } text-lg font-semibold ${primary && 'text-apple-store-pri'} ${
-        faded && 'text-apple-store-faded'
-      } ${fadedMax && 'text-apple-store-faded-max'}`}
+      } text-lg font-semibold ${primary && 'text-store-pri'} ${
+        faded && 'text-store-faded'
+      } ${fadedMax && 'text-store-faded-max'}`}
     >
       {children}
     </p>
@@ -119,9 +119,9 @@ export function TextSmall({
     <p
       className={`${
         copy ? 'leading-snug' : 'leading-none'
-      } text-base font-semibold ${primary && 'text-apple-store-pri'} ${
-        faded && 'text-apple-store-faded'
-      } ${fadedMax && 'text-apple-store-faded-max'}`}
+      } text-base font-semibold ${primary && 'text-store-pri'} ${
+        faded && 'text-store-faded'
+      } ${fadedMax && 'text-store-faded-max'}`}
     >
       {children}
     </p>
@@ -145,9 +145,9 @@ export function TextXSmall({
     <p
       className={`${
         copy ? 'leading-snug' : 'leading-none'
-      } text-sm font-semibold ${primary && 'text-apple-store-pri'} ${
-        faded && 'text-apple-store-faded'
-      } ${fadedMax && 'text-apple-store-faded-max'}`}
+      } text-sm font-semibold ${primary && 'text-store-pri'} ${
+        faded && 'text-store-faded'
+      } ${fadedMax && 'text-store-faded-max'}`}
     >
       {children}
     </p>
@@ -171,9 +171,9 @@ export function TextTiny({
     <p
       className={`${
         copy ? 'leading-snug' : 'leading-none'
-      } text-xs font-semibold ${primary && 'text-apple-store-pri'} ${
-        faded && 'text-apple-store-faded'
-      } ${fadedMax && 'text-apple-store-faded-max'}`}
+      } text-xs font-semibold ${primary && 'text-store-pri'} ${
+        faded && 'text-store-faded'
+      } ${fadedMax && 'text-store-faded-max'}`}
     >
       {children}
     </p>
@@ -197,9 +197,9 @@ export function TextLabel({
     <p
       className={`leading-[0] font-semibold ${
         large ? 'text-base' : 'text-sm'
-      } ${primary && 'text-apple-store-pri'} ${
-        faded && 'text-apple-store-faded'
-      } ${fadedMax && 'text-apple-store-faded-max'}`}
+      } ${primary && 'text-store-pri'} ${faded && 'text-store-faded'} ${
+        fadedMax && 'text-store-faded-max'
+      }`}
     >
       {children}
     </p>
