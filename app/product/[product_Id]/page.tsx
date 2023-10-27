@@ -1,12 +1,8 @@
 'use client'
 
-import { useState, useMemo } from 'react'
-import { TbShoppingBag } from 'react-icons/tb'
-import { IoMdNotificationsOutline, IoIosArrowForward } from 'react-icons/io'
+import { IoIosArrowForward } from 'react-icons/io'
 import { MdOutlineEmail, MdOutlineLocalShipping } from 'react-icons/md'
-import { FiMapPin, FiShare } from 'react-icons/fi'
-import { DropDownMultiple } from '@/theme/components/dropdown'
-import { InputBarIcon } from '@/theme/components/inputBar'
+import { FiShare } from 'react-icons/fi'
 import {
   TextIntro,
   TextLabel,
@@ -15,19 +11,11 @@ import {
   TextXSmall,
 } from '@/theme/elements/text'
 import { HR } from '@/theme/elements/rule'
-import Image from 'next/image'
-import {
-  Filter,
-  DefaultFilter,
-  FilterSection,
-  Category,
-} from '@/lib/temp/filter'
 import { BsStarFill } from 'react-icons/bs'
 import { LuCircleDollarSign, LuPackageCheck, LuHeart } from 'react-icons/lu'
 import Slider from '@/theme/components/product/slider'
 import {
   OneOptionSelector,
-  OutlineButton,
 } from '@/theme/components/outline-btns'
 import Button from '@/theme/elements/button'
 import EditAmount from '@/theme/components/editAmount'
