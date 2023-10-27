@@ -25,7 +25,10 @@ import {
 import { BsStarFill } from 'react-icons/bs'
 import { LuCircleDollarSign, LuPackageCheck, LuHeart } from 'react-icons/lu'
 import Slider from '@/theme/components/product/slider'
-import { OutlineButton } from '@/theme/components/outline-btns'
+import {
+  OneOptionSelector,
+  OutlineButton,
+} from '@/theme/components/outline-btns'
 import Button from '@/theme/elements/button'
 import EditAmount from '@/theme/components/editAmount'
 import Tab from '@/theme/components/tab'
@@ -173,21 +176,26 @@ export default function Home() {
                 </div>
                 <div className='flex flex-col gap-2'>
                   <TextXSmall>Processor</TextXSmall>
-                  <div className='flex gap-3 justify-start items-center'>
-                    <OutlineButton selected={true}>
-                      16GB, 16 Core GPU Apple M2 Chip
-                    </OutlineButton>
-                    <OutlineButton selected={false}>
-                      32GB, 32 Core GPU Apple M2 Chip
-                    </OutlineButton>
-                  </div>
+                  <OneOptionSelector
+                    selected='16GB, 16 Core GPU Apple M2 Chip'
+                    options={[
+                      '32GB, 32 Core GPU Apple M2 Chip',
+                      '16GB, 16 Core GPU Apple M2 Chip',
+                    ]}
+                    setSelected={(value: string) => {
+                      return
+                    }}
+                  />
                 </div>
                 <div className='flex flex-col gap-2'>
                   <TextXSmall>Memory Size</TextXSmall>
-                  <div className='flex gap-3 justify-start items-center'>
-                    <OutlineButton selected={true}>512GB</OutlineButton>
-                    <OutlineButton selected={false}>1TB</OutlineButton>
-                  </div>
+                  <OneOptionSelector
+                    selected='512GB'
+                    options={['512GB', '1TB']}
+                    setSelected={(value: string) => {
+                      return
+                    }}
+                  />
                 </div>
               </div>
             </HR>
