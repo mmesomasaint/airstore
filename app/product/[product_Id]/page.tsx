@@ -126,10 +126,9 @@ export default function Home() {
             <Slider
               srcList={[
                 'https://istore.com.ng/cdn/shop/products/macbook_pro_13_in_space_gray_pdp_image_position-1__wwen_1_1_2048x.jpg?v=1657300024',
-                '/imgs/macbook-pro-sv.jpg',
-                '/imgs/mackbook-pro-tv.webp',
-                '/imgs/macbook-pro-sv-3.jpeg',
-                '/imgs/macbook-pro-tv-2.jpeg',
+                'https://istore.com.ng/cdn/shop/products/macbook_pro_13_in_space_gray_pdp_image_position-2__wwen_1_1_2048x.jpg?v=1657300025',
+                'https://istore.com.ng/cdn/shop/products/macbook_pro_13_in_silver_pdp_image_position-1__wwen_2048x.jpg?v=1657300339',
+                'https://istore.com.ng/cdn/shop/products/macbook_pro_13_in_silver_pdp_image_position-2__wwen_2048x.jpg?v=1657300339',
               ]}
             />
           </div>
