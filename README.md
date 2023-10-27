@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Airstore - `A Next.js And Shopify Store`
 
-## Getting Started
+**`Airstore`** is an online `apple gadgets retail store` that was bootstrapped with `Next.js` as the framework handling the integration between the `frontend` and the `Shopify storefront API`. Utilizing the `GRAPHQL` feature for querying stores in shopify, this online store has an increased `page load speed`.
 
-First, run the development server:
+## Tech Stack 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The `Stack` used for this project are --
+- **Tailwind CSS** - Learn more about `TailwindCSS` [here](https://tailwindcss.com/docs)
+- **Next.js** - A framework build on top of `react.js`. [check it out](https://nextjs.org/docs)
+- **Shopify API** - [Learn to build an ecommerce site with Next.js and Shopify](https://vercel.com/guides/building-ecommerce-sites-with-next-js-and-shopify)
+- **Typescript** - A typed `JavaScript` library. Check it out.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Live Site
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This store was deployed using the [Vercel Platform](https://vercel.com/). You can view the live retail store [here](https://airstore.vercel.app)
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Contribution
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Contributions are welcomed. Both for solving issues or for improvement of code.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Remember to follow best practices.
 
-## Deploy on Vercel
+## Author
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This store was developed by [Mmesoma Saint](https://github.com/mmesomasaint).
