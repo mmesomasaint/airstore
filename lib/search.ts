@@ -3,16 +3,24 @@ import { shopifyFetch } from './fetch'
 export default async function Search(title: string, filter: object) {
   return shopifyFetch({
     query: `
-    query AllProducts($first: Int = 250, $searchText: String) {
+    query AllProducts($first: Int, $searchText: String) {
       products(first: $first, query: $searchText) {
-        id
-        title
-        handle
-        description
-        descriptionHtml
-        featuredImage
-        images(first: 1) {
-          url
+        edges {
+          node {
+            id
+            title
+            handle
+            description
+            descriptionHtml
+            featuredImage {
+              url
+            }
+            images(first: 1) {
+              nodes {
+                url
+              }
+            }
+          }
         }
       }
     }
