@@ -1,11 +1,10 @@
 import { shopifyFetch } from './fetch'
 
-export default function Search(title: string, filter: object) {
-  const searchQuery = `title:*${title}*`
-  const data = shopifyFetch({
+export default async function Search(title: string, filter: object) {
+  return shopifyFetch({
     query: `
     query AllProducts($first: Int = 250, $searchText: String) {
-      products(first: $first, query: title:*$searchText*) {
+      products(first: $first, query: $searchText) {
         id
         title
         handle
@@ -20,7 +19,7 @@ export default function Search(title: string, filter: object) {
     `,
     variables: `{
       first: 250,
-      searchText: searchQuery
+      searchText: title:*${title}*
     }`,
   })
 }
