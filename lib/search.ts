@@ -27,7 +27,7 @@ export default async function Search(title: string, filter: object) {
     }
     `,
     variables: `{
-      first: 250,
+      first: 60,
       searchText: title:*${title}*
     }`,
   })
