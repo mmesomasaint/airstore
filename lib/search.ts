@@ -10,14 +10,15 @@ export default async function Search(title: string, filter: object) {
             id
             title
             handle
-            description
-            descriptionHtml
             featuredImage {
               url
             }
-            images(first: 1) {
+            variants(first: 10) {
               nodes {
-                url
+                selectedOptions {
+                  name
+                  value
+                }
               }
             }
           }
