@@ -1,4 +1,4 @@
-import { shopifyFetch } from "./fetch";
+import { shopifyFetch } from './fetch'
 
 export default function Search(title: string, filter: object) {
   const searchQuery = `title:*${title}*`
@@ -21,6 +21,6 @@ export default function Search(title: string, filter: object) {
     variables: `{
       first: 250,
       searchText: searchQuery
-    }`
+    }`,
   })
 }
