@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
   const { filter } = await req.json()
 
   if (!title || !filter) {
-    Response.json({ status: 400, message: 'Bad request' })
+    return Response.json({ status: 400, message: 'Bad request' })
   }
 
   const variables = `{
@@ -44,8 +44,8 @@ export async function POST(req: NextRequest) {
   //console.log('body: ', body)
 
   if (status === 200) {
-    Response.json({ status: 200, body: body.data.products.edges })
+    return Response.json({ status: 200, body: body.data.products.edges })
   } else {
-    Response.json({ status: 500, message: 'Error receiving data' })
+    return Response.json({ status: 500, message: 'Error receiving data' })
   }
 }
