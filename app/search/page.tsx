@@ -12,11 +12,11 @@ export default function Home() {
   return (
     <main className='min-h-screen flex flex-col'>
       <HeaderPanel />
-      <div className='bg-gray-100/70 px-7 py-4 min-h-full grow grid grid-cols-11 gap-5 place-items-start'>
+      <div className='bg-gray-100/70 px-7 py-4 min-h-full grow grid grid-cols-12 gap-5 place-items-start'>
         <div className='col-span-3 h-fit w-full'>
           <FilterPanel />
         </div>
-        <div className='col-span-8 gap-5 flex flex-col w-full'>
+        <div className='col-span-9 gap-5 flex flex-col w-full'>
           <div className='flex justify-between items-center gap-10'>
             <span className='flex justify-start items-center gap-1'>
               <TextTiny>Showing 1-60 items out of a total of 1.2k for</TextTiny>
