@@ -1,15 +1,30 @@
-import { Category, Filter } from "@/lib/temp/filter"
-import { TextIntro, TextLabel, TextTiny, TextXSmall } from "../elements/text"
-import { DropDownMultiple } from "./dropdown"
-import { InputBarIcon } from "./inputBar"
-import { TbShoppingBag } from "react-icons/tb"
-import { IoMdNotificationsOutline } from "react-icons/io"
-import { MdOutlineEmail } from "react-icons/md"
-import Image from "next/image"
-import { FiMapPin } from "react-icons/fi"
+import { Category, Filter } from '@/lib/temp/filter'
+import { TextIntro, TextLabel, TextTiny, TextXSmall } from '../elements/text'
+import { DropDownMultiple } from './dropdown'
+import { InputBarIcon } from './inputBar'
+import { TbShoppingBag } from 'react-icons/tb'
+import { IoMdNotificationsOutline } from 'react-icons/io'
+import { MdOutlineEmail } from 'react-icons/md'
+import Image from 'next/image'
+import { FiMapPin } from 'react-icons/fi'
 
-export default function Header({searchText, setSearchText, filter, categories, resetCategories, setCategory, searchClick}: {searchText: string, setSearchText: (value: string) => void, filter: Filter, categories: string[], resetCategories: () => void, setCategory: (value: boolean, category: string) => void, searchClick: () => void}) {
-
+export default function Header({
+  searchText,
+  setSearchText,
+  filter,
+  categories,
+  resetCategories,
+  setCategory,
+  searchClick,
+}: {
+  searchText: string
+  setSearchText: (value: string) => void
+  filter: Filter
+  categories: string[]
+  resetCategories: () => void
+  setCategory: (value: boolean, category: string) => void
+  searchClick: () => void
+}) {
   return (
     <>
       <div className='flex border-y border-store-outline-faded-max justify-between items-center gap-40 px-7 py-4'>
