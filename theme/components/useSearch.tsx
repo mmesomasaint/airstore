@@ -1,19 +1,19 @@
-import { DefaultFilter, Filter, FilterSection } from "@/lib/temp/filter"
-import { Product, products } from "@/lib/temp/products"
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { useEffect, useMemo, useState } from "react"
+import { DefaultFilter, Filter, FilterSection } from '@/lib/temp/filter'
+import { Product, products } from '@/lib/temp/products'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useEffect, useMemo, useState } from 'react'
 
 type SearchFilter = {
-  searchText: string | undefined,
-  setSearchText: (value: string) => void,
-  searchResults: Product[],
-  filter: Filter,
-  categories: string[],
-  setCategory: (value: boolean, category: string) => void,
-  setCondition: (value: boolean, condition: string) => void,
-  setPaymentGateway: (value: boolean, paymentGateway: string) => void,
-  setPrice: (value: number, price: string) => void,
-  resetCategories: () => void,
+  searchText: string | undefined
+  setSearchText: (value: string) => void
+  searchResults: Product[]
+  filter: Filter
+  categories: string[]
+  setCategory: (value: boolean, category: string) => void
+  setCondition: (value: boolean, condition: string) => void
+  setPaymentGateway: (value: boolean, paymentGateway: string) => void
+  setPrice: (value: number, price: string) => void
+  resetCategories: () => void
   searchHandler: () => void
 }
 
@@ -22,14 +22,12 @@ export default function useSearch(): SearchFilter {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const query = searchParams.get('q')
-  const [searchText, setSearchText] = useState(
-    query ?? undefined
-  )
+  const [searchText, setSearchText] = useState(query ?? undefined)
   const [searchResults, setSearchResults] = useState<Product[]>(products)
   const [filter, setFilter] = useState<Filter>(DefaultFilter)
   const isSearchPg = pathname === '/search'
 
-  const setSectionValue =  (
+  const setSectionValue = (
     value: boolean | number,
     section: FilterSection,
     id: string
@@ -90,9 +88,9 @@ export default function useSearch(): SearchFilter {
         getSearchResults()
         return
       }
-  
+
       // Go to the search page if not already there.
       router.push(`/search?q=${searchText}`)
-    }
+    },
   }
 }
