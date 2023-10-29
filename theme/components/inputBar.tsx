@@ -10,20 +10,17 @@ export function InputBarIcon({
   setSearchText,
   showBtn,
   clickHandler,
-  ref
 }: {
   large?: boolean
   searchText?: string
   setSearchText?: (value: string) => void
   showBtn?: boolean
   clickHandler?: () => void
-  ref?: RefObject<HTMLInputElement>
 }) {
   return (
     <div className='relative h-fit w-full group'>
       <RiSearchLine className='text-xl z-10 absolute top-[50%] -translate-y-[50%] left-5 pointer-events-none text-store-faded  group-focus-within:text-store-pri' />
       <input
-        ref={ref}
         name='searchText'
         value={searchText}
         className='w-full rounded-full p-3 pl-12 pr-2 placeholder:text-store-faded placeholder:text-base placeholder:font-semibold text-store-faded font-semibold text-base border border-store-outline-faded-max group-focus-within:outline-store-pri'
