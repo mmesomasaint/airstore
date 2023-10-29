@@ -8,7 +8,7 @@ export function InputBarIcon({
   searchText,
   setSearchText,
   showBtn,
-  clickHandler
+  clickHandler,
 }: {
   large?: boolean
   searchText?: string
@@ -27,9 +27,14 @@ export function InputBarIcon({
         onChange={(e) => setSearchText?.(e.target.value)}
       />
       {showBtn && (
-      <button type='button' onClick={clickHandler} className='absolute z-30 top-[50%] -translate-y-[50%] right-1 px-4 h-[calc(100%_-_8px)] rounded-3xl bg-store-pri text-white'>
-        Search
-      </button>)}
+        <button
+          type='button'
+          onClick={clickHandler}
+          className='absolute z-30 top-[50%] -translate-y-[50%] right-1 px-4 h-[calc(100%_-_8px)] rounded-3xl bg-store-pri text-white'
+        >
+          Search
+        </button>
+      )}
     </div>
   )
 }
@@ -56,7 +61,7 @@ export function InputBarButton({
   ) : (
     <TextTiny faded={faded}>{children}</TextTiny>
   )
-  
+
   const textSize = large ? (
     <TextLabel faded={faded}>{children}</TextLabel>
   ) : (
