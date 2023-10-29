@@ -82,9 +82,10 @@ export default function useHeader() {
   }
 
   const getSearchResults = async () => {
-    const results = await search(searchText, {})
+    const { status, body } = await search(searchText ?? '', {})
 
-    // Set results body, data with search results.
+    // Set results data with search results.
+    if (status === 200) setSearchResults(body.data.products.edges)
   }
 
   useEffect(() => {
