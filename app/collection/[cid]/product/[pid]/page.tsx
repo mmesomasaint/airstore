@@ -18,14 +18,23 @@ import { OneOptionSelector } from '@/theme/components/outline-btns'
 import Button from '@/theme/elements/button'
 import EditAmount from '@/theme/components/editAmount'
 import Tab from '@/theme/components/tab'
-import useHeader from '@/theme/components/useHeader'
+import Header from '@/theme/components/header'
+import useSearch from '@/theme/components/useSearch'
 
 export default function Home() {
-  const { HeaderPanel } = useHeader()
+  const {searchText, filter, categories, setSearchText, resetCategories, setCategory, searchHandler} = useSearch()
 
   return (
     <main className='min-h-screen flex flex-col'>
-      <HeaderPanel />
+    <Header
+      searchText={searchText}
+      setSearchText={setSearchText}
+      filter={filter}
+      categories={categories}
+      resetCategories={resetCategories}
+      setCategory={setCategory}
+      searchClick={searchHandler}
+    />
       <div className='bg-gray-100/70 px-7 py-4 min-h-full grow gap-5 flex flex-col w-full'>
         <div className='flex justify-between items-center gap-10'>
           <span className='flex justify-start items-center gap-10'>
