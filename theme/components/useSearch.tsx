@@ -1,3 +1,5 @@
+'use client'
+
 import { DefaultFilter, Filter, FilterSection } from '@/lib/temp/filter'
 import { Product, products } from '@/lib/temp/products'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
