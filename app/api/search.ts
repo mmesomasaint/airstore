@@ -36,6 +36,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
 ) {
+  // console.log('I am here')
   const { title } = req.query
   const { filter } = req.body
 
@@ -48,7 +49,8 @@ export default async function handler(
     searchText: title:*${title}*
   }`
   const { status, body } = await shopifyFetch({ query, variables })
-  
+  //console.log('body: ', body)
+
   if (status === 200) {
     res.status(200).json({ status: 200, body: body.data.products.edges })
   } else {
