@@ -20,7 +20,7 @@ export function InputBarIcon({
       <input
         name='searchText'
         value={searchText}
-        className='w-full rounded-full p-3 pl-12 pr-2 placeholder:text-store-faded placeholder:text-base placeholder:font-semibold text-store-faded font-semibold text-base border border-store-outline-faded-max group-focus-within:outline-store-pri'
+        className={`${showBtn ? 'pr-24' : 'pr-2'} w-full rounded-full p-3 pl-12 placeholder:text-store-faded placeholder:text-base placeholder:font-semibold text-store-faded font-semibold text-base border border-store-outline-faded-max group-focus-within:outline-store-pri`}
         placeholder='Search Store'
         onChange={(e) => setSearchText?.(e.target.value)}
       />
