@@ -85,10 +85,14 @@ export default function useHeader() {
   }
 
   const getSearchResults = async () => {
-    const { status, body } = await search(searchText ?? '', {})
-
-    // Set results data with search results.
-    if (status === 200) setSearchResults(body.data.products.edges)
+    await fetch(`/api/search?title=${searchText}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ filter }),
+    }).then((res) => res.json()).then((data) => setSearchResults(data.body))
+    
   }
 
   useEffect(() => {
