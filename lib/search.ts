@@ -1,6 +1,6 @@
 import { shopifyFetch } from './fetch'
 
-export default async function Search(title: string, filter: object) {
+export default async function search(title: string, filter: object) {
   return shopifyFetch({
     query: `
     query AllProducts($first: Int, $searchText: String) {

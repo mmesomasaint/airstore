@@ -18,7 +18,6 @@ import {
   Filter,
   FilterSection,
 } from '@/lib/temp/filter'
-import Search from '@/lib/temp/search'
 import { DropDownMultiple } from './dropdown'
 import { InputBarIcon } from './inputBar'
 import { TbShoppingBag } from 'react-icons/tb'
@@ -26,6 +25,7 @@ import { IoMdNotificationsOutline } from 'react-icons/io'
 import { MdOutlineEmail } from 'react-icons/md'
 import Image from 'next/image'
 import { FiMapPin } from 'react-icons/fi'
+import search from '@/lib/search'
 
 export default function useHeader() {
   const router = useRouter()
