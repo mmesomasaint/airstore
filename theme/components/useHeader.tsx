@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, useCallback, useRef } from 'react'
 import { useSearchParams, useRouter, usePathname } from 'next/navigation'
 import { HR } from '../elements/rule'
 import {
@@ -28,6 +28,7 @@ import { FiMapPin } from 'react-icons/fi'
 import search from '@/lib/search'
 
 export default function useHeader() {
+  const searchRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -102,8 +103,12 @@ export default function useHeader() {
     }
   }, [isSearchPg])
 
+  useEffect(() => {
+    searchRef.current?.focus()
+  }, [searchText])
+
   return {
-    HeaderPanel: () => (
+    HeaderPanel: useCallback(() => (
       <>
         <div className='flex border-y border-store-outline-faded-max justify-between items-center gap-40 px-7 py-4'>
           <TextIntro primary>Airstore</TextIntro>
@@ -128,6 +133,7 @@ export default function useHeader() {
               searchText={searchText}
               setSearchText={setSearchText}
               clickHandler={goToSearchPg}
+              ref={searchRef}
               showBtn
             />
           </div>
@@ -166,7 +172,7 @@ export default function useHeader() {
           </div>
         </div>
       </>
-    ),
+    ), [searchText]),
     FilterPanel: () => (
       <div className='h-fit w-full flex flex-col gap-5 bg-white rounded-xl border border-store-outline-faded-max p-5'>
         <TextMid>Filters</TextMid>
