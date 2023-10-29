@@ -88,11 +88,12 @@ export default function useHeader() {
     await fetch(`/api/search?title=${searchText}`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ filter }),
-    }).then((res) => res.json()).then((data) => setSearchResults(data.body))
-    
+    })
+      .then((res) => res.json())
+      .then((data) => setSearchResults(data.body))
   }
 
   useEffect(() => {
