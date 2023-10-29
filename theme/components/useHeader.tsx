@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useSearchParams, useRouter, usePathname } from 'next/navigation'
 import { HR } from '../elements/rule'
 import {
   TextIntro,
@@ -25,9 +26,10 @@ import { IoMdNotificationsOutline } from 'react-icons/io'
 import { MdOutlineEmail } from 'react-icons/md'
 import Image from 'next/image'
 import { FiMapPin } from 'react-icons/fi'
-import { useSearchParams } from 'next/navigation'
 
 export default function useHeader() {
+  const router = useRouter()
+  const pathname = usePathname()
   const searchParams = useSearchParams()
   const [searchText, setSearchText] = useState(
     searchParams.get('q') ?? undefined
@@ -49,6 +51,7 @@ export default function useHeader() {
       [section]: { ...prev[section], [id]: value },
     }))
   }
+  const isSearchPg = pathname === '/search'
 
   const setCategory = (value: boolean, category: string) => {
     setSectionValue(value, 'categories', category)
@@ -70,6 +73,25 @@ export default function useHeader() {
     const categories = Object.keys(filter.categories)
     return categories.forEach((category) => setCategory(false, category))
   }
+
+  const goToSearchPg = () => {
+    if (isSearchPg) return
+
+    // Go to the search page if not already there.
+    router.push(`/search?q=${searchText}`)
+  }
+
+  const getSearchResults = async () => {
+    const results = await search(searchText, {})
+
+    // Set results body, data with search results.
+  }
+
+  useEffect(() => {
+    if (isSearchPg) {
+      getSearchResults()
+    }
+  }, [isSearchPg])
 
   return {
     HeaderPanel: () => (
