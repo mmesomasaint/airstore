@@ -1,17 +1,14 @@
 'use client'
 
-import type {RefObject} from 'react'
 import { RiSearchLine } from 'react-icons/ri'
 import { TextLabel, TextTiny, TextMid } from '../elements/text'
 
 export function InputBarIcon({
-  large,
   searchText,
   setSearchText,
   showBtn,
   clickHandler,
 }: {
-  large?: boolean
   searchText?: string
   setSearchText?: (value: string) => void
   showBtn?: boolean
