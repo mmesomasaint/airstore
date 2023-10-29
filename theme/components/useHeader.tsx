@@ -75,7 +75,10 @@ export default function useHeader() {
   }
 
   const goToSearchPg = () => {
-    if (isSearchPg) return
+    if (isSearchPg) {
+      getSearchResults()
+      return
+    }
 
     // Go to the search page if not already there.
     router.push(`/search?q=${searchText}`)
@@ -119,6 +122,7 @@ export default function useHeader() {
             <InputBarIcon
               searchText={searchText}
               setSearchText={setSearchText}
+              clickHandler={goToSearchPg}
               showBtn
             />
           </div>
