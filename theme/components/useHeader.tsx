@@ -29,7 +29,9 @@ import { useSearchParams } from 'next/navigation'
 
 export default function useHeader() {
   const searchParams = useSearchParams()
-  const [searchText, setSearchText] = useState(searchParams.get('q') ?? undefined)
+  const [searchText, setSearchText] = useState(
+    searchParams.get('q') ?? undefined
+  )
   const [searchResults, setSearchResults] = useState<Product[]>(products)
   const [filter, setFilter] = useState<Filter>(DefaultFilter)
   const categories = useMemo<string[]>(
