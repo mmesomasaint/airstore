@@ -17,7 +17,7 @@ export default function Header({
   setCategory,
   searchClick,
 }: {
-  searchText: string
+  searchText: string | undefined
   setSearchText: (value: string) => void
   filter: Filter
   categories: string[]
