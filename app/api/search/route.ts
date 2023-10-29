@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
 
   const variables = `{
     first: 60,
-    searchText: title:*${title}*
+    searchText: "title:*${title}*"
   }`
   const { status, body } = await shopifyFetch({ query, variables })
   //console.log('body: ', body)
