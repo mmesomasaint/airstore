@@ -116,11 +116,12 @@ export default function useHeader() {
         </div>
         <div className='border-b flex justify-between items-center gap-10 border-store-outline-faded-max px-7 py-4'>
           <div className='flex justify-start items-center gap-5'>
-            <TextTiny fadedMax>Macbook M2 Air</TextTiny>
-            <TextTiny fadedMax>Macbook M2 Pro</TextTiny>
-            <TextTiny fadedMax>Apple Watch Ultra</TextTiny>
+            <TextTiny fadedMax>Macbook</TextTiny>
+            <TextTiny fadedMax>Apple Watch</TextTiny>
             <TextTiny fadedMax>Airpods Max</TextTiny>
-            <TextTiny fadedMax>iPad Pro</TextTiny>
+            <TextTiny fadedMax>Airpods Pro 2</TextTiny>
+            <TextTiny fadedMax>iPad</TextTiny>
+            <TextTiny fadedMax>iPhone</TextTiny>
           </div>
           <div className='flex justify-start items-center gap-2'>
             <span className='flex justify-start items-center gap-1'>
