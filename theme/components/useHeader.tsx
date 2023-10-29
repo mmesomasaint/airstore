@@ -25,9 +25,11 @@ import { IoMdNotificationsOutline } from 'react-icons/io'
 import { MdOutlineEmail } from 'react-icons/md'
 import Image from 'next/image'
 import { FiMapPin } from 'react-icons/fi'
+import { useSearchParams } from 'next/navigation'
 
 export default function useHeader() {
-  const [searchText, setSearchText] = useState('')
+  const searchParams = useSearchParams()
+  const [searchText, setSearchText] = useState(searchParams.get('q') ?? undefined)
   const [searchResults, setSearchResults] = useState<Product[]>(products)
   const [filter, setFilter] = useState<Filter>(DefaultFilter)
   const categories = useMemo<string[]>(
@@ -66,11 +68,6 @@ export default function useHeader() {
     const categories = Object.keys(filter.categories)
     return categories.forEach((category) => setCategory(false, category))
   }
-
-  useEffect(() => {
-    const newResults = Search(searchText, filter)
-    setSearchResults(newResults)
-  }, [searchText, filter])
 
   return {
     HeaderPanel: () => (
