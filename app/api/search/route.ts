@@ -26,9 +26,7 @@ query AllProducts($first: Int, $searchText: String) {
 }
 `
 
-export async function POST(
-  req: NextRequest
-) {
+export async function POST(req: NextRequest) {
   // console.log('I am here')
   const searchParams = req.nextUrl.searchParams
   const title = searchParams.get('title')
