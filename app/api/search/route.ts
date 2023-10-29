@@ -1,11 +1,5 @@
 import { shopifyFetch } from '@/lib/fetch'
-import type { NextApiRequest, NextApiResponse } from 'next'
-
-type ResponseData = {
-  status: number
-  message?: string
-  body?: JSON
-}
+import { NextRequest } from 'next/server'
 
 const query = `
 query AllProducts($first: Int, $searchText: String) {
@@ -32,16 +26,16 @@ query AllProducts($first: Int, $searchText: String) {
 }
 `
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<ResponseData>
+export async function POST(
+  req: NextRequest
 ) {
   // console.log('I am here')
-  const { title } = req.query
-  const { filter } = req.body
+  const searchParams = req.nextUrl.searchParams
+  const title = searchParams.get('title')
+  const { filter } = await req.json()
 
   if (!title || !filter) {
-    res.status(400).json({ status: 400, message: 'Bad request' })
+    Response.json({ status: 400, message: 'Bad request' })
   }
 
   const variables = `{
@@ -52,8 +46,8 @@ export default async function handler(
   //console.log('body: ', body)
 
   if (status === 200) {
-    res.status(200).json({ status: 200, body: body.data.products.edges })
+    Response.json({ status: 200, body: body.data.products.edges })
   } else {
-    res.status(500).json({ status: 500, message: 'Error receiving data' })
+    Response.json({ status: 500, message: 'Error receiving data' })
   }
 }
