@@ -7,10 +7,14 @@ export function InputBarIcon({
   large,
   searchText,
   setSearchText,
+  showBtn,
+  clickHandler
 }: {
   large?: boolean
   searchText?: string
   setSearchText?: (value: string) => void
+  showBtn?: boolean
+  clickHandler?: () => void
 }) {
   return (
     <div className='relative h-fit w-full group'>
@@ -22,6 +26,10 @@ export function InputBarIcon({
         placeholder='Search Store'
         onChange={(e) => setSearchText?.(e.target.value)}
       />
+      {showBtn && (
+      <button type='button' onClick={clickHandler} className='absolute z-30 top-[50%] -translate-y-[50%] right-1 px-4 h-[calc(100%_-_8px)] rounded-3xl bg-store-pri text-white'>
+        Search
+      </button>)}
     </div>
   )
 }

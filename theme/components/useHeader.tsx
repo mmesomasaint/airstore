@@ -97,6 +97,7 @@ export default function useHeader() {
             <InputBarIcon
               searchText={searchText}
               setSearchText={setSearchText}
+              showBtn
             />
           </div>
           <div className='flex justify-end items-center gap-3 text-store-outline-faded-max'>
