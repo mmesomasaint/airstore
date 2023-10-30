@@ -36,10 +36,10 @@ export async function POST(req: NextRequest) {
     return Response.json({ status: 400, message: 'Bad request' })
   }
 
-  const variables = `{
+  const variables = {
     first: 60,
-    searchText: "title:*${title}*"
-  }`
+    searchText: `title:*${title}*`
+  }
   const { status, body } = await shopifyFetch({ query, variables })
   //console.log('body: ', body)
 

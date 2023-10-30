@@ -3,7 +3,7 @@ export async function shopifyFetch({
   variables,
 }: {
   query: string
-  variables: string
+  variables: object
 }) {
   const endpoint = process.env.SHOPIFY_STORE_DOMAIN
   const key = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN
@@ -18,7 +18,7 @@ export async function shopifyFetch({
         },
         body: { query, variables } && JSON.stringify({ query, variables }),
       })
-
+      console.log(result.statusText)
       return {
         status: result.status,
         body: await result.json(),
