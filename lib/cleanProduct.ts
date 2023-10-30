@@ -118,8 +118,8 @@ export function cleanMiniProduct(queryResult: QueryMiniProduct) {
     title,
     handle,
     src: url,
-    price: parseInt(minVariantPrice.amount).toLocaleString('en-US'),
-    discount: parseInt(maxVariantPrice.amount).toLocaleString('en-US'),
+    price: parseInt(minVariantPrice.amount),
+    discount: parseInt(maxVariantPrice.amount),
     colors: options
       .filter((option) => option.name === 'Color')
       .map((option) => option.values),
