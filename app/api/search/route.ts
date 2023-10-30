@@ -20,6 +20,12 @@ query AllProducts($first: Int, $searchText: String) {
             }
           }
         }
+        priceRangeV2 {
+          minVariantPrice {
+            amount
+            currencyCode
+          }
+        }
       }
     }
   }
