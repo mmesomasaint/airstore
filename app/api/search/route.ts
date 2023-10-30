@@ -27,7 +27,6 @@ query AllProducts($first: Int, $searchText: String) {
 `
 
 export async function POST(req: NextRequest) {
-  // console.log('I am here')
   const searchParams = req.nextUrl.searchParams
   const title = searchParams.get('title')
   const { filter } = await req.json()
@@ -41,7 +40,6 @@ export async function POST(req: NextRequest) {
     searchText: `title:*${title}*`
   }
   const { status, body } = await shopifyFetch({ query, variables })
-  //console.log('body: ', body)
 
   if (status === 200) {
     return Response.json({ status: 200, body: body.data.products.edges })
