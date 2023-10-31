@@ -51,11 +51,9 @@ export default function useSearch(): SearchFilter {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("Before cleaning: ", JSON.stringify(data.body))
         const cleanedProducts = data.body.map(({node}: {node: QueryMiniProduct}) =>
           cleanMiniProduct(node)
         )
-        console.log('After cleaning: ', JSON.stringify(cleanedProducts))
         setSearchResults(cleanedProducts)
       })
   }
