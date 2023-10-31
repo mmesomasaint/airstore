@@ -4,25 +4,19 @@ import { TextMid, TextXSmall, TextTiny, TextIntro } from '../../elements/text'
 
 export function VCard({
   title,
-  variants,
   src,
   price,
   discount,
   colors,
-  rating,
-  amountSold,
 }: {
   title: string
-  variants: string[]
   src: string
   price: number
   discount: number
   colors: string[]
-  rating: number
-  amountSold: number
 }) {
   return (
-    <div className='flex flex-col w-[21.999999%] border border-store-outline-faded-max rounded-xl shadow-sm'>
+    <div className='flex flex-col w-[14rem] border border-store-outline-faded-max rounded-xl shadow-sm'>
       <Image
         loader={() => src}
         src={src}
@@ -40,7 +34,6 @@ export function VCard({
         </div>
         <div className='flex flex-col gap-2 my-1'>
           <TextXSmall faded>{title}</TextXSmall>
-          <TextXSmall faded>{variants?.join(' | ')}</TextXSmall>
         </div>
         <div className='flex justify-start items-center gap-2'>
           {colors.map((color) => (
@@ -50,16 +43,6 @@ export function VCard({
               style={{ backgroundColor: color }}
             />
           ))}
-        </div>
-        <div className='flex justify-start items-center gap-10'>
-          <div className='flex justify-start items-center gap-2'>
-            <BsStarFill className='text-xs text-yellow-500' />
-            <TextTiny faded>{rating}</TextTiny>
-          </div>
-          <div className='flex justify-start gap-1'>
-            <TextTiny faded>{amountSold}</TextTiny>
-            <TextTiny faded>sold</TextTiny>
-          </div>
         </div>
       </div>
     </div>

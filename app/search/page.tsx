@@ -169,18 +169,15 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className='flex flex-wrap justify-between items-stretch gap-5'>
+          <div className='grid grid-cols-4 items-stretch gap-5'>
             {searchResults.map((product: Product, id) => (
               <VCard
                 key={`${product.src + id}`}
                 title={product.title}
-                variants={product.variants}
                 src={product.src}
                 price={product.price}
                 discount={product.discount}
                 colors={product.colors}
-                rating={product.rating}
-                amountSold={product.amountSold}
               />
             ))}
           </div>
