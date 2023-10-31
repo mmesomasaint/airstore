@@ -113,10 +113,8 @@ export function cleanMiniProduct(queryResult: QueryMiniProduct) {
   const { minVariantPrice } = priceRange
   const { maxVariantPrice } = compareAtPriceRange
   let colors = Array()
-
-  options
-    .filter((option) => option.name === 'Color')
-    .forEach((option) => colors.push(...option.values))
+  
+  options.filter((option) => option.name === 'Color').forEach((option) => colors.push(...option.values)) 
 
   return {
     id,
