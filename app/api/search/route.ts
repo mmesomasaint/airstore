@@ -12,19 +12,19 @@ query AllProducts($first: Int, $searchText: String) {
         featuredImage {
           url
         }
-        variants(first: 10) {
-          nodes {
-            selectedOptions {
-              name
-              value
-            }
-          }
-        }
-        priceRangeV2 {
+        priceRange {
           minVariantPrice {
             amount
-            currencyCode
           }
+        }
+        compareAtPriceRange {
+          maxVariantPrice {
+            amount
+          }
+        }
+        options {
+          name
+          values
         }
       }
     }
