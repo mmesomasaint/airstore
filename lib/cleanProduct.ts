@@ -34,7 +34,7 @@ export type QueryMiniProduct = {
   }
   options: {
     name: string
-    values: string
+    values: string[]
   }[]
 }
 
@@ -112,6 +112,9 @@ export function cleanMiniProduct(queryResult: QueryMiniProduct) {
   const { url } = featuredImage
   const { minVariantPrice } = priceRange
   const { maxVariantPrice } = compareAtPriceRange
+  let colors = Array()
+  
+  options.filter((option) => option.name === 'Color').forEach((option) => colors.push(...option.values)) 
 
   return {
     id,
@@ -120,8 +123,6 @@ export function cleanMiniProduct(queryResult: QueryMiniProduct) {
     src: url,
     price: parseInt(minVariantPrice.amount),
     discount: parseInt(maxVariantPrice.amount),
-    colors: options
-      .filter((option) => option.name === 'Color')
-      .map((option) => option.values),
+    colors,
   }
 }
