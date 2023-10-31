@@ -1,5 +1,6 @@
 'use client'
 
+import { cleanMiniProduct } from '@/lib/cleanProduct'
 import { DefaultFilter, Filter, FilterSection } from '@/lib/temp/filter'
 import { Product, products } from '@/lib/temp/products'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
@@ -49,7 +50,10 @@ export default function useSearch(): SearchFilter {
       body: JSON.stringify({ filter }),
     })
       .then((res) => res.json())
-      .then((data) => setSearchResults(data.body))
+      .then((data) => {
+        const cleanedProducts = data.body.map((product: QueryMiniProduct) => cleanMiniProduct(product))
+        setSearchResults(cleanedProducts)
+      })
   }
 
   useEffect(() => {
