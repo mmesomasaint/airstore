@@ -14,7 +14,7 @@ type Variant = {
   }
 }
 
-type QueryMiniProduct = {
+export type QueryMiniProduct = {
   id: string
   title: string
   handle: string
