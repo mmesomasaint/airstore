@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { BsStarFill } from 'react-icons/bs'
 import { TextMid, TextXSmall, TextTiny, TextIntro } from '../../elements/text'
 
 export function VCard({
