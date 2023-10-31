@@ -40,7 +40,7 @@ export function VCard({
         </div>
         <div className='flex flex-col gap-2 my-1'>
           <TextXSmall faded>{title}</TextXSmall>
-          <TextXSmall faded>{variants.join(' | ')}</TextXSmall>
+          <TextXSmall faded>{variants?.join(' | ')}</TextXSmall>
         </div>
         <div className='flex justify-start items-center gap-2'>
           {colors.map((color) => (
