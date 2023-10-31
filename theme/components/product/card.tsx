@@ -26,9 +26,9 @@ export function VCard({
       />
       <div className='p-3 flex flex-col gap-3 items-start justify-end grow bg-white rounded-b-xl'>
         <div className='flex justify-start items-center gap-2'>
-          <TextMid>${price.toLocaleString('en-US')}</TextMid>
+          <TextMid>N{price.toLocaleString('en-US')}</TextMid>
           <span className='line-through text-red-400'>
-            <TextTiny faded>${discount.toLocaleString('en-US')}</TextTiny>
+            <TextTiny faded>N{discount.toLocaleString('en-US')}</TextTiny>
           </span>
         </div>
         <div className='flex flex-col gap-2 my-1'>
