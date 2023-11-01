@@ -2,7 +2,7 @@
 
 import { QueryMiniProduct, cleanMiniProduct } from '@/lib/cleanProduct'
 import { DefaultFilter, Filter, FilterSection } from '@/lib/temp/filter'
-import { Product, products } from '@/lib/temp/products'
+import { Product } from '@/lib/temp/products'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 
@@ -13,7 +13,7 @@ export default function useSearch() {
   const query = searchParams.get('q')
   const [loading, setLoading] = useState(true)
   const [searchText, setSearchText] = useState(query ?? undefined)
-  const [searchResults, setSearchResults] = useState<Product[]>(products)
+  const [searchResults, setSearchResults] = useState<Product[]>([])
   const [filter, setFilter] = useState<Filter>(DefaultFilter)
   const isSearchPg = pathname === '/search'
 
