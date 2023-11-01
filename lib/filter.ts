@@ -2,7 +2,7 @@ export interface Filter {
   categories: {
     [key: string]: boolean
   }
-  color: {
+  colors: {
     [key: string]: boolean
   }
   price: {
@@ -14,7 +14,7 @@ export interface Filter {
   }
 }
 
-export type FilterSection = 'categories' | 'color' | 'price' | 'dateAdded'
+export type FilterSection = 'categories' | 'colors' | 'price' | 'dateAdded'
 
 export type Category = 'airpod' | 'macbook' | 'iWatch' | 'iPad' | 'iPhone'
 
@@ -26,7 +26,7 @@ export const DefaultFilter: Filter = {
     iPad: false,
     iPhone: false,
   },
-  color: {
+  colors: {
     red: false,
     blue: false,
   },
@@ -42,14 +42,14 @@ export const DefaultFilter: Filter = {
   },
 }
 
-const generateFilterQuery = (filter: Filter) => {
-  const { categories, price, color, dateAdded } = filter
+export const generateFilterQuery = (filter: Filter) => {
+  const { categories, price, colors, dateAdded } = filter
   const activeDateAdded = Object.keys(dateAdded).filter((key) => dateAdded[key])
   const activePrice = [price.min, price.max]
 
   return {
     categories: Object.keys(categories).filter((key) => categories[key]),
-    color: Object.keys(color).filter((key) => color[key]),
+    colors: Object.keys(colors).filter((key) => colors[key]),
     price: `variants.price:>=${price.min}${
       price.max && ` AND variants.price:<=${price.max}`
     }`,

@@ -1,7 +1,8 @@
 'use client'
 
 import { QueryMiniProduct, cleanMiniProduct } from '@/lib/cleanProduct'
-import { DefaultFilter, Filter, FilterSection } from '@/lib/temp/filter'
+import { generateFilterQuery } from '@/lib/filter'
+import { DefaultFilter, Filter, FilterSection } from '@/lib/filter'
 import { Product } from '@/lib/temp/products'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
@@ -36,7 +37,7 @@ export default function useSearch() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ filter }),
+      body: JSON.stringify({ filter: generateFilterQuery(filter) }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -67,11 +68,11 @@ export default function useSearch() {
     setCategory: (value: boolean, category: string) => {
       setSectionValue(value, 'categories', category)
     },
-    setCondition: (value: boolean, condition: string) => {
-      setSectionValue(value, 'conditions', condition)
+    setColor: (value: boolean, color: string) => {
+      setSectionValue(value, 'colors', color)
     },
-    setPaymentGateway: (value: boolean, paymentGateway: string) => {
-      setSectionValue(value, 'paymentGateways', paymentGateway)
+    setDateAdded: (value: boolean, dateAdded: string) => {
+      setSectionValue(value, 'dateAdded', dateAdded)
     },
     setPrice: (value: number, price: string) => {
       setSectionValue(value, 'price', price)
