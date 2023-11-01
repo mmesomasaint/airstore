@@ -6,21 +6,7 @@ import { Product, products } from '@/lib/temp/products'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 
-type SearchFilter = {
-  searchText: string | undefined
-  setSearchText: (value: string) => void
-  searchResults: Product[]
-  filter: Filter
-  categories: string[]
-  setCategory: (value: boolean, category: string) => void
-  setCondition: (value: boolean, condition: string) => void
-  setPaymentGateway: (value: boolean, paymentGateway: string) => void
-  setPrice: (value: number, price: string) => void
-  resetCategories: () => void
-  searchHandler: () => void
-}
-
-export default function useSearch(): SearchFilter {
+export default function useSearch() {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
