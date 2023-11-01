@@ -171,16 +171,22 @@ export default function Home() {
             </div>
           </div>
           <div className='grid grid-cols-4 items-stretch gap-9'>
-            {loading ? (<div className='col-span-full place-self-stretch flex justify-center items-center h-full w-full'><TextXSmall faded>Loading...</TextXSmall></div>) : searchResults.map((product: Product, id) => (
-              <VCard
-                key={`${product.src + id}`}
-                title={product.title}
-                src={product.src}
-                price={product.price}
-                discount={product.discount}
-                colors={product.colors}
-              />
-            ))}
+            {loading ? (
+              <div className='col-span-full place-self-stretch flex justify-center items-center h-full w-full'>
+                <TextXSmall faded>Loading...</TextXSmall>
+              </div>
+            ) : (
+              searchResults.map((product: Product, id) => (
+                <VCard
+                  key={`${product.src + id}`}
+                  title={product.title}
+                  src={product.src}
+                  price={product.price}
+                  discount={product.discount}
+                  colors={product.colors}
+                />
+              ))
+            )}
           </div>
         </div>
       </div>
