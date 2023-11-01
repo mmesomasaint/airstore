@@ -43,14 +43,16 @@ export const DefaultFilter: Filter = {
 }
 
 const generateFilterQuery = (filter: Filter) => {
-  const {categories, price, color, dateAdded} = filter
-  const activeDateAdded = Object.keys(dateAdded).filter(key => dateAdded[key])
+  const { categories, price, color, dateAdded } = filter
+  const activeDateAdded = Object.keys(dateAdded).filter((key) => dateAdded[key])
   const activePrice = [price.min, price.max]
 
   return {
-    categories: Object.keys(categories).filter(key => categories[key]),
-    color: Object.keys(color).filter(key => color[key]),
-    price: `variants.price:>=${price.min}${price.max && ` AND variants.price:<=${price.max}`}`,
+    categories: Object.keys(categories).filter((key) => categories[key]),
+    color: Object.keys(color).filter((key) => color[key]),
+    price: `variants.price:>=${price.min}${
+      price.max && ` AND variants.price:<=${price.max}`
+    }`,
     dateAdded: `created_at:>${activeDateAdded[0]}`,
   }
 }
