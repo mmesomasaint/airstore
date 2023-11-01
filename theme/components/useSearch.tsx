@@ -93,6 +93,7 @@ export default function useSearch(): SearchFilter {
     },
     searchHandler: () => {
       if (isSearchPg) {
+        router.push(`/search?q=${searchText}`)
         getSearchResults()
         return
       }
