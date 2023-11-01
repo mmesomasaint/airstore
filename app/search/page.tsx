@@ -1,7 +1,7 @@
 'use client'
 
 import DropDown from '@/theme/components/dropdown'
-import { TextMid, TextTiny } from '@/theme/elements/text'
+import { TextMid, TextTiny, TextXSmall } from '@/theme/elements/text'
 import { Product } from '@/lib/temp/products'
 import { VCard } from '@/theme/components/product/card'
 import useSearch from '@/theme/components/useSearch'
@@ -17,6 +17,7 @@ export default function Home() {
     searchResults,
     filter,
     categories,
+    loading,
     setSearchText,
     searchHandler,
     resetCategories,
@@ -170,7 +171,7 @@ export default function Home() {
             </div>
           </div>
           <div className='grid grid-cols-4 items-stretch gap-5'>
-            {searchResults.map((product: Product, id) => (
+            {loading ? (<div className='col-span-full place-self-stretch flex justify-center items-center h-full w-full'><TextXSmall faded>Loading...</TextXSmall></div>) : searchResults.map((product: Product, id) => (
               <VCard
                 key={`${product.src + id}`}
                 title={product.title}

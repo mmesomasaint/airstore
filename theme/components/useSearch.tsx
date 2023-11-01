@@ -11,6 +11,7 @@ export default function useSearch() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const query = searchParams.get('q')
+  const [loading, setLoading] = useState(true)
   const [searchText, setSearchText] = useState(query ?? undefined)
   const [searchResults, setSearchResults] = useState<Product[]>(products)
   const [filter, setFilter] = useState<Filter>(DefaultFilter)
@@ -28,6 +29,8 @@ export default function useSearch() {
   }
 
   const getSearchResults = async () => {
+    setLoading(true)
+
     await fetch(`/api/search?title=${searchText}`, {
       method: 'POST',
       headers: {
@@ -41,6 +44,7 @@ export default function useSearch() {
           ({ node }: { node: QueryMiniProduct }) => cleanMiniProduct(node)
         )
         setSearchResults(cleanedProducts)
+        setLoading(false)
       })
   }
 
@@ -55,6 +59,7 @@ export default function useSearch() {
     setSearchText,
     searchResults,
     filter,
+    loading,
     categories: useMemo<string[]>(
       () => Object.keys(filter.categories),
       [filter]
