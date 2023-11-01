@@ -42,7 +42,7 @@ export const DefaultFilter: Filter = {
   },
 }
 
-const generateActiveFiltersQuery = (filter: Filter) => {
+const generateFilterQuery = (filter: Filter) => {
   const {categories, price, color, dateAdded} = filter
   const activeDateAdded = Object.keys(dateAdded).filter(key => dateAdded[key])
   const activePrice = [price.min, price.max]
