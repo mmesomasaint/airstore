@@ -15,7 +15,7 @@ export function VCard({
   colors: string[]
 }) {
   return (
-    <div className='flex flex-col w-[14rem] border border-store-outline-faded-max rounded-xl shadow-sm'>
+    <div className='flex flex-col w-[14.5rem] border border-store-outline-faded-max rounded-xl shadow-sm'>
       <Image
         loader={() => src}
         src={src}
