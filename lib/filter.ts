@@ -18,11 +18,7 @@ export interface Filter {
   }
 }
 
-export type FilterSection =
-  | 'categories'
-  | 'color'
-  | 'price'
-  | 'releaseDate'
+export type FilterSection = 'categories' | 'color' | 'price' | 'releaseDate'
 
 export type Category = 'airpod' | 'macbook' | 'iWatch' | 'iPad' | 'iPhone'
 
@@ -36,7 +32,7 @@ export const DefaultFilter: Filter = {
   },
   color: {
     red: false,
-    blue: false
+    blue: false,
   },
   price: {
     min: 0,
