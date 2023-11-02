@@ -17,18 +17,18 @@ export interface Filter {
 export interface FilterQueryResult {
   collections: {
     nodes: {
-      id: string,
+      id: string
       title: string
     }[]
-  },
+  }
   products: {
     nodes: {
-      id: string,
-      createdAt: string,
+      id: string
+      createdAt: string
       options: {
-        name: string,
-        values: string[],
-      }[],
+        name: string
+        values: string[]
+      }[]
       priceRange: {
         minVariantPrice: {
           amount: string
@@ -82,13 +82,13 @@ export const generateFilterQuery = (filter: Filter) => {
 }
 
 export const cleanFilterQueryResult = (queryResult: FilterQueryResult) => {
-  const {nodes: collectionNodes} = queryResult.collections
-  const collections = collectionNodes.map(node => node.title)
-  const {nodes: productNodes} = queryResult.products
-  const products = productNodes.map(node => {
-    const {options, priceRange, createdAt} = node
+  const { nodes: collectionNodes } = queryResult.collections
+  const collections = collectionNodes.map((node) => node.title)
+  const { nodes: productNodes } = queryResult.products
+  const products = productNodes.map((node) => {
+    const { options, priceRange, createdAt } = node
     let colors = Array()
-  
+
     options
       .filter((option) => option.name === 'Color')
       .forEach((option) => colors.push(...option.values))
@@ -96,12 +96,12 @@ export const cleanFilterQueryResult = (queryResult: FilterQueryResult) => {
     return {
       colors,
       createdAt,
-      price: parseInt(priceRange.minVariantPrice.amount)
+      price: parseInt(priceRange.minVariantPrice.amount),
     }
   })
 
   return {
     collections,
-    ...products
+    ...products,
   }
 }
