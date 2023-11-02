@@ -82,21 +82,34 @@ export const generateFilterQuery = (filter: Filter) => {
 export const cleanFilterQueryResult = (queryResult: FilterQueryResult) => {
   const { nodes: productNodes } = queryResult.products
 
-  return productNodes.reduce((acc, cur) => {
-    const removeDup = (list: any[]) => Array.from(new Set(list))
-    const { options, priceRange, createdAt, collections: {nodes: collectionNodes} } = cur
-    const collections = collectionNodes.map(node => node.title)
-    let colors = Array()
+  return productNodes.reduce(
+    (acc, cur) => {
+      const removeDup = (list: any[]) => Array.from(new Set(list))
+      const {
+        options,
+        priceRange,
+        createdAt,
+        collections: { nodes: collectionNodes },
+      } = cur
+      const collections = collectionNodes.map((node) => node.title)
+      let colors = Array()
 
-    options
-      .filter((option) => option.name === 'Color')
-      .forEach((option) => colors.push(...option.values))
+      options
+        .filter((option) => option.name === 'Color')
+        .forEach((option) => colors.push(...option.values))
 
-    return {
-      colors: removeDup([...acc.colors, ...colors]),
-      dates: removeDup([...acc.dates, createdAt]),
-      price: Math.max(parseInt(priceRange.minVariantPrice.amount), acc.price),
-      collections: removeDup([...acc.collections, ...collections])
+      return {
+        colors: removeDup([...acc.colors, ...colors]),
+        dates: removeDup([...acc.dates, createdAt]),
+        price: Math.max(parseInt(priceRange.minVariantPrice.amount), acc.price),
+        collections: removeDup([...acc.collections, ...collections]),
+      }
+    },
+    {
+      colors: Array<any>(),
+      dates: Array<string>(),
+      price: 0,
+      collections: Array<any>(),
     }
-  }, {colors: Array<any>(), dates: Array<string>(), price: 0, collections: Array<any>()})
+  )
 }
