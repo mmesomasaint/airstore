@@ -70,6 +70,8 @@ export default function Home() {
                 {filter.colors && (
                   <HR>
                     <Accordion title='Colors' defaultOpen>
+                      <div className='grow grid grid-cols-2 gap-x-5 gap-y-3'>
+                        
                       {Object.keys(filter.colors).map((color) => (
                         <CheckBox
                           key={color}
@@ -79,6 +81,7 @@ export default function Home() {
                           {color}
                         </CheckBox>
                       ))}
+                      </div>
                     </Accordion>
                   </HR>
                 )}
@@ -100,7 +103,7 @@ export default function Home() {
                   </HR>
                 )}
                 {filter.price.max > 0 && (
-                  <Accordion title='Price'>
+                  <Accordion title='Price' defaultOpen>
                     <Range
                       ranges={(() => {
                         const by2 = filter.price.max / 2
