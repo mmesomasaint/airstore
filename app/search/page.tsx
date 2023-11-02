@@ -19,6 +19,7 @@ export default function Home() {
     filter,
     categories,
     loading,
+    loadingFilter,
     setSearchText,
     searchHandler,
     resetCategories,
@@ -43,7 +44,10 @@ export default function Home() {
         <div className='col-span-3 h-fit w-full'>
           <div className='h-fit w-full flex flex-col gap-5 bg-white rounded-xl border border-store-outline-faded-max p-5'>
             <TextMid>Filters</TextMid>
-            {filter.categories && (
+            {loadingFilter ? (<div className='flex justify-center items-center w-full'><TextXSmall faded>Loading...</TextXSmall></div>) : 
+            (
+              <>
+              {filter.categories && (
               <HR>
                 <Accordion title='Categories' defaultOpen>
                   {Object.keys(filter.categories).map((category) => (
@@ -59,27 +63,63 @@ export default function Home() {
                   ))}
                 </Accordion>
               </HR>
-            )}
-            {filter.price.max > 0 && (
-              <Accordion title='Price'>
-                <Range
-                  ranges={(() => {
-                    const by2 = filter.price.max / 2
-                    const by4 = filter.price.max / 4
+              )}
+              {filter.colors && (
+              <HR>
+                <Accordion title='Colors' defaultOpen>
+                  {Object.keys(filter.colors).map((color) => (
+                    <CheckBox
+                      key={color}
+                      check={filter.colors[color]}
+                      setCheck={(value: boolean) =>
+                        setColor(value, color)
+                      }
+                    >
+                      {color}
+                    </CheckBox>
+                  ))}
+                </Accordion>
+              </HR>
+              )}
+              {filter.dateAdded && (
+              <HR>
+                <Accordion title='Date Added' defaultOpen>
+                  {Object.keys(filter.dateAdded).map((date) => (
+                    <CheckBox
+                      key={date}
+                      check={filter.dateAdded[date]}
+                      setCheck={(value: boolean) =>
+                        setDateAdded(value, date)
+                      }
+                    >
+                      {date}
+                    </CheckBox>
+                  ))}
+                </Accordion>
+              </HR>
+              )}
+              {filter.price.max > 0 && (
+                <Accordion title='Price'>
+                  <Range
+                    ranges={(() => {
+                      const by2 = filter.price.max / 2
+                      const by4 = filter.price.max / 4
 
-                    return [
-                      [0, by4],
-                      [by4, by4 + by4],
-                      [by4 + by4, by2],
-                      [by2 + by4, filter.price.max],
-                    ]
-                  })()}
-                  min={filter.price.min}
-                  max={filter.price.max}
-                  setMin={(value: number) => setPrice(value, 'min')}
-                  setMax={(value: number) => setPrice(value, 'max')}
-                />
-              </Accordion>
+                      return [
+                        [0, by4],
+                        [by4, by4 + by4],
+                        [by4 + by4, by2],
+                        [by2 + by4, filter.price.max],
+                      ]
+                    })()}
+                    min={filter.price.min}
+                    max={filter.price.max}
+                    setMin={(value: number) => setPrice(value, 'min')}
+                    setMax={(value: number) => setPrice(value, 'max')}
+                  />
+                </Accordion>
+              )}
+              </>
             )}
           </div>
         </div>
