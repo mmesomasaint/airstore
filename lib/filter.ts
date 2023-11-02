@@ -14,6 +14,30 @@ export interface Filter {
   }
 }
 
+export interface FilterQueryResult {
+  collections: {
+    nodes: {
+      id: string,
+      title: string
+    }[]
+  },
+  products: {
+    nodes: {
+      id: string,
+      createdAt: string,
+      options: {
+        name: string,
+        values: string[],
+      }[],
+      priceRange: {
+        minVariantPrice: {
+          amount: string
+        }
+      }
+    }[]
+  }
+}
+
 export type FilterSection = 'categories' | 'colors' | 'price' | 'dateAdded'
 
 export type Category = 'airpod' | 'macbook' | 'iWatch' | 'iPad' | 'iPhone'
@@ -54,5 +78,30 @@ export const generateFilterQuery = (filter: Filter) => {
       price.max && ` AND variants.price:<=${price.max}`
     }`,
     dateAdded: `created_at:>${activeDateAdded[0]}`,
+  }
+}
+
+export const cleanFilterQueryResult = (queryResult: FilterQueryResult) => {
+  const {nodes: collectionNodes} = queryResult.collections
+  const collections = collectionNodes.map(node => node.title)
+  const {nodes: productNodes} = queryResult.products
+  const products = productNodes.map(node => {
+    const {options, priceRange, createdAt} = node
+    let colors = Array()
+  
+    options
+      .filter((option) => option.name === 'Color')
+      .forEach((option) => colors.push(...option.values))
+
+    return {
+      colors,
+      createdAt,
+      price: parseInt(priceRange.minVariantPrice.amount)
+    }
+  })
+
+  return {
+    collections,
+    ...products
   }
 }

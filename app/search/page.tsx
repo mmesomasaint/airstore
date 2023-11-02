@@ -22,8 +22,8 @@ export default function Home() {
     searchHandler,
     resetCategories,
     setCategory,
-    setCondition,
-    setPaymentGateway,
+    setColor,
+    setDateAdded,
     setPrice,
   } = useSearch()
 
@@ -77,17 +77,17 @@ export default function Home() {
               </Accordion>
             </HR>
             <HR>
-              <Accordion title='Condition'>
+              <Accordion title='Colors'>
                 <CheckBox
                   check={filter.conditions.newStuff}
-                  setCheck={(value: boolean) => setCondition(value, 'newStuff')}
+                  setCheck={(value: boolean) => setColor(value, 'newStuff')}
                 >
                   New Stuff
                 </CheckBox>
                 <CheckBox
                   check={filter.conditions.fairlyUsed}
                   setCheck={(value: boolean) =>
-                    setCondition(value, 'fairlyUsed')
+                    setColor(value, 'fairlyUsed')
                   }
                 >
                   Fairly Used
@@ -95,7 +95,7 @@ export default function Home() {
                 <CheckBox
                   check={filter.conditions.secondHand}
                   setCheck={(value: boolean) =>
-                    setCondition(value, 'secondHand')
+                    setColor(value, 'secondHand')
                   }
                 >
                   Second Hand
@@ -119,11 +119,11 @@ export default function Home() {
                 />
               </Accordion>
             </HR>
-            <Accordion title='Payment' defaultOpen>
+            <Accordion title='Date Added' defaultOpen>
               <CheckBox
                 check={filter.paymentGateways.cashOnDelivery}
                 setCheck={(value: boolean) =>
-                  setPaymentGateway(value, 'cashOnDelivery')
+                  setDateAdded(value, 'cashOnDelivery')
                 }
               >
                 Cash on Delivery
@@ -131,7 +131,7 @@ export default function Home() {
               <CheckBox
                 check={filter.paymentGateways.prepaid}
                 setCheck={(value: boolean) =>
-                  setPaymentGateway(value, 'prepaid')
+                  setDateAdded(value, 'prepaid')
                 }
               >
                 Prepaid
@@ -139,7 +139,7 @@ export default function Home() {
               <CheckBox
                 check={filter.paymentGateways.iStoreCoupon}
                 setCheck={(value: boolean) =>
-                  setPaymentGateway(value, 'iStoreCoupon')
+                  setDateAdded(value, 'iStoreCoupon')
                 }
               >
                 iStore Coupon
@@ -147,7 +147,7 @@ export default function Home() {
               <CheckBox
                 check={filter.paymentGateways.binancePay}
                 setCheck={(value: boolean) =>
-                  setPaymentGateway(value, 'binancePay')
+                  setDateAdded(value, 'binancePay')
                 }
               >
                 Binance Pay

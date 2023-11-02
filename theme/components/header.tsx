@@ -1,4 +1,4 @@
-import { Category, Filter } from '@/lib/temp/filter'
+import { Category, Filter } from '@/lib/filter'
 import { TextIntro, TextLabel, TextTiny, TextXSmall } from '../elements/text'
 import { DropDownMultiple } from './dropdown'
 import { InputBarIcon } from './inputBar'
