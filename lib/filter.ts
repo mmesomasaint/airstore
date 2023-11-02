@@ -15,26 +15,24 @@ export interface Filter {
 }
 
 export interface FilterQueryResult {
-  products: {
-    nodes: {
-      id: string
-      createdAt: string
-      options: {
-        name: string
-        values: string[]
-      }[]
-      priceRange: {
-        minVariantPrice: {
-          amount: string
-        }
-      }
-      collections: {
-        nodes: {
-          title: string
-        }[]
-      }
+  nodes: {
+    id: string
+    createdAt: string
+    options: {
+      name: string
+      values: string[]
     }[]
-  }
+    priceRange: {
+      minVariantPrice: {
+        amount: string
+      }
+    }
+    collections: {
+      nodes: {
+        title: string
+      }[]
+    }
+  }[]
 }
 
 export type FilterSection = 'categories' | 'colors' | 'price' | 'dateAdded'
@@ -82,7 +80,7 @@ export const generateFilterQuery = (filter: Filter) => {
 export const cleanFilterQueryResult = (
   queryResult: FilterQueryResult
 ): Filter => {
-  const { nodes: productNodes } = queryResult.products
+  const { nodes: productNodes } = queryResult
   return productNodes.reduce(
     (acc, cur) => {
       const removeDup = (list: any[]) => Array.from(new Set(list))
