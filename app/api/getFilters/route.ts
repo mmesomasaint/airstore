@@ -34,7 +34,7 @@ export async function GET() {
   const { status, body } = await shopifyFetch({ query, variables })
 
   if (status === 200) {
-    return Response.json({ status: 200, body: body.data.products.nodes })
+    return Response.json({ status: 200, body: body.data.products })
   } else {
     return Response.json({ status: 500, message: 'Error receiving data' })
   }
