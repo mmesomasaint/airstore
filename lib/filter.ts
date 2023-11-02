@@ -79,12 +79,15 @@ export const generateFilterQuery = (filter: Filter) => {
   }
 }
 
-export const cleanFilterQueryResult = (queryResult: FilterQueryResult): Filter => {
+export const cleanFilterQueryResult = (
+  queryResult: FilterQueryResult
+): Filter => {
   const { nodes: productNodes } = queryResult.products
   return productNodes.reduce(
     (acc, cur) => {
       const removeDup = (list: any[]) => Array.from(new Set(list))
-      const toDefault = (list: any[]) => list.reduce((acc, cur) => ({...acc, [cur]: false}), {})
+      const toDefault = (list: any[]) =>
+        list.reduce((acc, cur) => ({ ...acc, [cur]: false }), {})
       const {
         options,
         priceRange,
@@ -100,15 +103,25 @@ export const cleanFilterQueryResult = (queryResult: FilterQueryResult): Filter =
 
       return {
         colors: toDefault(removeDup([...Object.keys(acc.colors), ...colors])),
-        dateAdded: toDefault(removeDup([...Object.keys(acc.dateAdded), createdAt])),
-        price: {min: 0, max: Math.max(parseInt(priceRange.minVariantPrice.amount), acc.price.max)},
-        categories: toDefault(removeDup([...Object.keys(acc.categories), ...categories])),
+        dateAdded: toDefault(
+          removeDup([...Object.keys(acc.dateAdded), createdAt])
+        ),
+        price: {
+          min: 0,
+          max: Math.max(
+            parseInt(priceRange.minVariantPrice.amount),
+            acc.price.max
+          ),
+        },
+        categories: toDefault(
+          removeDup([...Object.keys(acc.categories), ...categories])
+        ),
       }
     },
     {
       colors: {},
       dateAdded: {},
-      price: {min: 0, max: 0},
+      price: { min: 0, max: 0 },
       categories: {},
     }
   )

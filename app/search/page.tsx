@@ -46,8 +46,13 @@ export default function Home() {
             {filter.categories && (
               <HR>
                 <Accordion title='Categories' defaultOpen>
-                  {Object.keys(filter.categories).map(category => (
-                    <CheckBox check={filter.categories[category]} setCheck={(value: boolean) => setCategory(value, category)}>
+                  {Object.keys(filter.categories).map((category) => (
+                    <CheckBox
+                      check={filter.categories[category]}
+                      setCheck={(value: boolean) =>
+                        setCategory(value, category)
+                      }
+                    >
                       {category}
                     </CheckBox>
                   ))}
@@ -55,27 +60,26 @@ export default function Home() {
               </HR>
             )}
             {filter.price.max > 0 && (
-              
-            <HR>
-            <Accordion title='Price'>
-              <Range
-                ranges={(() => {
-                  const by2 = filter.price.max / 2
-                  const by4 = filter.price.max / 4
+              <HR>
+                <Accordion title='Price'>
+                  <Range
+                    ranges={(() => {
+                      const by2 = filter.price.max / 2
+                      const by4 = filter.price.max / 4
 
-                  return [
-                    [by4, by4+by4],
-                    [by4+by4, by2],
-                    [by2+by4, filter.price.max]
-                  ]
-                })()}
-                min={filter.price.min}
-                max={filter.price.max}
-                setMin={(value: number) => setPrice(value, 'min')}
-                setMax={(value: number) => setPrice(value, 'max')}
-              />
-            </Accordion>
-          </HR>
+                      return [
+                        [by4, by4 + by4],
+                        [by4 + by4, by2],
+                        [by2 + by4, filter.price.max],
+                      ]
+                    })()}
+                    min={filter.price.min}
+                    max={filter.price.max}
+                    setMin={(value: number) => setPrice(value, 'min')}
+                    setMax={(value: number) => setPrice(value, 'max')}
+                  />
+                </Accordion>
+              </HR>
             )}
             <HR>
               <Accordion title='Categories' defaultOpen>
