@@ -106,10 +106,10 @@ export const cleanFilterQueryResult = (queryResult: FilterQueryResult) => {
       }
     },
     {
-      colors: Array<any>(),
+      colors: Array<string>(),
       dates: Array<string>(),
       price: 0,
-      collections: Array<any>(),
+      collections: Array<string>(),
     }
   )
 }
