@@ -71,16 +71,17 @@ export default function Home() {
                   <HR>
                     <Accordion title='Colors' defaultOpen>
                       <div className='grow grid grid-cols-2 gap-x-5 gap-y-3'>
-                        
-                      {Object.keys(filter.colors).map((color) => (
-                        <CheckBox
-                          key={color}
-                          check={filter.colors[color]}
-                          setCheck={(value: boolean) => setColor(value, color)}
-                        >
-                          {color}
-                        </CheckBox>
-                      ))}
+                        {Object.keys(filter.colors).map((color) => (
+                          <CheckBox
+                            key={color}
+                            check={filter.colors[color]}
+                            setCheck={(value: boolean) =>
+                              setColor(value, color)
+                            }
+                          >
+                            {color}
+                          </CheckBox>
+                        ))}
                       </div>
                     </Accordion>
                   </HR>
