@@ -1,7 +1,7 @@
 'use client'
 
 import { QueryMiniProduct, cleanMiniProduct } from '@/lib/cleanProduct'
-import { generateFilterQuery } from '@/lib/filter'
+import { cleanFilterQueryResult, generateFilterQuery } from '@/lib/filter'
 import { DefaultFilter, Filter, FilterSection } from '@/lib/filter'
 import { Product } from '@/lib/temp/products'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
@@ -54,6 +54,23 @@ export default function useSearch() {
       getSearchResults()
     }
   }, [isSearchPg])
+
+  useEffect(() => {
+    const fetchFilter = async () => {
+      await fetch(`/api/getFilters`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setFilter(cleanFilterQueryResult(data))
+        })
+    }
+
+    fetchFilter()
+  }, [])
 
   return {
     searchText,
