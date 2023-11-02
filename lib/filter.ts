@@ -92,10 +92,19 @@ export const cleanFilterQueryResult = (
         createdAt,
         collections: { nodes: collectionNodes },
       } = cur
-      const categoryTitles = ['Airpod', 'MacBook', 'IPhone', 'Watch', 'IPad', 'Mac']
+      const categoryTitles = [
+        'Airpod',
+        'MacBook',
+        'IPhone',
+        'Watch',
+        'IPad',
+        'Mac',
+      ]
       const categories = collectionNodes.map((node) => {
         const title = node.title
-        const idx = categoryTitles.findIndex(categoryTitle => title.includes(categoryTitle))
+        const idx = categoryTitles.findIndex((categoryTitle) =>
+          title.includes(categoryTitle)
+        )
         if (idx !== -1) return categoryTitles[idx]
       })
       let colors = Array()
@@ -107,7 +116,10 @@ export const cleanFilterQueryResult = (
       return {
         colors: toDefault(removeDup([...Object.keys(acc.colors), ...colors])),
         dateAdded: toDefault(
-          removeDup([...Object.keys(acc.dateAdded), new Date(createdAt).getFullYear()])
+          removeDup([
+            ...Object.keys(acc.dateAdded),
+            new Date(createdAt).getFullYear(),
+          ])
         ),
         price: {
           min: 0,
