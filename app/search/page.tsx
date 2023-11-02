@@ -10,6 +10,7 @@ import Accordion from '@/theme/components/accordion'
 import CheckBox from '@/theme/components/checkbox'
 import Range from '@/theme/components/range'
 import Header from '@/theme/components/header'
+import { FilterSection } from '@/lib/filter'
 
 export default function Home() {
   const {
@@ -42,6 +43,40 @@ export default function Home() {
         <div className='col-span-3 h-fit w-full'>
           <div className='h-fit w-full flex flex-col gap-5 bg-white rounded-xl border border-store-outline-faded-max p-5'>
             <TextMid>Filters</TextMid>
+            {filter.categories && (
+              <HR>
+                <Accordion title='Categories' defaultOpen>
+                  {Object.keys(filter.categories).map(category => (
+                    <CheckBox check={filter.categories[category]} setCheck={(value: boolean) => setCategory(value, category)}>
+                      {category}
+                    </CheckBox>
+                  ))}
+                </Accordion>
+              </HR>
+            )}
+            {filter.price.max > 0 && (
+              
+            <HR>
+            <Accordion title='Price'>
+              <Range
+                ranges={(() => {
+                  const by2 = filter.price.max / 2
+                  const by4 = filter.price.max / 4
+
+                  return [
+                    [by4, by4+by4],
+                    [by4+by4, by2],
+                    [by2+by4, filter.price.max]
+                  ]
+                })()}
+                min={filter.price.min}
+                max={filter.price.max}
+                setMin={(value: number) => setPrice(value, 'min')}
+                setMax={(value: number) => setPrice(value, 'max')}
+              />
+            </Accordion>
+          </HR>
+            )}
             <HR>
               <Accordion title='Categories' defaultOpen>
                 <CheckBox
@@ -77,32 +112,6 @@ export default function Home() {
               </Accordion>
             </HR>
             <HR>
-              <Accordion title='Colors'>
-                <CheckBox
-                  check={filter.conditions.newStuff}
-                  setCheck={(value: boolean) => setColor(value, 'newStuff')}
-                >
-                  New Stuff
-                </CheckBox>
-                <CheckBox
-                  check={filter.conditions.fairlyUsed}
-                  setCheck={(value: boolean) =>
-                    setColor(value, 'fairlyUsed')
-                  }
-                >
-                  Fairly Used
-                </CheckBox>
-                <CheckBox
-                  check={filter.conditions.secondHand}
-                  setCheck={(value: boolean) =>
-                    setColor(value, 'secondHand')
-                  }
-                >
-                  Second Hand
-                </CheckBox>
-              </Accordion>
-            </HR>
-            <HR>
               <Accordion title='Price'>
                 <Range
                   ranges={[
@@ -119,40 +128,6 @@ export default function Home() {
                 />
               </Accordion>
             </HR>
-            <Accordion title='Date Added' defaultOpen>
-              <CheckBox
-                check={filter.paymentGateways.cashOnDelivery}
-                setCheck={(value: boolean) =>
-                  setDateAdded(value, 'cashOnDelivery')
-                }
-              >
-                Cash on Delivery
-              </CheckBox>
-              <CheckBox
-                check={filter.paymentGateways.prepaid}
-                setCheck={(value: boolean) =>
-                  setDateAdded(value, 'prepaid')
-                }
-              >
-                Prepaid
-              </CheckBox>
-              <CheckBox
-                check={filter.paymentGateways.iStoreCoupon}
-                setCheck={(value: boolean) =>
-                  setDateAdded(value, 'iStoreCoupon')
-                }
-              >
-                iStore Coupon
-              </CheckBox>
-              <CheckBox
-                check={filter.paymentGateways.binancePay}
-                setCheck={(value: boolean) =>
-                  setDateAdded(value, 'binancePay')
-                }
-              >
-                Binance Pay
-              </CheckBox>
-            </Accordion>
           </div>
         </div>
         <div className='col-span-9 gap-5 flex flex-col w-full'>
