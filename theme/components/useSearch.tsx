@@ -13,6 +13,7 @@ export default function useSearch() {
   const searchParams = useSearchParams()
   const query = searchParams.get('q')
   const [loading, setLoading] = useState(true)
+  const [loadingFilter, setLoadingFilter] = useState(true)
   const [searchText, setSearchText] = useState(query ?? undefined)
   const [searchResults, setSearchResults] = useState<Product[]>([])
   const [filter, setFilter] = useState<Filter>(DefaultFilter)
@@ -56,6 +57,8 @@ export default function useSearch() {
   }, [isSearchPg])
 
   useEffect(() => {
+    setLoadingFilter(true)
+
     const fetchFilter = async () => {
       await fetch(`/api/getFilters`, {
         method: 'GET',
@@ -66,6 +69,7 @@ export default function useSearch() {
         .then((res) => res.json())
         .then((data) => {
           setFilter(cleanFilterQueryResult(data.body))
+          setLoadingFilter(false)
         })
     }
 
@@ -78,6 +82,7 @@ export default function useSearch() {
     searchResults,
     filter,
     loading,
+    loadingFilter,
     categories: useMemo<string[]>(
       () => Object.keys(filter.categories),
       [filter]
