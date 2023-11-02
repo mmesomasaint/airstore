@@ -1,5 +1,4 @@
 import { shopifyFetch } from '@/lib/fetch'
-import { NextRequest } from 'next/server'
 
 const query = `
 query GetFilters($first: Int) {
@@ -28,7 +27,7 @@ query GetFilters($first: Int) {
 
 const LIMIT = 20
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   const variables = {
     first: LIMIT,
   }
