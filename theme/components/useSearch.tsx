@@ -2,7 +2,7 @@
 
 import { QueryMiniProduct, cleanMiniProduct } from '@/lib/cleanProduct'
 import { cleanFilterQueryResult, generateFilterQuery } from '@/lib/filter'
-import { DefaultFilter, Filter, FilterSection } from '@/lib/filter'
+import { Filter, FilterSection } from '@/lib/filter'
 import { Product } from '@/lib/temp/products'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
@@ -16,7 +16,7 @@ export default function useSearch() {
   const [loadingFilter, setLoadingFilter] = useState(true)
   const [searchText, setSearchText] = useState(query ?? undefined)
   const [searchResults, setSearchResults] = useState<Product[]>([])
-  const [filter, setFilter] = useState<Filter>(DefaultFilter)
+  const [filter, setFilter] = useState<Filter>({} as Filter)
   const isSearchPg = pathname === '/search'
 
   const setSectionValue = (
@@ -100,10 +100,11 @@ export default function useSearch() {
       setSectionValue(value, 'price', price)
     },
     resetCategories: () => {
-      setFilter((prev) => ({
-        ...prev,
-        categories: DefaultFilter.categories,
-      }))
+      setFilter((prev) => {
+        const newFilter = {...prev}
+        Object.keys(newFilter.categories).forEach(key => newFilter.categories[key] = false)
+        return newFilter
+      })
     },
     searchHandler: () => {
       if (isSearchPg) {
