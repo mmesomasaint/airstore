@@ -54,7 +54,7 @@ export default function useSearch() {
     if (isSearchPg) {
       getSearchResults()
     }
-  }, [isSearchPg])
+  }, [isSearchPg, filter])
 
   useEffect(() => {
     setLoadingFilter(true)
