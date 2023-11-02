@@ -1,7 +1,7 @@
 'use client'
 
 import { QueryMiniProduct, cleanMiniProduct } from '@/lib/cleanProduct'
-import { cleanFilterQueryResult, generateFilterQuery } from '@/lib/filter'
+import { DefaultFilter, cleanFilterQueryResult, generateFilterQuery } from '@/lib/filter'
 import { Filter, FilterSection } from '@/lib/filter'
 import { Product } from '@/lib/temp/products'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
@@ -16,7 +16,7 @@ export default function useSearch() {
   const [loadingFilter, setLoadingFilter] = useState(true)
   const [searchText, setSearchText] = useState(query ?? undefined)
   const [searchResults, setSearchResults] = useState<Product[]>([])
-  const [filter, setFilter] = useState<Filter>({} as Filter)
+  const [filter, setFilter] = useState<Filter>(DefaultFilter)
   const isSearchPg = pathname === '/search'
 
   const setSectionValue = (
