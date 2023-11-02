@@ -5,22 +5,22 @@ const query = `
 query GetFilters($first: Int) {
   products(first: $first) {
     nodes {
-        id
-        createdAt
-        priceRange {
-          minVariantPrice {
-            amount
-          }
+      id
+      createdAt
+      priceRange {
+        minVariantPrice {
+          amount
         }
-        options {
-          name
-          values
+      }
+      options {
+        name
+        values
+      }
+      collections (first: $first) {
+        nodes {
+          title
         }
-        collections (first: $first) {
-          nodes {
-            title
-          }
-        }
+      }
     }
   }
 }
