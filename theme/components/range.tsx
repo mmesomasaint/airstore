@@ -42,7 +42,7 @@ export default function Range({
       <div className='flex flex-wrap justify-between gap-2'>
         {ranges.map((range) => {
           const from = range[0],
-          to = range[1]
+            to = range[1]
 
           return (
             <OutlineButton
@@ -58,7 +58,9 @@ export default function Range({
                 }
               }}
             >
-              {`${from.toLocaleString('en-US')} - ${to.toLocaleString('en-US')}`}
+              {`${from.toLocaleString('en-US')} - ${to.toLocaleString(
+                'en-US'
+              )}`}
             </OutlineButton>
           )
         })}
