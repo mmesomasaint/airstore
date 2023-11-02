@@ -22,7 +22,7 @@ export default function Range({
       <div className='flex flex-col gap-2'>
         <InputBarButton
           placeholder='Minimum'
-          searchText={min?.toString()}
+          searchText={min?.toLocaleString('en-US')}
           setSearchText={(value: string) => setMin?.(parseInt(value))}
           faded
           reverse
@@ -31,7 +31,7 @@ export default function Range({
         </InputBarButton>
         <InputBarButton
           placeholder='Maximum'
-          searchText={max?.toString()}
+          searchText={max?.toLocaleString('en-US')}
           setSearchText={(value: string) => setMax?.(parseInt(value))}
           faded
           reverse
@@ -58,7 +58,7 @@ export default function Range({
                 }
               }}
             >
-              ${from}-${to}
+              {`${from.toLocaleString('en-US')} - ${to.toLocaleString('en-US')}`}
             </OutlineButton>
           )
         })}
