@@ -69,6 +69,7 @@ export default function Home() {
                       const by4 = filter.price.max / 4
 
                       return [
+                        [0, by4],
                         [by4, by4 + by4],
                         [by4 + by4, by2],
                         [by2 + by4, filter.price.max],
