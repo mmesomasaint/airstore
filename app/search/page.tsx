@@ -48,6 +48,7 @@ export default function Home() {
                 <Accordion title='Categories' defaultOpen>
                   {Object.keys(filter.categories).map((category) => (
                     <CheckBox
+                    key={category}
                       check={filter.categories[category]}
                       setCheck={(value: boolean) =>
                         setCategory(value, category)
