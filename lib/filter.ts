@@ -102,7 +102,7 @@ export const cleanFilterQueryResult = (
       return {
         colors: toDefault(removeDup([...Object.keys(acc.colors), ...colors])),
         dateAdded: toDefault(
-          removeDup([...Object.keys(acc.dateAdded), createdAt])
+          removeDup([...Object.keys(acc.dateAdded), new Date(createdAt).getFullYear()])
         ),
         price: {
           min: 0,
