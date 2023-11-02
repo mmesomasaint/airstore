@@ -48,7 +48,7 @@ export default function Home() {
                 <Accordion title='Categories' defaultOpen>
                   {Object.keys(filter.categories).map((category) => (
                     <CheckBox
-                    key={category}
+                      key={category}
                       check={filter.categories[category]}
                       setCheck={(value: boolean) =>
                         setCategory(value, category)
@@ -61,25 +61,25 @@ export default function Home() {
               </HR>
             )}
             {filter.price.max > 0 && (
-                <Accordion title='Price'>
-                  <Range
-                    ranges={(() => {
-                      const by2 = filter.price.max / 2
-                      const by4 = filter.price.max / 4
+              <Accordion title='Price'>
+                <Range
+                  ranges={(() => {
+                    const by2 = filter.price.max / 2
+                    const by4 = filter.price.max / 4
 
-                      return [
-                        [0, by4],
-                        [by4, by4 + by4],
-                        [by4 + by4, by2],
-                        [by2 + by4, filter.price.max],
-                      ]
-                    })()}
-                    min={filter.price.min}
-                    max={filter.price.max}
-                    setMin={(value: number) => setPrice(value, 'min')}
-                    setMax={(value: number) => setPrice(value, 'max')}
-                  />
-                </Accordion>
+                    return [
+                      [0, by4],
+                      [by4, by4 + by4],
+                      [by4 + by4, by2],
+                      [by2 + by4, filter.price.max],
+                    ]
+                  })()}
+                  min={filter.price.min}
+                  max={filter.price.max}
+                  setMin={(value: number) => setPrice(value, 'min')}
+                  setMax={(value: number) => setPrice(value, 'max')}
+                />
+              </Accordion>
             )}
           </div>
         </div>
