@@ -61,7 +61,6 @@ export default function Home() {
               </HR>
             )}
             {filter.price.max > 0 && (
-              <HR>
                 <Accordion title='Price'>
                   <Range
                     ranges={(() => {
@@ -81,59 +80,7 @@ export default function Home() {
                     setMax={(value: number) => setPrice(value, 'max')}
                   />
                 </Accordion>
-              </HR>
             )}
-            <HR>
-              <Accordion title='Categories' defaultOpen>
-                <CheckBox
-                  check={filter.categories.airpod}
-                  setCheck={(value: boolean) => setCategory(value, 'airpod')}
-                >
-                  Airpods
-                </CheckBox>
-                <CheckBox
-                  check={filter.categories.iPhone}
-                  setCheck={(value: boolean) => setCategory(value, 'iPhone')}
-                >
-                  iPhone
-                </CheckBox>
-                <CheckBox
-                  check={filter.categories.iPad}
-                  setCheck={(value: boolean) => setCategory(value, 'iPad')}
-                >
-                  iPad
-                </CheckBox>
-                <CheckBox
-                  check={filter.categories.macbook}
-                  setCheck={(value: boolean) => setCategory(value, 'macbook')}
-                >
-                  Macbook
-                </CheckBox>
-                <CheckBox
-                  check={filter.categories.iWatch}
-                  setCheck={(value: boolean) => setCategory(value, 'iWatch')}
-                >
-                  iWatch
-                </CheckBox>
-              </Accordion>
-            </HR>
-            <HR>
-              <Accordion title='Price'>
-                <Range
-                  ranges={[
-                    [500, 1000],
-                    [1000, 1500],
-                    [1500, 2000],
-                    [2000, 2500],
-                    [2500, 3000],
-                  ]}
-                  min={filter.price.min}
-                  max={filter.price.max}
-                  setMin={(value: number) => setPrice(value, 'min')}
-                  setMax={(value: number) => setPrice(value, 'max')}
-                />
-              </Accordion>
-            </HR>
           </div>
         </div>
         <div className='col-span-9 gap-5 flex flex-col w-full'>
