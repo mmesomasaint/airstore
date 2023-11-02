@@ -101,8 +101,10 @@ export default function useSearch() {
     },
     resetCategories: () => {
       setFilter((prev) => {
-        const newFilter = {...prev}
-        Object.keys(newFilter.categories).forEach(key => newFilter.categories[key] = false)
+        const newFilter = { ...prev }
+        Object.keys(newFilter.categories).forEach(
+          (key) => (newFilter.categories[key] = false)
+        )
         return newFilter
       })
     },
