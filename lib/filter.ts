@@ -92,7 +92,12 @@ export const cleanFilterQueryResult = (
         createdAt,
         collections: { nodes: collectionNodes },
       } = cur
-      const categories = collectionNodes.map((node) => node.title)
+      const categoryTitles = ['Airpod', 'MacBook', 'IPhone', 'Watch', 'IPad', 'Mac']
+      const categories = collectionNodes.map((node) => {
+        const title = node.title
+        const idx = categoryTitles.findIndex(categoryTitle => title.includes(categoryTitle))
+        if (idx !== -1) return categoryTitles[idx]
+      })
       let colors = Array()
 
       options
