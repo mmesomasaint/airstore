@@ -43,7 +43,9 @@ export async function POST(req: NextRequest) {
 
   const variables = {
     first: 60,
-    searchText: `title:*${title}* AND ${filter.price}${filter?.dateAdded ? ' AND ' + filter.dateAdded : ''}`
+    searchText: `title:*${title}* AND ${filter.price}${
+      filter?.dateAdded ? ' AND ' + filter.dateAdded : ''
+    }`,
   }
   const { status, body } = await shopifyFetch({ query, variables })
 
