@@ -1,8 +1,6 @@
 'use client'
 
-import {
-  DefaultFilter,
-} from '@/lib/filter'
+import { DefaultFilter } from '@/lib/filter'
 import { Filter, FilterSection } from '@/lib/filter'
 import { Product } from '@/lib/temp/products'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'

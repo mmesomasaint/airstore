@@ -1,4 +1,4 @@
-import { Filter } from "@/lib/filter"
+import { Filter } from '@/lib/filter'
 
 export const query = `
 query GetFilters($first: Int) {
