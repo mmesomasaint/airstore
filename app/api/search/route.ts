@@ -102,7 +102,9 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    return Response.json({ status: 200, body: results })
+    return Response.json({ status: 200, body: results.map(
+        ({ node }: { node: QueryMiniProduct }) => cleanMiniProduct(node)
+      ) })
   } else {
     return Response.json({ status: 500, message: 'Error receiving data' })
   }

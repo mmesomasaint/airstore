@@ -21,6 +21,36 @@ export interface FilterQueryResult {
   }[]
 }
 
+export interface MiniProductQueryResult {
+  id: string
+  title: string
+  handle: string
+  totalInventory: number
+  featuredImage: {
+    url: string
+  }
+  priceRange: {
+    minVariantPrice: {
+      amount: string
+    }
+  }
+  compareAtPriceRange: {
+    maxVariantPrice: {
+      amount: string
+    }
+  }
+  options: {
+    name: string
+    values: string[]
+  }[]
+  collections: {
+    nodes: {
+      handle: string
+      title: string
+    }[]
+  }
+}
+
 export const query = `
 query AllProducts($first: Int, $query: String) {
   products(first: $first, query: $query) {
@@ -138,4 +168,34 @@ export const cleanFilterQueryResult = (
       categories: {},
     }
   )
+}
+
+export function cleanMiniProduct(queryResult: MiniProductQueryResult) {
+  const {
+    id,
+    title,
+    handle,
+    featuredImage,
+    priceRange,
+    compareAtPriceRange,
+    options,
+  } = queryResult
+  const { url } = featuredImage
+  const { minVariantPrice } = priceRange
+  const { maxVariantPrice } = compareAtPriceRange
+  let colors = Array()
+
+  options
+    .filter((option) => option.name === 'Color')
+    .forEach((option) => colors.push(...option.values))
+
+  return {
+    id,
+    title,
+    handle,
+    src: url,
+    price: parseInt(minVariantPrice.amount),
+    discount: parseInt(maxVariantPrice.amount),
+    colors,
+  }
 }
