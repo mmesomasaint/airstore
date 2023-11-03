@@ -1,7 +1,7 @@
 'use server'
 
-import { shopifyFetch } from "@/lib/fetch"
-import { MiniProductQueryResult, cleanMiniProduct } from "../api/search/utils"
+import { shopifyFetch } from '@/lib/fetch'
+import { MiniProductQueryResult, cleanMiniProduct } from '../api/search/utils'
 
 interface CollectionFilter {
   colors: {
@@ -126,17 +126,23 @@ const FILTER_QUERY = `
 `
 
 function generateFilters(filter: CollectionFilter) {
-  const activeColors = Object.keys(filter.colors).filter(color => filter.colors[color])
+  const activeColors = Object.keys(filter.colors).filter(
+    (color) => filter.colors[color]
+  )
   const hasActiveColor = activeColors.length > 0
   let filters = Array()
 
   if (hasActiveColor) {
-    const colorFilters = activeColors.map(color => ({variantOption: {name: "Color", value: color}}))
+    const colorFilters = activeColors.map((color) => ({
+      variantOption: { name: 'Color', value: color },
+    }))
     filters = [...filters, ...colorFilters]
   }
 
   if (filter.price.max > 0) {
-    const priceFilter = {price: {min: filter.price.min, max: filter.price.max}}
+    const priceFilter = {
+      price: { min: filter.price.min, max: filter.price.max },
+    }
     filters = [...filters, priceFilter]
   }
 
@@ -150,23 +156,26 @@ export default async function filterCollection(
   const variables = {
     handle,
     limit: 24,
-    filter: generateFilters(filter)
+    filter: generateFilters(filter),
   }
-  const {status, body} = await shopifyFetch({query: COLLECTION_QUERY, variables})
+  const { status, body } = await shopifyFetch({
+    query: COLLECTION_QUERY,
+    variables,
+  })
 
   if (status === 200) {
-    const {id, title, handle, products} = body.data
-    const cleanedProducts = products.nodes.map((node: MiniProductQueryResult) => cleanMiniProduct(node))
+    const { id, title, handle, products } = body.data
+    const cleanedProducts = products.nodes.map((node: MiniProductQueryResult) =>
+      cleanMiniProduct(node)
+    )
 
     return {
       id,
       title,
       handle,
-      products: cleanedProducts
+      products: cleanedProducts,
     }
   }
 }
 
-export async function getCollectionFilters(handle: string) {
-
-}
+export async function getCollectionFilters(handle: string) {}
