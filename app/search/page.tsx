@@ -10,7 +10,6 @@ import Accordion from '@/theme/components/accordion'
 import CheckBox from '@/theme/components/checkbox'
 import Range from '@/theme/components/range'
 import Header from '@/theme/components/header'
-import { FilterSection } from '@/lib/filter'
 
 export default function Home() {
   const {
