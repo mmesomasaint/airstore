@@ -4,8 +4,8 @@ import { Category } from '@/lib/filter'
 import { NextRequest } from 'next/server'
 
 const query = `
-query AllProducts($first: Int, $searchText: String) {
-  products(first: $first, query: $searchText) {
+query AllProducts($first: Int, $query: String) {
+  products(first: $first, query: $query) {
     edges {
       node {
         id
@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
 
   const variables = {
     first: 60,
-    searchText: `title:*${title}* AND ${filter.price}${
+    query: `title:*${title}* AND ${filter.price}${
       filter?.dateAdded ? ' AND ' + filter.dateAdded : ''
     }`,
   }
