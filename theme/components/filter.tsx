@@ -3,21 +3,31 @@ import { HR } from '../elements/rule'
 import Accordion from './accordion'
 import CheckBox from './checkbox'
 import Range from './range'
+import { TextMid, TextXSmall } from '../elements/text'
 
 export default function Filter({
   filter,
+  pending,
   setCategory,
   setColor,
   setPrice,
   setDateAdded,
 }: {
   filter: Filter
+  pending: boolean
   setCategory: (value: boolean, category: string) => void
   setColor: (value: boolean, color: string) => void
   setPrice: (value: number, price: string) => void
   setDateAdded: (value: boolean, dateAdded: string) => void
 }) {
   return (
+    <div className='h-fit w-full flex flex-col gap-5 bg-white rounded-xl border border-store-outline-faded-max p-5'>
+  <TextMid>Filters</TextMid>
+  {pending ? (
+    <div className='flex justify-center items-center w-full'>
+      <TextXSmall faded>Loading...</TextXSmall>
+    </div>
+  ) : (
     <>
       {filter.categories && (
         <HR>
@@ -88,5 +98,7 @@ export default function Filter({
         </Accordion>
       )}
     </>
+  )}
+  </div>
   )
 }
