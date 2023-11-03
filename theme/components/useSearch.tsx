@@ -14,7 +14,7 @@ export default function useSearch() {
   const [loading, setLoading] = useState(true)
   const [loadingFilter, setLoadingFilter] = useState(true)
   const [searchText, setSearchText] = useState(query ?? undefined)
-  const [searchedText, setSearchedText] = useState<string>()
+  const [searchedText, setSearchedText] = useState(searchText)
   const [searchResults, setSearchResults] = useState<MiniProduct[]>([])
   const [filter, setFilter] = useState<Filter>(DefaultFilter)
   const isSearchPg = pathname === '/search'
