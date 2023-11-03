@@ -2,43 +2,7 @@ import { QueryMiniProduct } from '@/lib/cleanProduct'
 import { shopifyFetch } from '@/lib/fetch'
 import { Category } from '@/lib/filter'
 import { NextRequest } from 'next/server'
-
-const query = `
-query AllProducts($first: Int, $query: String) {
-  products(first: $first, query: $query) {
-    edges {
-      node {
-        id
-        title
-        handle
-        featuredImage {
-          url
-        }
-        priceRange {
-          minVariantPrice {
-            amount
-          }
-        }
-        compareAtPriceRange {
-          maxVariantPrice {
-            amount
-          }
-        }
-        options {
-          name
-          values
-        }
-        collections(first: 10) {
-          nodes {
-            handle
-            title
-          }
-        }
-      }
-    }
-  }
-}
-`
+import { query, cleanMiniProduct, generateFilterQuery } from './utils'
 
 export async function POST(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams
@@ -49,10 +13,11 @@ export async function POST(req: NextRequest) {
     return Response.json({ status: 400, message: 'Bad request' })
   }
 
+  const parsedFilter = generateFilterQuery(filter)
   const variables = {
     first: 60,
-    query: `title:*${title}* AND ${filter.price}${
-      filter?.dateAdded ? ' AND ' + filter.dateAdded : ''
+    query: `title:*${title}* AND ${parsedFilter.price}${
+      parsedFilter?.dateAdded ? ' AND ' + parsedFilter.dateAdded : ''
     }`,
   }
   const { status, body } = await shopifyFetch({ query, variables })
@@ -61,7 +26,7 @@ export async function POST(req: NextRequest) {
     let results = body.data?.products.edges
 
     // If there is categories filter, apply it to results.
-    if (filter.categories.length > 0) {
+    if (parsedFilter.categories.length > 0) {
       results = results.filter((result: { node: QueryMiniProduct }) => {
         const { collections } = result.node
         const collectionTitles = collections.nodes.map((node) => node.title)
@@ -70,7 +35,7 @@ export async function POST(req: NextRequest) {
         collectionTitles.forEach((title) => {
           // If category appears in title, 
           // flag the category as a match & add to matches list.
-          matches = filter.categories.filter((category: Category) =>
+          matches = parsedFilter.categories.filter((category) =>
             title.includes(category)
           )
         })
@@ -80,7 +45,7 @@ export async function POST(req: NextRequest) {
     }
 
     // If there is colors filter, apply it to results.
-    if (filter.colors.length > 0) {
+    if (parsedFilter.colors.length > 0) {
       type Option = { name: string; values: string[] }
       
       results = results.filter((result: { node: QueryMiniProduct }) => {
@@ -93,7 +58,7 @@ export async function POST(req: NextRequest) {
         colorOptions.forEach((option: Option) => {
           // if any of the filtered color appears in results color options, 
           // flag the color as a match & add to matches list.
-          matches = filter.colors.filter((color: string) =>
+          matches = parsedFilter.colors.filter((color: string) =>
             option.values.includes(color)
           )
         })
@@ -102,9 +67,12 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    return Response.json({ status: 200, body: results.map(
-        ({ node }: { node: QueryMiniProduct }) => cleanMiniProduct(node)
-      ) })
+    const cleanedResults = results.map(
+      ({ node }: { node: QueryMiniProduct }) => cleanMiniProduct(node)
+    )
+    console.log("Cleaned results len: ", cleanedResults.length)
+
+    return Response.json({ status: 200, body: cleanedResults })
   } else {
     return Response.json({ status: 500, message: 'Error receiving data' })
   }

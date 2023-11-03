@@ -43,14 +43,11 @@ export default function useSearch() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ filter: generateFilterQuery(filter) }),
+      body: JSON.stringify({ filter }),
     })
       .then((res) => res.json())
       .then((data) => {
-        const cleanedProducts = data.body.map(
-          ({ node }: { node: QueryMiniProduct }) => cleanMiniProduct(node)
-        )
-        setSearchResults(cleanedProducts)
+        setSearchResults(data.body)
         setSearchedText(searchText)
         setLoading(false)
       })
