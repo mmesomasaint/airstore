@@ -1,6 +1,15 @@
 'use server'
 
-import { Filter } from "@/lib/filter"
+interface CollectionFilter {
+  color: {
+    [key: string]: boolean
+  }
+  price: {
+    min: number
+    max: number
+    tooMax: number
+  }
+}
 
 const query = `
 query CollectionProducts ($limit: Int!, $handle: String!, $priceMax: Int!, $priceMin: Int!){
@@ -32,6 +41,6 @@ query CollectionProducts ($limit: Int!, $handle: String!, $priceMax: Int!, $pric
 }
 `
 
-export default async function FilterCollection(handle: string, filter: Filter) {
+export default async function FilterCollection(handle: string, filter: CollectionFilter) {
   
 }
