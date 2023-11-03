@@ -8,6 +8,7 @@ export interface Filter {
   price: {
     min: number
     max: number
+    tooMax: number
   }
   dateAdded: {
     [key: string]: boolean
@@ -54,6 +55,7 @@ export const DefaultFilter: Filter = {
   price: {
     min: 0,
     max: 0,
+    tooMax: 0
   },
   dateAdded: {
     2023: false,
@@ -124,9 +126,10 @@ export const cleanFilterQueryResult = (
         ),
         price: {
           min: 0,
-          max: Math.max(
+          max: 0,
+          tooMax: Math.max(
             parseInt(priceRange.minVariantPrice.amount),
-            acc.price.max
+            acc.price.tooMax
           ),
         },
         categories: toDefault(
@@ -137,7 +140,7 @@ export const cleanFilterQueryResult = (
     {
       colors: {},
       dateAdded: {},
-      price: { min: 0, max: 0 },
+      price: { min: 0, max: 0, tooMax: 0 },
       categories: {},
     }
   )

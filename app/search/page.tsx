@@ -103,18 +103,18 @@ export default function Home() {
                     </Accordion>
                   </HR>
                 )}
-                {filter.price.max > 0 && (
+                {filter.price.tooMax > 0 && (
                   <Accordion title='Price' defaultOpen>
                     <Range
                       ranges={(() => {
-                        const by2 = filter.price.max / 2
-                        const by4 = filter.price.max / 4
+                        const by2 = filter.price.tooMax / 2
+                        const by4 = filter.price.tooMax / 4
 
                         return [
                           [0, by4],
                           [by4, by4 + by4],
-                          [by4 + by4, by2],
-                          [by2 + by4, filter.price.max],
+                          [by4 + by4, by2 + by4],
+                          [by2 + by4, filter.price.tooMax],
                         ]
                       })()}
                       min={filter.price.min}
