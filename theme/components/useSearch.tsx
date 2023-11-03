@@ -15,6 +15,7 @@ export default function useSearch() {
   const [loading, setLoading] = useState(true)
   const [loadingFilter, setLoadingFilter] = useState(true)
   const [searchText, setSearchText] = useState(query ?? undefined)
+  const [searchedText, setSearchedText] = useState<string>()
   const [searchResults, setSearchResults] = useState<Product[]>([])
   const [filter, setFilter] = useState<Filter>(DefaultFilter)
   const isSearchPg = pathname === '/search'
@@ -46,6 +47,7 @@ export default function useSearch() {
           ({ node }: { node: QueryMiniProduct }) => cleanMiniProduct(node)
         )
         setSearchResults(cleanedProducts)
+        setSearchedText(searchText)
         setLoading(false)
       })
   }
@@ -78,6 +80,7 @@ export default function useSearch() {
 
   return {
     searchText,
+    searchedText,
     setSearchText,
     searchResults,
     filter,

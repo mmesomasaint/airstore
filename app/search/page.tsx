@@ -15,6 +15,7 @@ import { FilterSection } from '@/lib/filter'
 export default function Home() {
   const {
     searchText,
+    searchedText,
     searchResults,
     filter,
     categories,
@@ -132,7 +133,7 @@ export default function Home() {
           <div className='flex justify-between items-center gap-10'>
             <span className='flex justify-start items-center gap-1'>
               <TextTiny>Showing 1-60 items out of a total of 1.2k for</TextTiny>
-              <TextTiny primary>"{searchText}"</TextTiny>
+              <TextTiny primary>"{searchedText}"</TextTiny>
             </span>
             <div className='flex justify-end items-center gap-3'>
               <TextTiny>Sort by:</TextTiny>
