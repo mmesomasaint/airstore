@@ -55,7 +55,7 @@ export const DefaultFilter: Filter = {
   price: {
     min: 0,
     max: 0,
-    tooMax: 0
+    tooMax: 0,
   },
   dateAdded: {
     2023: false,
@@ -76,7 +76,8 @@ export const generateFilterQuery = (filter: Filter) => {
     price: `(variants.price:>=${price.min}${
       price.max > 0 ? priceMaxQuery : ''
     })`,
-    dateAdded: activeDateAdded.length > 0 && `(created_at:>${activeDateAdded[0]})`,
+    dateAdded:
+      activeDateAdded.length > 0 && `(created_at:>${activeDateAdded[0]})`,
   }
 }
 
