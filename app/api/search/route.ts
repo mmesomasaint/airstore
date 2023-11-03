@@ -1,6 +1,5 @@
 import { QueryMiniProduct } from '@/lib/cleanProduct'
 import { shopifyFetch } from '@/lib/fetch'
-import { Category } from '@/lib/filter'
 import { NextRequest } from 'next/server'
 import { query, cleanMiniProduct, generateFilterQuery } from './utils'
 
