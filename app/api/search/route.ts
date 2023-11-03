@@ -1,7 +1,11 @@
-import { QueryMiniProduct } from '@/lib/cleanProduct'
 import { shopifyFetch } from '@/lib/fetch'
 import { NextRequest } from 'next/server'
-import { query, cleanMiniProduct, generateFilterQuery } from './utils'
+import {
+  query,
+  cleanMiniProduct,
+  MiniProductQueryResult,
+  generateFilterQuery,
+} from './utils'
 
 export async function POST(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams
@@ -26,13 +30,13 @@ export async function POST(req: NextRequest) {
 
     // If there is categories filter, apply it to results.
     if (parsedFilter.categories.length > 0) {
-      results = results.filter((result: { node: QueryMiniProduct }) => {
+      results = results.filter((result: { node: MiniProductQueryResult }) => {
         const { collections } = result.node
         const collectionTitles = collections.nodes.map((node) => node.title)
         let matches = []
 
         collectionTitles.forEach((title) => {
-          // If category appears in title, 
+          // If category appears in title,
           // flag the category as a match & add to matches list.
           matches = parsedFilter.categories.filter((category) =>
             title.includes(category)
@@ -46,8 +50,8 @@ export async function POST(req: NextRequest) {
     // If there is colors filter, apply it to results.
     if (parsedFilter.colors.length > 0) {
       type Option = { name: string; values: string[] }
-      
-      results = results.filter((result: { node: QueryMiniProduct }) => {
+
+      results = results.filter((result: { node: MiniProductQueryResult }) => {
         const { options } = result.node
         const colorOptions = options.filter(
           (option: Option) => option.name === 'Color'
@@ -55,7 +59,7 @@ export async function POST(req: NextRequest) {
         let matches = []
 
         colorOptions.forEach((option: Option) => {
-          // if any of the filtered color appears in results color options, 
+          // if any of the filtered color appears in results color options,
           // flag the color as a match & add to matches list.
           matches = parsedFilter.colors.filter((color: string) =>
             option.values.includes(color)
@@ -66,10 +70,10 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    const cleanedResults = results.map(
-      ({ node }: { node: QueryMiniProduct }) => cleanMiniProduct(node)
+    const cleanedResults = results.map(({ node }: { node: MiniProductQueryResult }) =>
+      cleanMiniProduct(node)
     )
-    console.log("Cleaned results len: ", cleanedResults.length)
+    console.log('Cleaned results len: ', cleanedResults.length)
 
     return Response.json({ status: 200, body: cleanedResults })
   } else {
