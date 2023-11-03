@@ -1,4 +1,6 @@
+import { QueryMiniProduct } from '@/lib/cleanProduct'
 import { shopifyFetch } from '@/lib/fetch'
+import { Category } from '@/lib/filter'
 import { NextRequest } from 'next/server'
 
 const query = `
@@ -26,6 +28,12 @@ query AllProducts($first: Int, $searchText: String) {
           name
           values
         }
+        collections(first: 10) {
+          nodes {
+            handle
+            title
+          }
+        }
       }
     }
   }
@@ -50,7 +58,38 @@ export async function POST(req: NextRequest) {
   const { status, body } = await shopifyFetch({ query, variables })
 
   if (status === 200) {
-    return Response.json({ status: 200, body: body.data.products.edges })
+    let results = body.data?.products.edges
+    console.log("Len before filtering results: ", results.length)
+
+    // If there is categories filter, apply it to results.
+    if (filter.categories.length > 0) {
+        results = results.filter((result: {node: QueryMiniProduct}) => {
+        const { collections } = result.node
+        const collectionTitles = collections.nodes.map((node) => node.title)
+        let matches = []
+        collectionTitles.forEach((title) => {
+          matches = filter.categories.filter((category: Category) => title.includes(category))
+        })
+        return matches.length > 0
+      })
+    }
+
+    // If there is colors filter, apply it to results.
+    if (filter.colors.length > 0) {
+        type Option = {name: string; values: string[]}
+        results = results.filter((result: {node: QueryMiniProduct}) => {
+        const { options } = result.node
+        const colorOptions = options.filter((option: Option) => option.name === 'Color')
+        let matches = []
+        colorOptions.forEach((option: Option) => {
+          matches = filter.colors.filter((color: string) => option.values.includes(color))
+        })
+        return matches.length > 0
+      })
+    }
+
+    console.log("Len after filtering results: ", results.length)
+    return Response.json({ status: 200, body: results })
   } else {
     return Response.json({ status: 500, message: 'Error receiving data' })
   }

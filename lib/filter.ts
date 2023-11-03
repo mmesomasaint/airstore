@@ -38,7 +38,7 @@ export interface FilterQueryResult {
 
 export type FilterSection = 'categories' | 'colors' | 'price' | 'dateAdded'
 
-export type Category = 'airpod' | 'macbook' | 'iWatch' | 'iPad' | 'iPhone'
+export type Category = 'Airpod' | 'MacBook' | 'Watch' | 'IPad' | 'IPhone' | 'Mac'
 
 export const DefaultFilter: Filter = {
   categories: {
