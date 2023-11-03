@@ -2,7 +2,7 @@
 
 import DropDown from '@/theme/components/dropdown'
 import { TextMid, TextTiny, TextXSmall } from '@/theme/elements/text'
-import { Product } from '@/lib/temp/products'
+import { MiniProduct } from '@/lib/product'
 import { VCard } from '@/theme/components/product/card'
 import useSearch from '@/theme/components/useSearch'
 import { HR } from '@/theme/elements/rule'
@@ -150,7 +150,7 @@ export default function Home() {
                 <TextXSmall faded>Loading...</TextXSmall>
               </div>
             ) : (
-              searchResults.map((product: Product, id) => (
+              searchResults.map((product: MiniProduct, id) => (
                 <VCard
                   key={`${product.src + id}`}
                   title={product.title}
