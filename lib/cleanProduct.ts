@@ -14,36 +14,6 @@ type Variant = {
   }
 }
 
-export type QueryMiniProduct = {
-  id: string
-  title: string
-  handle: string
-  totalInventory: number
-  featuredImage: {
-    url: string
-  }
-  priceRange: {
-    minVariantPrice: {
-      amount: string
-    }
-  }
-  compareAtPriceRange: {
-    maxVariantPrice: {
-      amount: string
-    }
-  }
-  options: {
-    name: string
-    values: string[]
-  }[]
-  collections: {
-    nodes: {
-      handle: string
-      title: string
-    }[]
-  }
-}
-
 type QueryFullProduct = {
   id: string
   title: string
@@ -103,34 +73,4 @@ type QueryFullProduct = {
 
 export function cleanProduct() {
   // Clean the main product fetch.
-}
-
-export function cleanMiniProduct(queryResult: QueryMiniProduct) {
-  const {
-    id,
-    title,
-    handle,
-    featuredImage,
-    priceRange,
-    compareAtPriceRange,
-    options,
-  } = queryResult
-  const { url } = featuredImage
-  const { minVariantPrice } = priceRange
-  const { maxVariantPrice } = compareAtPriceRange
-  let colors = Array()
-
-  options
-    .filter((option) => option.name === 'Color')
-    .forEach((option) => colors.push(...option.values))
-
-  return {
-    id,
-    title,
-    handle,
-    src: url,
-    price: parseInt(minVariantPrice.amount),
-    discount: parseInt(maxVariantPrice.amount),
-    colors,
-  }
 }
