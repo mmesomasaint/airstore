@@ -1,10 +1,22 @@
-import { Filter } from "@/lib/filter"
-import { HR } from "../elements/rule"
-import Accordion from "./accordion"
-import CheckBox from "./checkbox"
-import Range from "./range"
+import { Filter } from '@/lib/filter'
+import { HR } from '../elements/rule'
+import Accordion from './accordion'
+import CheckBox from './checkbox'
+import Range from './range'
 
-export default function Filter({filter, setCategory, setColor, setPrice, setDateAdded}: {filter: Filter, setCategory: (value: boolean, category: string) => void, setColor: (value: boolean, color: string) => void, setPrice: (value: number, price: string) => void, setDateAdded: (value: boolean, dateAdded: string) => void}) {
+export default function Filter({
+  filter,
+  setCategory,
+  setColor,
+  setPrice,
+  setDateAdded,
+}: {
+  filter: Filter
+  setCategory: (value: boolean, category: string) => void
+  setColor: (value: boolean, color: string) => void
+  setPrice: (value: number, price: string) => void
+  setDateAdded: (value: boolean, dateAdded: string) => void
+}) {
   return (
     <>
       {filter.categories && (
@@ -14,9 +26,7 @@ export default function Filter({filter, setCategory, setColor, setPrice, setDate
               <CheckBox
                 key={category}
                 check={filter.categories[category]}
-                setCheck={(value: boolean) =>
-                  setCategory(value, category)
-                }
+                setCheck={(value: boolean) => setCategory(value, category)}
               >
                 {category}
               </CheckBox>
@@ -32,9 +42,7 @@ export default function Filter({filter, setCategory, setColor, setPrice, setDate
                 <CheckBox
                   key={color}
                   check={filter.colors[color]}
-                  setCheck={(value: boolean) =>
-                    setColor(value, color)
-                  }
+                  setCheck={(value: boolean) => setColor(value, color)}
                 >
                   {color}
                 </CheckBox>
@@ -50,9 +58,7 @@ export default function Filter({filter, setCategory, setColor, setPrice, setDate
               <CheckBox
                 key={date}
                 check={filter.dateAdded[date]}
-                setCheck={(value: boolean) =>
-                  setDateAdded(value, date)
-                }
+                setCheck={(value: boolean) => setDateAdded(value, date)}
               >
                 {date}
               </CheckBox>
