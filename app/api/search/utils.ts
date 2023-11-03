@@ -179,12 +179,14 @@ export function cleanMiniProduct(queryResult: MiniProductQueryResult) {
     priceRange,
     compareAtPriceRange,
     options,
+    collections
   } = queryResult
   const { url } = featuredImage
   const { minVariantPrice } = priceRange
   const { maxVariantPrice } = compareAtPriceRange
-  let colors = Array()
+  const collectionHandles = collections.nodes.map((node) => node.handle)
 
+  let colors = Array()
   options
     .filter((option) => option.name === 'Color')
     .forEach((option) => colors.push(...option.values))
@@ -193,9 +195,10 @@ export function cleanMiniProduct(queryResult: MiniProductQueryResult) {
     id,
     title,
     handle,
+    colors,
     src: url,
     price: parseInt(minVariantPrice.amount),
     discount: parseInt(maxVariantPrice.amount),
-    colors,
+    collectionHandle: collectionHandles[0]
   }
 }

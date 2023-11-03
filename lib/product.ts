@@ -1,5 +1,6 @@
 export interface MiniProduct {
   title: string
+  handle: string
   variants: string[]
   src: string
   price: number
@@ -7,5 +8,5 @@ export interface MiniProduct {
   colors: string[]
   rating: number
   amountSold: number
-  category?: string
+  collectionHandle: string
 }

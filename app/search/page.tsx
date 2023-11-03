@@ -153,10 +153,12 @@ export default function Home() {
                 <VCard
                   key={`${product.src + id}`}
                   title={product.title}
+                  handle={product.handle}
                   src={product.src}
                   price={product.price}
                   discount={product.discount}
                   colors={product.colors}
+                  collectionHandle={product.collectionHandle}
                 />
               ))
             )}
