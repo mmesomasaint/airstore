@@ -1,5 +1,30 @@
 import { Filter } from "@/lib/filter"
 
+export const query = `
+query GetFilters($first: Int) {
+  products(first: $first) {
+    nodes {
+      id
+      createdAt
+      priceRange {
+        minVariantPrice {
+          amount
+        }
+      }
+      options {
+        name
+        values
+      }
+      collections (first: $first) {
+        nodes {
+          title
+        }
+      }
+    }
+  }
+}
+`
+
 export interface FilterQueryResult {
   nodes: {
     id: string

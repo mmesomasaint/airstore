@@ -71,7 +71,7 @@ export default function useSearch() {
       })
         .then((res) => res.json())
         .then((data) => {
-          setFilter(cleanFilterQueryResult(data.body))
+          setFilter(data.body)
           setLoadingFilter(false)
         })
     }
