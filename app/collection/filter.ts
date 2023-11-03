@@ -41,6 +41,7 @@ query CollectionProducts ($limit: Int!, $handle: String!, $priceMax: Int!, $pric
 }
 `
 
-export default async function FilterCollection(handle: string, filter: CollectionFilter) {
-  
-}
+export default async function FilterCollection(
+  handle: string,
+  filter: CollectionFilter
+) {}
