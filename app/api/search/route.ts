@@ -66,11 +66,15 @@ export async function POST(req: NextRequest) {
         const { collections } = result.node
         const collectionTitles = collections.nodes.map((node) => node.title)
         let matches = []
+
         collectionTitles.forEach((title) => {
+          // If category appears in title, 
+          // flag the category as a match & add to matches list.
           matches = filter.categories.filter((category: Category) =>
             title.includes(category)
           )
         })
+
         return matches.length > 0
       })
     }
@@ -78,17 +82,22 @@ export async function POST(req: NextRequest) {
     // If there is colors filter, apply it to results.
     if (filter.colors.length > 0) {
       type Option = { name: string; values: string[] }
+      
       results = results.filter((result: { node: QueryMiniProduct }) => {
         const { options } = result.node
         const colorOptions = options.filter(
           (option: Option) => option.name === 'Color'
         )
         let matches = []
+
         colorOptions.forEach((option: Option) => {
+          // if any of the filtered color appears in results color options, 
+          // flag the color as a match & add to matches list.
           matches = filter.colors.filter((color: string) =>
             option.values.includes(color)
           )
         })
+
         return matches.length > 0
       })
     }
