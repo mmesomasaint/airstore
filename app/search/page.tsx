@@ -43,7 +43,14 @@ export default function Home() {
       />
       <div className='bg-gray-100/70 px-7 py-4 min-h-full grow grid grid-cols-12 gap-5 place-items-start'>
         <div className='col-span-3 h-fit w-full'>
-          <Filter filter={filter} pending={loadingFilter} setCategory={setCategory} setPrice={setPrice} setColor={setColor} setDateAdded={setDateAdded} />
+          <Filter
+            filter={filter}
+            pending={loadingFilter}
+            setCategory={setCategory}
+            setPrice={setPrice}
+            setColor={setColor}
+            setDateAdded={setDateAdded}
+          />
         </div>
         <div className='col-span-9 gap-5 flex flex-col w-full'>
           <div className='flex justify-between items-center gap-10'>
