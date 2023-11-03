@@ -179,7 +179,7 @@ export function cleanMiniProduct(queryResult: MiniProductQueryResult) {
     priceRange,
     compareAtPriceRange,
     options,
-    collections
+    collections,
   } = queryResult
   const { url } = featuredImage
   const { minVariantPrice } = priceRange
@@ -199,6 +199,6 @@ export function cleanMiniProduct(queryResult: MiniProductQueryResult) {
     src: url,
     price: parseInt(minVariantPrice.amount),
     discount: parseInt(maxVariantPrice.amount),
-    collectionHandle: collectionHandles[0]
+    collectionHandle: collectionHandles[0],
   }
 }

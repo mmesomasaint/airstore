@@ -37,7 +37,11 @@ export function VCard({
           </span>
         </div>
         <div className='flex flex-col gap-2 my-1'>
-          <TextXSmall faded><Link href={`/collection/${collectionHandle}/product/${handle}`}>{title}</Link></TextXSmall>
+          <TextXSmall faded>
+            <Link href={`/collection/${collectionHandle}/product/${handle}`}>
+              {title}
+            </Link>
+          </TextXSmall>
         </div>
         <div className='flex justify-start items-center gap-2'>
           {colors.map((color) => (
