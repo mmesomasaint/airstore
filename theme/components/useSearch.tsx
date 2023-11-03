@@ -1,10 +1,7 @@
 'use client'
 
-import { QueryMiniProduct, cleanMiniProduct } from '@/lib/cleanProduct'
 import {
   DefaultFilter,
-  cleanFilterQueryResult,
-  generateFilterQuery,
 } from '@/lib/filter'
 import { Filter, FilterSection } from '@/lib/filter'
 import { Product } from '@/lib/temp/products'
