@@ -59,7 +59,6 @@ export async function POST(req: NextRequest) {
 
   if (status === 200) {
     let results = body.data?.products.edges
-    console.log("Len before filtering results: ", results.length)
 
     // If there is categories filter, apply it to results.
     if (filter.categories.length > 0) {
@@ -88,7 +87,6 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    console.log("Len after filtering results: ", results.length)
     return Response.json({ status: 200, body: results })
   } else {
     return Response.json({ status: 500, message: 'Error receiving data' })
