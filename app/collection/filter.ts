@@ -177,3 +177,7 @@ export default async function filterCollection(
     }
   }
 }
+
+export async function getCollectionFilters(handle: string) {
+  
+}
