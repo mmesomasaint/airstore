@@ -101,7 +101,11 @@ export default function Home() {
             <TextTiny faded>
               <IoIosArrowForward className='text-base' />
             </TextTiny>
-            <TextTiny><span className='capitalize'>{cid.toString().split('-').join(" ")}</span></TextTiny>
+            <TextTiny>
+              <span className='capitalize'>
+                {cid.toString().split('-').join(' ')}
+              </span>
+            </TextTiny>
           </span>
           <div className='flex items-center justify-end gap-3'>
             <TextTiny>Sort by:</TextTiny>
