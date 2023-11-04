@@ -85,27 +85,27 @@ query Product($handle: String!) {
 `
 
 export function cleanProduct(product: FullProductQueryResult) {
-    const variants = product.variants.map((variant: Variant) => ({
-      id: variant.id,
-      sku: variant.sku,
-      price: Number(variant.price),
-      quantityAvailable: variant.quantityAvailable,
-      compareAtPrice: variant.compareAtPrice
-        ? Number(variant.compareAtPrice.amount)
-        : null,
-      selectedOptions: variant.selectedOptions,
-    }))
+  const variants = product.variants.map((variant: Variant) => ({
+    id: variant.id,
+    sku: variant.sku,
+    price: Number(variant.price),
+    quantityAvailable: variant.quantityAvailable,
+    compareAtPrice: variant.compareAtPrice
+      ? Number(variant.compareAtPrice.amount)
+      : null,
+    selectedOptions: variant.selectedOptions,
+  }))
 
-    return {
-      id: product.id,
-      title: product.title,
-      descriptionHTML: product.descriptionHTML,
-      images: product.images.nodes,
-      variants,
-      options: product.options,
-      price: Number(product.priceRange.minVariantPrice.amount),
-      discount: product.compareAtPriceRange
-        ? Number(product.compareAtPriceRange.maxVariantPrice.amount)
-        : null,
-    }
+  return {
+    id: product.id,
+    title: product.title,
+    descriptionHTML: product.descriptionHTML,
+    images: product.images.nodes,
+    variants,
+    options: product.options,
+    price: Number(product.priceRange.minVariantPrice.amount),
+    discount: product.compareAtPriceRange
+      ? Number(product.compareAtPriceRange.maxVariantPrice.amount)
+      : null,
   }
+}
