@@ -61,7 +61,7 @@ interface CollectionFilterQueryResult {
         name: string
         values: string[]
       }[]
-    }
+    }[]
   }
 }
 
@@ -179,5 +179,46 @@ export default async function filterCollection(
 }
 
 export async function getCollectionFilters(handle: string) {
-  
+  const variables = {
+    handle,
+    limit: 24
+  }
+  const {status, body} = await shopifyFetch({query: FILTER_QUERY, variables})
+
+  if (status === 200) {
+    const {products: {nodes: productNodes}} = body.data as CollectionFilterQueryResult
+    const cleanedFilter = productNodes.map((node) => convertToFilter(node))
+
+    return cleanedFilter.reduce((acc, cur) => {
+      const removeDup = (list: any[]) => Array.from(new Set(list))
+      const toDefault = (list: any[]) =>
+        list.reduce((acc, cur) => ({ ...acc, [cur]: false }), {})
+      
+      return {
+        colors: toDefault(removeDup([...Object.keys(acc.colors), ...cur.colors])),
+        price: {
+          min: 0,
+          max: 0,
+          tooMax: Math.max(
+            parseInt(cur.price),
+            acc.price.tooMax
+          ),
+        }
+      }
+    }, {colors: {}, price: {min: 0, max: 0, tooMax: 0}})
+  }
+}
+
+function convertToFilter({priceRange, options}: {priceRange: {minVariantPrice: {amount: string}}, options: {name: string, values: string[]}[]}) {
+  const {minVariantPrice: {amount: price}} = priceRange
+
+  let colors = Array()
+  options
+    .filter((option) => option.name === 'Color')
+    .forEach((option) => colors.push(...option.values))
+
+  return {
+    price,
+    colors
+  }
 }
