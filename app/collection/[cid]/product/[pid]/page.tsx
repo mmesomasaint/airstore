@@ -20,8 +20,10 @@ import EditAmount from '@/theme/components/editAmount'
 import Tab from '@/theme/components/tab'
 import Header from '@/theme/components/header'
 import useSearch from '@/theme/components/useSearch'
+import { useParams } from 'next/navigation'
 
 export default function Home() {
+  const {cid, pid} = useParams()
   const {
     searchText,
     filter,
@@ -31,6 +33,8 @@ export default function Home() {
     setCategory,
     searchHandler,
   } = useSearch()
+
+  const getNormText = (text: any) => text.toString().split('-').join(' ')
 
   return (
     <main className='min-h-screen flex flex-col'>
@@ -45,16 +49,25 @@ export default function Home() {
       />
       <div className='bg-gray-100/70 px-7 py-4 min-h-full grow gap-5 flex flex-col w-full'>
         <div className='flex justify-between items-center gap-10'>
-          <span className='flex justify-start items-center gap-10'>
+          <span className='flex justify-start items-center gap-5'>
             <TextTiny faded>Home</TextTiny>
             <TextTiny faded>
               <IoIosArrowForward className='text-base' />
             </TextTiny>
-            <TextTiny faded>Macbook</TextTiny>
+            <TextTiny faded>
+              
+  <span className='capitalize'>
+    {getNormText(cid)}
+  </span>
+            </TextTiny>
             <TextTiny faded>
               <IoIosArrowForward className='text-base' />
             </TextTiny>
-            <TextTiny>Apple Macbook Pro 14'' 2022 | M2 Max Chip</TextTiny>
+            <TextTiny>
+  <span className='capitalize'>
+    {getNormText(pid)}
+  </span>
+  </TextTiny>
           </span>
         </div>
         <div className='grow grid grid-cols-[repeat(14,_minmax(0,_1fr))] gap-5 place-items-start'>
