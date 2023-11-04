@@ -58,7 +58,7 @@ export default function useSearch() {
     setLoadingFilter(true)
 
     const fetchFilter = async () => {
-      await fetch(`/api/getFilters`, {
+      await fetch(`/api/get/filters`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

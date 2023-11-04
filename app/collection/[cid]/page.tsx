@@ -53,7 +53,7 @@ export default function Home() {
   useEffect(() => {
     setLoadingProducts(true)
 
-    fetch(`/api/getFilters/collection?handle=${cid.toString()}`, {
+    fetch(`/api/get/collection?handle=${cid.toString()}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ export default function Home() {
   useEffect(() => {
     setLoadingColFilter(true)
 
-    fetch(`/api/getFilters/collection?handle=${cid.toString()}`, {
+    fetch(`/api/get/collection?handle=${cid.toString()}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
