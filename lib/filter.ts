@@ -15,6 +15,17 @@ export interface Filter {
   }
 }
 
+export interface CollectionFilter {
+  colors: {
+    [key: string]: boolean
+  }
+  price: {
+    min: number
+    max: number
+    tooMax: number
+  }
+}
+
 export type FilterSection = 'categories' | 'colors' | 'price' | 'dateAdded'
 
 export type Category = 'Airpod' | 'MacBook' | 'Watch' | 'IPad' | 'IPhone' | 'Mac'
@@ -42,4 +53,15 @@ export const DefaultFilter: Filter = {
     2021: false,
     2020: false,
   },
+}
+
+export const DefaultCollectionFilter = {
+  colors: {
+    blue: false
+  },
+  price: {
+    min: 0,
+    max: 0,
+    tooMax: 0
+  }
 }

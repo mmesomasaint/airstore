@@ -5,11 +5,9 @@ import { TextTiny, TextXSmall } from '@/theme/elements/text'
 import Header from '@/theme/components/header'
 import useSearch from '@/theme/components/useSearch'
 import { useEffect, useState } from 'react'
-import filterCollection, {
+import {
   CollectionFilter,
-  DefaultCollectionFilter,
-  getCollectionFilters,
-} from '../filter'
+  DefaultCollectionFilter} from '@/lib/filter'
 import { useParams } from 'next/navigation'
 import DropDown from '@/theme/components/dropdown'
 import { CollectionFilterer } from '@/theme/components/filter'
