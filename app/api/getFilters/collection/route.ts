@@ -26,7 +26,7 @@ export async function POST(Request: NextRequest) {
 
   if (status === 200) {
     // Convert product query result into a readable format.
-    const { id, title, handle, products } = body.data
+    const { id, title, handle, products } = body.data.collection
     const cleanedProducts = products.nodes.map((node: MiniProductQueryResult) =>
       cleanMiniProduct(node)
     )
