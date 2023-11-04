@@ -3,18 +3,16 @@ type Variant = {
   sku: string
   price: string
   quantityAvailable: number
+  compareAtPrice: {
+    amount: string
+  }
   selectedOptions: {
     name: string
     value: string
   }[]
-  inventoryItem: {
-    inventoryQuantity: string
-    tracked: string
-    locationId: string
-  }
 }
 
-type FullProductQuery = {
+type FullProductQueryResult = {
   id: string
   title: string
   descriptionHTML: string
