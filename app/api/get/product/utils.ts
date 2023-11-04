@@ -111,7 +111,9 @@ export function cleanProduct(product: FullProductQueryResult) {
     images: product.images.nodes,
     variants,
     options: product.options,
-    price: product.priceRange ? Number(product.priceRange.minVariantPrice.amount) : null,
+    price: product.priceRange
+      ? Number(product.priceRange.minVariantPrice.amount)
+      : null,
     discount: product.compareAtPriceRange
       ? Number(product.compareAtPriceRange.maxVariantPrice.amount)
       : null,
