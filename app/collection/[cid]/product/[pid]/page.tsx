@@ -23,7 +23,7 @@ import useSearch from '@/theme/components/useSearch'
 import { useParams } from 'next/navigation'
 
 export default function Home() {
-  const {cid, pid} = useParams()
+  const { cid, pid } = useParams()
   const {
     searchText,
     filter,
@@ -55,19 +55,14 @@ export default function Home() {
               <IoIosArrowForward className='text-base' />
             </TextTiny>
             <TextTiny faded>
-              
-  <span className='capitalize'>
-    {getNormText(cid)}
-  </span>
+              <span className='capitalize'>{getNormText(cid)}</span>
             </TextTiny>
             <TextTiny faded>
               <IoIosArrowForward className='text-base' />
             </TextTiny>
             <TextTiny>
-  <span className='capitalize'>
-    {getNormText(pid)}
-  </span>
-  </TextTiny>
+              <span className='capitalize'>{getNormText(pid)}</span>
+            </TextTiny>
           </span>
         </div>
         <div className='grow grid grid-cols-[repeat(14,_minmax(0,_1fr))] gap-5 place-items-start'>
