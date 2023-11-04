@@ -55,17 +55,28 @@ export default function Home() {
   useEffect(() => {
     setLoadingProducts(true)
 
-    filterCollection(cid.toString(), collectionfilter).then((data) => {
-      setProducts(data.products)
+    fetch(`/api/getFilters/collection?handle=${cid.toString()}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({collectionfilter})
+    }).then(res => res.json()).then((data) => {
+      setProducts(data.body)
       setLoadingProducts(false)
     })
   }, [collectionfilter])
 
   useEffect(() => {
     setLoadingColFilter(true)
-
-    getCollectionFilters(cid.toString()).then((data) => {
-      setCollectionFilter(data)
+    
+    fetch(`/api/getFilters/collection?handle=${cid.toString()}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then(res => res.json()).then((data) => {
+      setCollectionFilter(data.body)
       setLoadingColFilter(false)
     })
   }, [])

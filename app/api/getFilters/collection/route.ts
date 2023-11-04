@@ -58,7 +58,7 @@ export async function GET(
     const cleanedFilter = productNodes.map((node) => convertToFilter(node))
 
     // Reduce the cleaned filter list into a single unit
-    return cleanedFilter.reduce(
+    return Response.json({status: 200, body: cleanedFilter.reduce(
       (acc, cur) => {
         // Remove duplicate items from a list.
         const removeDup = (list: any[]) => Array.from(new Set(list))
@@ -79,6 +79,6 @@ export async function GET(
         }
       },
       { colors: {}, price: { min: 0, max: 0, tooMax: 0 } }
-    )
-  } else throw new Error('Error fetching collection filters.')
+    )})
+  } else return Response.json({status: 500, message: 'Error fetching collection filters.'})
 }
