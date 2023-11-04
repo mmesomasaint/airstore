@@ -1,12 +1,12 @@
 type Variant = {
   id: string
   sku: string
-  barcode: string
-  weight: string
-  height: string
-  width: string
   price: string
-  originalPrice: string
+  quantityAvailable: number
+  selectedOptions: {
+    name: string
+    value: string
+  }[]
   inventoryItem: {
     inventoryQuantity: string
     tracked: string
@@ -34,8 +34,6 @@ type QueryFullProduct = {
   variants: {
     nodes: Variant[]
   }
-  publishedAt: string
-  updatedAt: string
   images: {
     nodes: {
       id: string
