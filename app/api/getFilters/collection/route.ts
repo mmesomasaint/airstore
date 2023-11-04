@@ -12,12 +12,12 @@ import {
 export async function POST(Request: NextRequest) {
   const searchParams = Request.nextUrl.searchParams
   const handle = searchParams.get('handle')
-  const { filter } = await Request.json()
+  const { collectionFilter } = await Request.json()
 
   const variables = {
     handle,
     limit: 24,
-    filter: generateFilters(filter),
+    filter: generateFilters(collectionFilter),
   }
   const { status, body } = await shopifyFetch({
     query: COLLECTION_QUERY,
