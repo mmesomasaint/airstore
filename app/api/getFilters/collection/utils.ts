@@ -1,13 +1,4 @@
-export interface CollectionFilter {
-  colors: {
-    [key: string]: boolean
-  }
-  price: {
-    min: number
-    max: number
-    tooMax: number
-  }
-}
+import { CollectionFilter } from "@/lib/filter"
 
 export interface CollectionProductsQueryResult {
   id: string
@@ -119,17 +110,6 @@ export const FILTER_QUERY = `
     }
   }
 `
-
-export const DefaultCollectionFilter = {
-  colors: {
-    blue: false
-  },
-  price: {
-    min: 0,
-    max: 0,
-    tooMax: 0
-  }
-}
 
 export function generateFilters(filter: CollectionFilter) {
   const activeColors = Object.keys(filter.colors).filter(
