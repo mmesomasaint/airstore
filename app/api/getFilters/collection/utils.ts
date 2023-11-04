@@ -52,7 +52,7 @@ export interface CollectionFilterQueryResult {
 }
 
 export const COLLECTION_QUERY = `
-query CollectionProducts ($limit: Int!, $handle: String!, $filter: [filter!]!){
+query CollectionProducts ($limit: Int!, $handle: String!, $filter: [ProductFilter!]){
 	collection (handle:$handle) {
     id
     handle
