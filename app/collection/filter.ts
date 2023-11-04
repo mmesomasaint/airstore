@@ -178,7 +178,7 @@ export default async function filterCollection(
       handle,
       products: cleanedProducts,
     }
-  }
+  } else throw new Error("Error filtering collection")
 }
 
 export async function getCollectionFilters(handle: string) {
@@ -221,7 +221,7 @@ export async function getCollectionFilters(handle: string) {
       },
       { colors: {}, price: { min: 0, max: 0, tooMax: 0 } }
     )
-  }
+  } else throw new Error('Error fetching collection filters.')
 }
 
 function convertToFilter({
