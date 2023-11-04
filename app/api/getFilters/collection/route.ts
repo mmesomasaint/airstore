@@ -9,7 +9,7 @@ import {
   generateFilters,
 } from './utils'
 
-export default async function POST(Request: NextRequest) {
+export async function POST(Request: NextRequest) {
   const searchParams = Request.nextUrl.searchParams
   const handle = searchParams.get('handle')
   const { filter } = await Request.json()
