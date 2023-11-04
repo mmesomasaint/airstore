@@ -62,7 +62,7 @@ export default function Home() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data.body)
+        setProducts(data.body?.products)
         setLoadingProducts(false)
       })
   }, [collectionFilter])
