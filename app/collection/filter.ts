@@ -125,6 +125,17 @@ const FILTER_QUERY = `
   }
 `
 
+export const DefaultCollectionFilter = {
+  colors: {
+    blue: false
+  },
+  price: {
+    min: 0,
+    max: 0,
+    tooMax: 0
+  }
+}
+
 function generateFilters(filter: CollectionFilter) {
   const activeColors = Object.keys(filter.colors).filter(
     (color) => filter.colors[color]

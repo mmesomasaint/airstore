@@ -1,11 +1,23 @@
 'use client'
 
 import { IoIosArrowForward } from 'react-icons/io'
-import { TextTiny } from '@/theme/elements/text'
+import { TextTiny, TextXSmall } from '@/theme/elements/text'
 import Header from '@/theme/components/header'
 import useSearch from '@/theme/components/useSearch'
+import { useEffect, useState } from 'react'
+import filterCollection, { CollectionFilter, DefaultCollectionFilter, getCollectionFilters } from '../filter'
+import { useParams } from 'next/navigation'
+import DropDown from '@/theme/components/dropdown'
+import { CollectionFilterer } from '@/theme/components/filter'
+import { MiniProduct } from '@/lib/product'
+import { VCard } from '@/theme/components/product/card'
 
 export default function Home() {
+  const {cid} = useParams()
+  const [loadingColFilter, setLoadingColFilter] = useState(true)
+  const [loadingProducts, setLoadingProducts] = useState(true)
+  const [products, setProducts] = useState([])
+  const [collectionfilter, setCollectionFilter] = useState<CollectionFilter>(DefaultCollectionFilter)
   const {
     searchText,
     filter,
@@ -15,6 +27,42 @@ export default function Home() {
     setCategory,
     searchHandler,
   } = useSearch()
+
+  // Setters
+  const setSectionValue = (
+    value: boolean | number,
+    section: "colors" | "price",
+    id: string
+  ) => {
+    setCollectionFilter((prev) => ({
+      ...prev,
+      [section]: { ...prev[section], [id]: value },
+    }))
+  }
+  const setColor = (value: boolean, color: string) => {
+    setSectionValue(value, 'colors', color)
+  }
+  const setPrice = (value: number, price: string) => {
+    setSectionValue(value, 'price', price)
+  }
+
+  useEffect(() => {
+    setLoadingProducts(true)
+
+    filterCollection(cid.toString(), collectionfilter).then(data => {
+      setProducts(data.products)
+      setLoadingProducts(false)
+    })
+  }, [collectionfilter])
+
+  useEffect(() => {
+    setLoadingColFilter(true)
+
+    getCollectionFilters(cid.toString()).then(data => {
+      setCollectionFilter(data)
+      setLoadingColFilter(false)
+    })
+  }, [])
 
   return (
     <main className='min-h-screen flex flex-col'>
@@ -36,6 +84,41 @@ export default function Home() {
             </TextTiny>
             <TextTiny>Macbook</TextTiny>
           </span>
+        </div>
+        <div className='grid grid-cols-12 gap-5 place-items-start'>
+          <div className='col-span-3 h-fit w-full'>
+            <CollectionFilterer filter={collectionfilter} pending={loadingColFilter} setColor={setColor} setPrice={setPrice} />
+          </div>
+          <div className='col-span-9 gap-5 flex flex-col w-full'>
+            <div className='flex justify-end items-center gap-3'>
+              <TextTiny>Sort by:</TextTiny>
+              <DropDown
+                selected={'Popular'}
+                items={['Popular', 'Price', 'Latest', 'Favorite']}
+                full
+              />
+            </div>
+            <div className='grid grid-cols-4 items-stretch gap-9'>
+              {loadingProducts ? (
+              <div className='col-span-full place-self-stretch flex justify-center items-center h-full w-full'>
+                <TextXSmall faded>Loading...</TextXSmall>
+              </div>
+            ) : (
+              products.map((product: MiniProduct, id) => (
+                <VCard
+                  key={`${product.src + id}`}
+                  title={product.title}
+                  handle={product.handle}
+                  src={product.src}
+                  price={product.price}
+                  discount={product.discount}
+                  colors={product.colors}
+                  collectionHandle={product.collectionHandle}
+                />
+              ))
+            )}
+            </div>
+          </div>
         </div>
       </div>
     </main>
