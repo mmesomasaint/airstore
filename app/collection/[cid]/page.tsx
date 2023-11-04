@@ -103,6 +103,14 @@ export default function Home() {
             </TextTiny>
             <TextTiny>Macbook</TextTiny>
           </span>
+          <div className='flex items-center justify-end gap-3'>
+            <TextTiny>Sort by:</TextTiny>
+            <DropDown
+              selected={'Popular'}
+              items={['Popular', 'Price', 'Latest', 'Favorite']}
+              full
+            />
+          </div>
         </div>
         <div className='grid grid-cols-12 gap-5 place-items-start'>
           <div className='col-span-3 h-fit w-full'>
@@ -114,16 +122,6 @@ export default function Home() {
             />
           </div>
           <div className='col-span-9 gap-5 flex flex-col w-full'>
-            <div className='flex justify-end items-center gap-10'>
-              <div className='flex items-center gap-3'>
-              <TextTiny>Sort by:</TextTiny>
-              <DropDown
-                selected={'Popular'}
-                items={['Popular', 'Price', 'Latest', 'Favorite']}
-                full
-              />
-              </div>
-            </div>
             <div className='grid grid-cols-4 items-stretch gap-9'>
               {loadingProducts ? (
                 <div className='col-span-full place-self-stretch flex justify-center items-center h-full w-full'>
