@@ -14,7 +14,6 @@ export async function GET(Request: NextRequest) {
   const { status, body } = await shopifyFetch({ query, variables })
 
   if (status === 200) {
-    console.log('body: ', body)
     const product = cleanProduct(body.data?.product)
     return Response.json({ status: 200, body: product })
   } else {
