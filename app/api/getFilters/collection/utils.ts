@@ -1,4 +1,4 @@
-import { CollectionFilter } from "@/lib/filter"
+import { CollectionFilter } from '@/lib/filter'
 
 export interface CollectionProductsQueryResult {
   id: string

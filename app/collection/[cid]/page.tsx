@@ -5,9 +5,7 @@ import { TextTiny, TextXSmall } from '@/theme/elements/text'
 import Header from '@/theme/components/header'
 import useSearch from '@/theme/components/useSearch'
 import { useEffect, useState } from 'react'
-import {
-  CollectionFilter,
-  DefaultCollectionFilter} from '@/lib/filter'
+import { CollectionFilter, DefaultCollectionFilter } from '@/lib/filter'
 import { useParams } from 'next/navigation'
 import DropDown from '@/theme/components/dropdown'
 import { CollectionFilterer } from '@/theme/components/filter'
@@ -43,9 +41,11 @@ export default function Home() {
       [section]: { ...prev[section], [id]: value },
     }))
   }
+
   const setColor = (value: boolean, color: string) => {
     setSectionValue(value, 'colors', color)
   }
+  
   const setPrice = (value: number, price: string) => {
     setSectionValue(value, 'price', price)
   }
@@ -56,27 +56,31 @@ export default function Home() {
     fetch(`/api/getFilters/collection?handle=${cid.toString()}`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({collectionfilter})
-    }).then(res => res.json()).then((data) => {
-      setProducts(data.body)
-      setLoadingProducts(false)
+      body: JSON.stringify({ collectionfilter }),
     })
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data.body)
+        setLoadingProducts(false)
+      })
   }, [collectionfilter])
 
   useEffect(() => {
     setLoadingColFilter(true)
-    
+
     fetch(`/api/getFilters/collection?handle=${cid.toString()}`, {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-    }).then(res => res.json()).then((data) => {
-      setCollectionFilter(data.body)
-      setLoadingColFilter(false)
     })
+      .then((res) => res.json())
+      .then((data) => {
+        setCollectionFilter(data.body)
+        setLoadingColFilter(false)
+      })
   }, [])
 
   return (
