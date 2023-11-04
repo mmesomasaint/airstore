@@ -52,7 +52,7 @@ export default function Home() {
       .then((data) => {
         setProduct(data.body)
         setLoading(false)
-    })
+      })
   }, [])
 
   return (
@@ -84,21 +84,19 @@ export default function Home() {
             </TextTiny>
           </span>
         </div>
-        {
-          loading ? (
-            <div className='flex justify-center items-center'>
-              <TextXSmall faded>Loading...</TextXSmall>
-            </div>
-          ) : (
-            <ProductPanel product={product} />
-          )
-        }
+        {loading ? (
+          <div className='flex justify-center items-center'>
+            <TextXSmall faded>Loading...</TextXSmall>
+          </div>
+        ) : (
+          <ProductPanel product={product} />
+        )}
       </div>
     </main>
   )
 }
 
-function ProductPanel({product}: {product: FullProduct}) {
+function ProductPanel({ product }: { product: FullProduct }) {
   return (
     <div className='grow grid grid-cols-[repeat(14,_minmax(0,_1fr))] gap-5 place-items-start'>
       <div className='col-span-4 w-full '>
@@ -114,9 +112,7 @@ function ProductPanel({product}: {product: FullProduct}) {
       <div className='col-span-7 flex flex-col justify-between items-stretch gap-5 w-full'>
         <HR>
           <div className='flex flex-col gap-4'>
-            <TextMid faded>
-              Apple Macbook Pro 14'' 2022 | M2 Max Chip
-            </TextMid>
+            <TextMid faded>Apple Macbook Pro 14'' 2022 | M2 Max Chip</TextMid>
             <TextIntro>$2,915</TextIntro>
             <div className='flex justify-start items-center gap-4'>
               <div className='flex justify-start items-center gap-2'>
@@ -196,12 +192,11 @@ function ProductPanel({product}: {product: FullProduct}) {
         </HR>
         <Tab titles={['Detail', 'Specification']}>
           <TextTiny faded copy>
-            The new Macbook Pro delivers outstanding performance for pro
-            users. Choose between the reliable M2 pro or even the more
-            reliable M2 max to power up your pro level workflows and get
-            incredible battery life. With a stunning 13-inch retina XDR
-            display and a range of pro ports, you can't just imagine this
-            feeling. You experience it.
+            The new Macbook Pro delivers outstanding performance for pro users.
+            Choose between the reliable M2 pro or even the more reliable M2 max
+            to power up your pro level workflows and get incredible battery
+            life. With a stunning 13-inch retina XDR display and a range of pro
+            ports, you can't just imagine this feeling. You experience it.
           </TextTiny>
           <div className='flex flex-col gap-2 text-store-faded'>
             <div className='flex justify-start items-center gap-1'>
