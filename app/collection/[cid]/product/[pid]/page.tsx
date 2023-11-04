@@ -102,19 +102,14 @@ function ProductPanel({ product }: { product?: FullProduct }) {
     <div className='grow grid grid-cols-[repeat(14,_minmax(0,_1fr))] gap-5 place-items-start'>
       <div className='col-span-4 w-full '>
         <Slider
-          srcList={[
-            'https://istore.com.ng/cdn/shop/products/macbook_pro_13_in_space_gray_pdp_image_position-1__wwen_1_1_2048x.jpg?v=1657300024',
-            'https://istore.com.ng/cdn/shop/products/macbook_pro_13_in_space_gray_pdp_image_position-2__wwen_1_1_2048x.jpg?v=1657300025',
-            'https://istore.com.ng/cdn/shop/products/macbook_pro_13_in_silver_pdp_image_position-1__wwen_2048x.jpg?v=1657300339',
-            'https://istore.com.ng/cdn/shop/products/macbook_pro_13_in_silver_pdp_image_position-2__wwen_2048x.jpg?v=1657300339',
-          ]}
+          srcList={product?.images.map(img => img.url) ?? []}
         />
       </div>
       <div className='col-span-7 flex flex-col justify-between items-stretch gap-5 w-full'>
         <HR>
           <div className='flex flex-col gap-4'>
-            <TextMid faded>Apple Macbook Pro 14'' 2022 | M2 Max Chip</TextMid>
-            <TextIntro>$2,915</TextIntro>
+            <TextMid faded>{product?.title}</TextMid>
+            <TextIntro>&#8358;{product?.price.toLocaleString('en-US')}</TextIntro>
             <div className='flex justify-start items-center gap-4'>
               <div className='flex justify-start items-center gap-2'>
                 <BsStarFill className='text-base text-yellow-500' />
@@ -193,11 +188,7 @@ function ProductPanel({ product }: { product?: FullProduct }) {
         </HR>
         <Tab titles={['Detail', 'Specification']}>
           <TextTiny faded copy>
-            The new Macbook Pro delivers outstanding performance for pro users.
-            Choose between the reliable M2 pro or even the more reliable M2 max
-            to power up your pro level workflows and get incredible battery
-            life. With a stunning 13-inch retina XDR display and a range of pro
-            ports, you can't just imagine this feeling. You experience it.
+            {product?.descriptionHTML ?? 'No description'}
           </TextTiny>
           <div className='flex flex-col gap-2 text-store-faded'>
             <div className='flex justify-start items-center gap-1'>

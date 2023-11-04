@@ -1,8 +1,9 @@
 type Variant = {
   id: string
   sku: string
-  price: string
-  quantityAvailable: number
+  price: {
+    amount: string
+  }
   compareAtPrice: {
     amount: string
   }
@@ -38,7 +39,9 @@ type FullProductQueryResult = {
       amount: string
     }
   }
-  variants: Variant[]
+  variants: {
+    nodes: Variant[]
+  }
 }
 
 export const query = `
@@ -66,30 +69,35 @@ query Product($handle: String!) {
       }
     }
     compareAtPriceRange {
-      minVariantPrice {
+      maxVariantPrice {
         amount
       }
     }
-    variants {
-      id
-      sku
-      price
-      quantityAvailable
-      compareAtPrice
-      selectedOptions {
-        name
-        value
+    variants (first: 20) {
+      nodes {
+        id
+        sku
+        price {
+          amount
+        }
+        compareAtPrice {
+          amount
+        }
+        selectedOptions {
+          name
+          value
+        }
+      }
     }
   }
 }
 `
 
 export function cleanProduct(product: FullProductQueryResult) {
-  const variants = product.variants.map((variant: Variant) => ({
+  const variants = product.variants.nodes.map((variant: Variant) => ({
     id: variant.id,
     sku: variant.sku,
-    price: Number(variant.price),
-    quantityAvailable: variant.quantityAvailable,
+    price: variant.price ? Number(variant.price.amount) : null,
     compareAtPrice: variant.compareAtPrice
       ? Number(variant.compareAtPrice.amount)
       : null,
@@ -103,7 +111,7 @@ export function cleanProduct(product: FullProductQueryResult) {
     images: product.images.nodes,
     variants,
     options: product.options,
-    price: Number(product.priceRange.minVariantPrice.amount),
+    price: product.priceRange ? Number(product.priceRange.minVariantPrice.amount) : null,
     discount: product.compareAtPriceRange
       ? Number(product.compareAtPriceRange.maxVariantPrice.amount)
       : null,
