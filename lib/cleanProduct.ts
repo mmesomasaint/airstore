@@ -55,6 +55,39 @@ type QueryFullProduct = {
   }
 }
 
+export const query = `
+query Product($handle: String!) {
+  product (handle: $handle){
+    id
+    handle
+    title
+    description
+    images (first: 10) {
+      nodes {
+        url
+        width
+        height
+        altText
+      }
+    }
+    options {
+      name
+      values
+    }
+    priceRange {
+      minVariantPrice {
+        amount
+      }
+    }
+    compareAtPriceRange {
+      minVariantPrice {
+        amount
+      }
+    }
+  }
+}
+`
+
 export function cleanProduct() {
   // Clean the main product fetch.
 }
