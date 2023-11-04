@@ -17,7 +17,7 @@ export default function Home() {
   const [loadingColFilter, setLoadingColFilter] = useState(true)
   const [loadingProducts, setLoadingProducts] = useState(true)
   const [products, setProducts] = useState([])
-  const [collectionfilter, setCollectionFilter] = useState<CollectionFilter>(
+  const [collectionFilter, setCollectionFilter] = useState<CollectionFilter>(
     DefaultCollectionFilter
   )
   const {
@@ -58,14 +58,14 @@ export default function Home() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ collectionfilter }),
+      body: JSON.stringify({ collectionFilter }),
     })
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.body)
         setLoadingProducts(false)
       })
-  }, [collectionfilter])
+  }, [collectionFilter])
 
   useEffect(() => {
     setLoadingColFilter(true)
@@ -107,7 +107,7 @@ export default function Home() {
         <div className='grid grid-cols-12 gap-5 place-items-start'>
           <div className='col-span-3 h-fit w-full'>
             <CollectionFilterer
-              filter={collectionfilter}
+              filter={collectionFilter}
               pending={loadingColFilter}
               setColor={setColor}
               setPrice={setPrice}
