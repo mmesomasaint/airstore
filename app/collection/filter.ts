@@ -178,7 +178,7 @@ export default async function filterCollection(
       handle,
       products: cleanedProducts,
     }
-  } else throw new Error("Error filtering collection")
+  } else throw new Error('Error filtering collection')
 }
 
 export async function getCollectionFilters(handle: string) {
