@@ -60,7 +60,7 @@ export async function GET(Request: NextRequest) {
     // Convert the query result into a useable filter format
     const {
       products: { nodes: productNodes },
-    } = body.data as CollectionFilterQueryResult
+    } = body.data.collection as CollectionFilterQueryResult
     const cleanedFilter = productNodes.map((node) => convertToFilter(node))
 
     // Reduce the cleaned filter list into a single unit
