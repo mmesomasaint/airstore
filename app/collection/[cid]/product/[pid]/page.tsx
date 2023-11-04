@@ -4,6 +4,7 @@ import { IoIosArrowForward } from 'react-icons/io'
 import { MdOutlineEmail, MdOutlineLocalShipping } from 'react-icons/md'
 import { FiShare } from 'react-icons/fi'
 import {
+  TextBase,
   TextIntro,
   TextLabel,
   TextMid,
@@ -101,25 +102,20 @@ function ProductPanel({ product }: { product?: FullProduct }) {
   return (
     <div className='grow grid grid-cols-[repeat(14,_minmax(0,_1fr))] gap-5 place-items-start'>
       <div className='col-span-4 w-full '>
-        <Slider
-          srcList={product?.images.map(img => img.url) ?? []}
-        />
+        <Slider srcList={product?.images.map((img) => img.url) ?? []} />
       </div>
       <div className='col-span-7 flex flex-col justify-between items-stretch gap-5 w-full'>
         <HR>
           <div className='flex flex-col gap-4'>
             <TextMid faded>{product?.title}</TextMid>
-            <TextIntro>&#8358;{product?.price.toLocaleString('en-US')}</TextIntro>
-            <div className='flex justify-start items-center gap-4'>
-              <div className='flex justify-start items-center gap-2'>
-                <BsStarFill className='text-base text-yellow-500' />
-                <TextTiny faded>4.8</TextTiny>
-              </div>
-              <div className='flex justify-start gap-1'>
-                <TextTiny faded>680</TextTiny>
-                <TextTiny faded>sold</TextTiny>
-              </div>
-            </div>
+            <TextIntro>
+              &#8358;{product?.price?.toLocaleString('en-US')}
+            </TextIntro>
+            <span className='line-through text-red-500'>
+              <TextBase faded>
+                &#8358;{product?.discount?.toLocaleString('en-US')}
+              </TextBase>
+            </span>
           </div>
         </HR>
         <HR>
