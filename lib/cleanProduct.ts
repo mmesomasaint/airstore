@@ -14,10 +14,22 @@ type Variant = {
   }
 }
 
-type QueryFullProduct = {
+type FullProductQuery = {
   id: string
   title: string
   descriptionHTML: string
+  images: {
+    nodes: {
+      url: string
+      width: number
+      height: number
+      altText: string
+    }[]
+  }
+  options: {
+    name: string
+    values: string[]
+  }[]
   priceRange: {
     minVariantPrice: {
       amount: string
@@ -27,31 +39,6 @@ type QueryFullProduct = {
     maxVariantPrice: {
       amount: string
     }
-  }
-  featuredImage: {
-    url: string
-  }
-  variants: {
-    nodes: Variant[]
-  }
-  images: {
-    nodes: {
-      id: string
-      originalSrc: string
-      altText: string
-    }[]
-  }
-  options: {
-    name: string
-    values: string[]
-  }[]
-  metafields: {
-    nodes: {
-      id: string
-      key: string
-      value: string
-      namespace: string
-    }[]
   }
 }
 
