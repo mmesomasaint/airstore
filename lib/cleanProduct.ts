@@ -17,11 +17,10 @@ type Variant = {
 type QueryFullProduct = {
   id: string
   title: string
-  description: string
+  descriptionHTML: string
   priceRange: {
     minVariantPrice: {
       amount: string
-      currencyCode: string
     }
   }
   compareAtPriceRange: {
@@ -30,44 +29,31 @@ type QueryFullProduct = {
     }
   }
   featuredImage: {
-    id: string
-    originalSrc: string
-    altText: string
+    url: string
   }
   variants: {
-    edges: {
-      node: Variant
-    }
+    nodes: Variant[]
   }
   publishedAt: string
   updatedAt: string
   images: {
-    edges: {
-      node: {
-        id: string
-        originalSrc: string
-        altText: string
-      }
-    }
+    nodes: {
+      id: string
+      originalSrc: string
+      altText: string
+    }[]
   }
   options: {
-    edges: {
-      node: {
-        id: string
-        name: string
-        values: string
-      }
-    }
-  }
+    name: string
+    values: string[]
+  }[]
   metafields: {
-    edges: {
-      node: {
-        id: string
-        key: string
-        value: string
-        namespace: string
-      }
-    }
+    nodes: {
+      id: string
+      key: string
+      value: string
+      namespace: string
+    }[]
   }
 }
 
