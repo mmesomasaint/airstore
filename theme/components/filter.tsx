@@ -4,7 +4,7 @@ import Accordion from './accordion'
 import CheckBox from './checkbox'
 import Range from './range'
 import { TextMid, TextXSmall } from '../elements/text'
-import { CollectionFilter } from '@/app/collection/filter'
+import { CollectionFilter } from '@/lib/filter'
 
 export default function Filter({
   filter,
