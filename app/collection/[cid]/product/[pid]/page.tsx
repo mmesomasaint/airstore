@@ -22,10 +22,11 @@ import Header from '@/theme/components/header'
 import useSearch from '@/theme/components/useSearch'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { FullProduct } from '@/lib/product'
 
 export default function Home() {
   const { cid, pid } = useParams()
-  const [product, setProduct] = useState()
+  const [product, setProduct] = useState<FullProduct>()
   const [loading, setLoading] = useState(true)
   const {
     searchText,
@@ -96,7 +97,7 @@ export default function Home() {
   )
 }
 
-function ProductPanel({ product }: { product: FullProduct }) {
+function ProductPanel({ product }: { product?: FullProduct }) {
   return (
     <div className='grow grid grid-cols-[repeat(14,_minmax(0,_1fr))] gap-5 place-items-start'>
       <div className='col-span-4 w-full '>
