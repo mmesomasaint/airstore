@@ -132,6 +132,7 @@ function generateFilters(filter: CollectionFilter) {
   const hasActiveColor = activeColors.length > 0
   let filters = Array()
 
+  // Create a color filter, when atleast one color is selected for filtering
   if (hasActiveColor) {
     const colorFilters = activeColors.map((color) => ({
       variantOption: { name: 'Color', value: color },
@@ -139,6 +140,7 @@ function generateFilters(filter: CollectionFilter) {
     filters = [...filters, ...colorFilters]
   }
 
+  // Create a price filter when there is a max value
   if (filter.price.max > 0) {
     const priceFilter = {
       price: { min: filter.price.min, max: filter.price.max },
@@ -164,6 +166,7 @@ export default async function filterCollection(
   })
 
   if (status === 200) {
+    // Convert product query result into a readable format.
     const { id, title, handle, products } = body.data
     const cleanedProducts = products.nodes.map((node: MiniProductQueryResult) =>
       cleanMiniProduct(node)
@@ -181,44 +184,65 @@ export default async function filterCollection(
 export async function getCollectionFilters(handle: string) {
   const variables = {
     handle,
-    limit: 24
+    limit: 24,
   }
-  const {status, body} = await shopifyFetch({query: FILTER_QUERY, variables})
+  const { status, body } = await shopifyFetch({
+    query: FILTER_QUERY,
+    variables,
+  })
 
   if (status === 200) {
-    const {products: {nodes: productNodes}} = body.data as CollectionFilterQueryResult
+    // Convert the query result into a useable filter format
+    const {
+      products: { nodes: productNodes },
+    } = body.data as CollectionFilterQueryResult
     const cleanedFilter = productNodes.map((node) => convertToFilter(node))
 
-    return cleanedFilter.reduce((acc, cur) => {
-      const removeDup = (list: any[]) => Array.from(new Set(list))
-      const toDefault = (list: any[]) =>
-        list.reduce((acc, cur) => ({ ...acc, [cur]: false }), {})
-      
-      return {
-        colors: toDefault(removeDup([...Object.keys(acc.colors), ...cur.colors])),
-        price: {
-          min: 0,
-          max: 0,
-          tooMax: Math.max(
-            parseInt(cur.price),
-            acc.price.tooMax
+    // Reduce the cleaned filter list into a single unit
+    return cleanedFilter.reduce(
+      (acc, cur) => {
+        // Remove duplicate items from a list.
+        const removeDup = (list: any[]) => Array.from(new Set(list))
+
+        // Convert a list to an object with properties `false`.
+        const toDefault = (list: any[]) =>
+          list.reduce((acc, cur) => ({ ...acc, [cur]: false }), {})
+
+        return {
+          colors: toDefault(
+            removeDup([...Object.keys(acc.colors), ...cur.colors])
           ),
+          price: {
+            min: 0,
+            max: 0,
+            tooMax: Math.max(parseInt(cur.price), acc.price.tooMax),
+          },
         }
-      }
-    }, {colors: {}, price: {min: 0, max: 0, tooMax: 0}})
+      },
+      { colors: {}, price: { min: 0, max: 0, tooMax: 0 } }
+    )
   }
 }
 
-function convertToFilter({priceRange, options}: {priceRange: {minVariantPrice: {amount: string}}, options: {name: string, values: string[]}[]}) {
-  const {minVariantPrice: {amount: price}} = priceRange
+function convertToFilter({
+  priceRange,
+  options,
+}: {
+  priceRange: { minVariantPrice: { amount: string } }
+  options: { name: string; values: string[] }[]
+}) {
+  const {
+    minVariantPrice: { amount: price },
+  } = priceRange
 
   let colors = Array()
+  // Only options with name `Color` are allowed in colors list.
   options
     .filter((option) => option.name === 'Color')
     .forEach((option) => colors.push(...option.values))
 
   return {
     price,
-    colors
+    colors,
   }
 }
