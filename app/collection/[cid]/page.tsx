@@ -45,7 +45,7 @@ export default function Home() {
   const setColor = (value: boolean, color: string) => {
     setSectionValue(value, 'colors', color)
   }
-  
+
   const setPrice = (value: number, price: string) => {
     setSectionValue(value, 'price', price)
   }
@@ -114,13 +114,15 @@ export default function Home() {
             />
           </div>
           <div className='col-span-9 gap-5 flex flex-col w-full'>
-            <div className='flex justify-end items-center gap-3'>
+            <div className='flex justify-end items-center gap-10'>
+              <div className='flex items-center gap-3'>
               <TextTiny>Sort by:</TextTiny>
               <DropDown
                 selected={'Popular'}
                 items={['Popular', 'Price', 'Latest', 'Favorite']}
                 full
               />
+              </div>
             </div>
             <div className='grid grid-cols-4 items-stretch gap-9'>
               {loadingProducts ? (
