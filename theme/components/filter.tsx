@@ -4,6 +4,7 @@ import Accordion from './accordion'
 import CheckBox from './checkbox'
 import Range from './range'
 import { TextMid, TextXSmall } from '../elements/text'
+import { CollectionFilter } from '@/app/collection/filter'
 
 export default function Filter({
   filter,
@@ -73,6 +74,70 @@ export default function Filter({
                     {date}
                   </CheckBox>
                 ))}
+              </Accordion>
+            </HR>
+          )}
+          {filter.price.tooMax > 0 && (
+            <Accordion title='Price' defaultOpen>
+              <Range
+                ranges={(() => {
+                  const by2 = filter.price.tooMax / 2
+                  const by4 = filter.price.tooMax / 4
+
+                  return [
+                    [0, by4],
+                    [by4, by4 + by4],
+                    [by4 + by4, by2 + by4],
+                    [by2 + by4, filter.price.tooMax],
+                  ]
+                })()}
+                min={filter.price.min}
+                max={filter.price.max}
+                setMin={(value: number) => setPrice(value, 'min')}
+                setMax={(value: number) => setPrice(value, 'max')}
+              />
+            </Accordion>
+          )}
+        </>
+      )}
+    </div>
+  )
+}
+
+export function CollectionFilterer({
+  filter,
+  pending,
+  setColor,
+  setPrice,
+}: {
+  filter: CollectionFilter
+  pending: boolean
+  setColor: (value: boolean, color: string) => void
+  setPrice: (value: number, price: string) => void
+}) {
+  return (
+    <div className='h-fit w-full flex flex-col gap-5 bg-white rounded-xl border border-store-outline-faded-max p-5'>
+      <TextMid>Filters</TextMid>
+      {pending ? (
+        <div className='flex justify-center items-center w-full'>
+          <TextXSmall faded>Loading...</TextXSmall>
+        </div>
+      ) : (
+        <>
+          {filter.colors && (
+            <HR>
+              <Accordion title='Colors' defaultOpen>
+                <div className='grow grid grid-cols-2 gap-x-5 gap-y-3'>
+                  {Object.keys(filter.colors).map((color) => (
+                    <CheckBox
+                      key={color}
+                      check={filter.colors[color]}
+                      setCheck={(value: boolean) => setColor(value, color)}
+                    >
+                      {color}
+                    </CheckBox>
+                  ))}
+                </div>
               </Accordion>
             </HR>
           )}

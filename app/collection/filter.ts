@@ -3,7 +3,7 @@
 import { shopifyFetch } from '@/lib/fetch'
 import { MiniProductQueryResult, cleanMiniProduct } from '../api/search/utils'
 
-interface CollectionFilter {
+export interface CollectionFilter {
   colors: {
     [key: string]: boolean
   }
