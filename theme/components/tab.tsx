@@ -24,7 +24,7 @@ export default function Tab({
       <div className='flex justify-start items-center gap-2 border-b border-store-outline-faded-max w-full'>
         {titles.map((title) => (
           <TabTitle
-            key='title'
+            key={title}
             title={title}
             active={title === titles[activeId]}
             setActive={(value: string) => onSetActive(value)}

@@ -168,7 +168,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
         <HR>
           <div className='flex flex-col gap-5'>
             {product?.options.map((option) => (
-              <div className='flex flex-col gap-2'>
+              <div key={option.name} className='flex flex-col gap-2'>
                 <TextXSmall>{option.name}</TextXSmall>
                 {option.name === 'Color' ? (
                   <div className='flex justify-start items-center gap-2'>
