@@ -110,7 +110,9 @@ query VariantByOptions($handle:String!, $selectedOptions: [SelectedOptionInput!]
 `
 
 export function cleanProduct(product: FullProductQueryResult) {
-  const variants = product.variants.nodes.map((variant: Variant) => cleanProductVariant(variant))
+  const variants = product.variants.nodes.map((variant: Variant) =>
+    cleanProductVariant(variant)
+  )
 
   return {
     id: product.id,
