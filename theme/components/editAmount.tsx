@@ -17,7 +17,7 @@ export default function EditAmount({
     >
       <button
       disabled={value <= 1}
-        className='self-stretch px-4 bg-store-pri text-white rounded-l-full'
+        className='self-stretch px-4 bg-store-pri disabled:bg-store-pri/30 text-white rounded-l-full'
         onClick={() => setValue?.(value - 1)}
       >
         <TextBase>-</TextBase>
@@ -30,7 +30,7 @@ export default function EditAmount({
       />
       <button
       disabled={value >= max}
-        className='self-stretch px-4 bg-store-pri text-white rounded-r-full'
+        className='self-stretch px-4 bg-store-pri disabled:bg-store-pri/30 text-white rounded-r-full'
         onClick={() => setValue?.(value + 1)}
       >
         <TextBase>+</TextBase>
