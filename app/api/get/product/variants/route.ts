@@ -1,5 +1,5 @@
 import { shopifyFetch } from '@/lib/fetch'
-import { query, cleanProductWithVariant } from './utils'
+import { query, cleanProductToVariant } from './utils'
 import { NextRequest } from 'next/server'
 
 export async function POST(Request: NextRequest) {
@@ -14,7 +14,7 @@ export async function POST(Request: NextRequest) {
   const { status, body } = await shopifyFetch({ query, variables })
 
   if (status === 200) {
-    const product = cleanProductWithVariant(body.data?.product)
+    const product = cleanProductToVariant(body.data?.product)
     return Response.json({ status: 200, body: product })
   } else {
     return Response.json({ status: 500, message: 'Error receiving data' })
