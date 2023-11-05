@@ -13,7 +13,7 @@ type Variant = {
   }[]
 }
 
-type FullProductQueryResult = {
+interface FullProductQueryResult {
   id: string
   title: string
   descriptionHTML: string
