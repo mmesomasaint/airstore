@@ -130,7 +130,7 @@ export function cleanProduct(product: FullProductQueryResult) {
   }
 }
 
-export function cleanProductVariant(variant: Variant) {
+function cleanProductVariant(variant: Variant) {
   return {
     id: variant.id,
     sku: variant.sku,
