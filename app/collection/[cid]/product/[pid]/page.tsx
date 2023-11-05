@@ -160,7 +160,10 @@ function ProductPanel({ product }: { product: FullProduct }) {
             </TextIntro>
             <span className='line-through text-red-500'>
               <TextBase faded>
-                &#8358;{(variant?.discount ?? product.discount)?.toLocaleString('en-US')}
+                &#8358;
+                {(variant?.discount ?? product.discount)?.toLocaleString(
+                  'en-US'
+                )}
               </TextBase>
             </span>
           </div>
@@ -292,7 +295,10 @@ function ProductPanel({ product }: { product: FullProduct }) {
           <div className='flex justify-between items-center gap-2'>
             <TextTiny faded>Sum Total</TextTiny>
             <TextMid>
-              &#8358;{((variant?.price ?? product.price) * amount).toLocaleString('en-US')}
+              &#8358;
+              {((variant?.price ?? product.price) * amount).toLocaleString(
+                'en-US'
+              )}
             </TextMid>
           </div>
           <div className='flex flex-col gap-2'>
