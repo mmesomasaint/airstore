@@ -99,13 +99,15 @@ export default function Home() {
 }
 
 function ProductPanel({ product }: { product?: FullProduct }) {
-  const [selectedOptions, setSelectedOptions] = useState<Record<string, string>[]>([{name: "", value: ""}])
+  const [selectedOptions, setSelectedOptions] = useState<
+    Record<string, string>[]
+  >([{ name: '', value: '' }])
   const addToSelectedOptions = (name: string, value: string) => {
-    const prevIdx = selectedOptions.findIndex(option => option.name === name)
+    const prevIdx = selectedOptions.findIndex((option) => option.name === name)
 
     if (prevIdx === -1) {
       // If option does not exist, add it
-      setSelectedOptions([...selectedOptions, {name, value}])
+      setSelectedOptions([...selectedOptions, { name, value }])
     } else {
       // If option exists, update it
       const newSelectedOptions = [...selectedOptions]
@@ -134,28 +136,33 @@ function ProductPanel({ product }: { product?: FullProduct }) {
         </HR>
         <HR>
           <div className='flex flex-col gap-5'>
-            {product?.options.map(option => (
+            {product?.options.map((option) => (
               <div className='flex flex-col gap-2'>
                 <TextXSmall>{option.name}</TextXSmall>
                 {option.name === 'Color' ? (
-                    <div className='flex justify-start items-center gap-2'>
-                      {option.values.map((color) => (
-                        <div
-                          key={color}
-                          className='w-6 h-6 rounded-full border border-store-outline-faded-max'
-                          style={{ backgroundColor: color }}
-                          onClick={() => addToSelectedOptions(option.name, color)}
-                        />
-                      ))}
-                    </div>
-                  ) : (
-                    <OneOptionSelector
-                      selected={selectedOptions.find(selectedOption => selectedOption.name === option.name)?.value ?? option.values[0]}
-                      options={option.values}
-                      setSelected={(value: string) => addToSelectedOptions(option.name, value)}
-                    />
-                  )
-                }
+                  <div className='flex justify-start items-center gap-2'>
+                    {option.values.map((color) => (
+                      <div
+                        key={color}
+                        className='w-6 h-6 rounded-full border border-store-outline-faded-max'
+                        style={{ backgroundColor: color }}
+                        onClick={() => addToSelectedOptions(option.name, color)}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <OneOptionSelector
+                    selected={
+                      selectedOptions.find(
+                        (selectedOption) => selectedOption.name === option.name
+                      )?.value ?? option.values[0]
+                    }
+                    options={option.values}
+                    setSelected={(value: string) =>
+                      addToSelectedOptions(option.name, value)
+                    }
+                  />
+                )}
               </div>
             ))}
           </div>
