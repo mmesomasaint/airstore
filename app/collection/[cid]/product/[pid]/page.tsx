@@ -23,7 +23,7 @@ import Header from '@/theme/components/header'
 import useSearch from '@/theme/components/useSearch'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { FullProduct } from '@/lib/product'
+import { FullProduct, Variant } from '@/lib/product'
 
 export default function Home() {
   const { cid, pid } = useParams()
@@ -99,7 +99,7 @@ export default function Home() {
 }
 
 function ProductPanel({ product }: { product?: FullProduct }) {
-  const [variant, setVariant] = useState()
+  const [variant, setVariant] = useState<Variant>()
   const [selectedOptions, setSelectedOptions] = useState<
     Record<string, string>[]
   >([{ name: '', value: '' }])
