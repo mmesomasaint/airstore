@@ -1,4 +1,4 @@
-type Variant = {
+export type Variant = {
   id: string
   sku: string
   price: {
@@ -11,11 +11,6 @@ type Variant = {
     name: string
     value: string
   }[]
-}
-
-interface VariantByOptionsResult {
-  handle: string
-  variantBySelectedOptions: Variant
 }
 
 interface FullProductQueryResult {
@@ -98,22 +93,6 @@ query Product($handle: String!) {
 }
 `
 
-export const VARIANT_FROM_OPTIONS = `
-query VariantByOptions($handle:String!, $selectedOptions: [SelectedOptionInput!]!) {
-  product (handle: $handle) {
-    handle
-    variantBySelectedOptions (selectedOptions:$selectedOptions) {
-      price {
-        amount
-      }
-      compareAtPrice {
-        amount
-      }
-    }
-  }
-}
-`
-
 export function cleanProduct(product: FullProductQueryResult) {
   const variants = product.variants.nodes.map((variant: Variant) =>
     cleanProductVariant(variant)
@@ -135,14 +114,7 @@ export function cleanProduct(product: FullProductQueryResult) {
   }
 }
 
-export function cleanProductWithVariant(product: VariantByOptionsResult) {
-  return {
-    handle: product.handle,
-    variant: cleanProductVariant(product.variantBySelectedOptions),
-  }
-}
-
-function cleanProductVariant(variant: Variant) {
+export function cleanProductVariant(variant: Variant) {
   return {
     id: variant.id,
     sku: variant.sku,
