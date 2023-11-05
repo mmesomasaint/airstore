@@ -112,7 +112,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
     name: option.name,
     value: option.values[0],
   }))
-  const [amount, setAmount] = useState<number>(0)
+  const [amount, setAmount] = useState<number>(1)
   const [variant, setVariant] = useState<Variant>()
   const [selectedOptions, setSelectedOptions] = useState<
     Record<string, string>[]
