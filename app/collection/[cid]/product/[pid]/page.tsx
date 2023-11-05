@@ -41,6 +41,14 @@ export default function Home() {
 
   const getNormText = (text: any) => text.toString().split('-').join(' ')
 
+  const DisplayProduct = () => product ? (
+    <ProductPanel product={product} />
+  ) : (
+    <div className='flex justify-center items-center'>
+      <TextXSmall faded>Product doesn&apos;t exist.</TextXSmall>
+    </div>
+  )
+
   useEffect(() => {
     setLoading(true)
 
@@ -90,15 +98,13 @@ export default function Home() {
           <div className='flex justify-center items-center'>
             <TextXSmall faded>Loading...</TextXSmall>
           </div>
-        ) : (
-          <ProductPanel product={product} />
-        )}
+        ) : <DisplayProduct />}
       </div>
     </main>
   )
 }
 
-function ProductPanel({ product }: { product?: FullProduct }) {
+function ProductPanel({ product }: { product: FullProduct }) {
   const initialSelectedOptions = product?.options.map(option => ({name: option.name, value: option.values[0]}))
   const [variant, setVariant] = useState<Variant>()
   const [selectedOptions, setSelectedOptions] = useState<
