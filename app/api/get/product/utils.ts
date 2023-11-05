@@ -13,6 +13,11 @@ type Variant = {
   }[]
 }
 
+interface VariantByOptionsResult {
+  handle: string
+  variantBySelectedOptions: Variant
+}
+
 interface FullProductQueryResult {
   id: string
   title: string
