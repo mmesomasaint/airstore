@@ -1,13 +1,10 @@
-type Variant = {
+export interface Variant {
   id: string
   sku: string
   price: number
-  quantityAvailable: number
   CompareAtPrice: number | null
-  selectedOptions: {
-    name: string
-    value: string
-  }[]
+  quantityAvailable: number
+  productHandle: string
 }
 
 export interface MiniProduct {
@@ -33,7 +30,6 @@ export interface FullProduct {
     height: number
     altText: string
   }[]
-  variants: Variant[]
   options: {
     name: string
     values: string[]
