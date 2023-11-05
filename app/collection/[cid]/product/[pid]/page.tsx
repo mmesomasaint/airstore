@@ -99,10 +99,11 @@ export default function Home() {
 }
 
 function ProductPanel({ product }: { product?: FullProduct }) {
+  const initialSelectedOptions = product?.options.map(option => ({name: option.name, value: option.values[0]}))
   const [variant, setVariant] = useState<Variant>()
   const [selectedOptions, setSelectedOptions] = useState<
     Record<string, string>[]
-  >([{ name: '', value: '' }])
+  >(initialSelectedOptions)
 
   const addToSelectedOptions = (name: string, value: string) => {
     const prevIdx = selectedOptions.findIndex((option) => option.name === name)
