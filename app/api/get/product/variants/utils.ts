@@ -32,7 +32,7 @@ query VariantByOptions($handle:String!, $selectedOptions: [SelectedOptionInput!]
 }
 `
 
-export function cleanProductToVariant(product: VariantByOptionsResult) {
+export function cleanProductVariant(product: VariantByOptionsResult) {
   return {
     ...cleanProductVariant(product.variantBySelectedOptions),
     productHandle: product.handle,

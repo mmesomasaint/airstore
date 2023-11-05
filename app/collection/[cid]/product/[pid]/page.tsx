@@ -99,6 +99,7 @@ export default function Home() {
 }
 
 function ProductPanel({ product }: { product?: FullProduct }) {
+  const [variant, setVariant] = useState()
   const [selectedOptions, setSelectedOptions] = useState<
     Record<string, string>[]
   >([{ name: '', value: '' }])
@@ -116,7 +117,21 @@ function ProductPanel({ product }: { product?: FullProduct }) {
       setSelectedOptions(newSelectedOptions)
     }
   }
-  
+
+  useEffect(() => {
+    fetch(`/api/get/product?handle=${product?.id.toString()}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ selectedOptions })
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setVariant(data.body)
+      })
+  }, [selectedOptions])
+
   return (
     <div className='grow grid grid-cols-[repeat(14,_minmax(0,_1fr))] gap-5 place-items-start'>
       <div className='col-span-4 w-full '>
