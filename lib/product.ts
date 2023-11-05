@@ -2,7 +2,7 @@ export interface Variant {
   id: string
   sku: string
   price: number
-  CompareAtPrice: number | null
+  discount: number | null
   quantityAvailable: number
   productHandle: string
 }
