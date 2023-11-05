@@ -16,7 +16,7 @@ export default function EditAmount({
       className={`flex justify-start items-center ${full ? 'w-full' : 'w-1/3'}`}
     >
       <button
-      disabled={value <= 1}
+        disabled={value <= 1}
         className='self-stretch px-4 bg-store-pri disabled:bg-store-pri/30 text-white rounded-l-full'
         onClick={() => setValue?.(value - 1)}
       >
@@ -29,7 +29,7 @@ export default function EditAmount({
         onChange={(e) => setValue?.(parseInt(e.target.value))}
       />
       <button
-      disabled={value >= max}
+        disabled={value >= max}
         className='self-stretch px-4 bg-store-pri disabled:bg-store-pri/30 text-white rounded-r-full'
         onClick={() => setValue?.(value + 1)}
       >
