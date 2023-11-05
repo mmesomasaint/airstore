@@ -93,6 +93,22 @@ query Product($handle: String!) {
 }
 `
 
+export const VARIANT_FROM_OPTIONS = `
+query VariantByOptions($handle:String!, $selectedOptions: [SelectedOptionInput!]!) {
+  product (handle: $handle) {
+    title
+    variantBySelectedOptions (selectedOptions:$selectedOptions) {
+      price {
+        amount
+      }
+      compareAtPrice {
+        amount
+      }
+    }
+  }
+}
+`
+
 export function cleanProduct(product: FullProductQueryResult) {
   const variants = product.variants.nodes.map((variant: Variant) => ({
     id: variant.id,
