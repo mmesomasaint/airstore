@@ -102,6 +102,7 @@ function ProductPanel({ product }: { product?: FullProduct }) {
   const [selectedOptions, setSelectedOptions] = useState<
     Record<string, string>[]
   >([{ name: '', value: '' }])
+
   const addToSelectedOptions = (name: string, value: string) => {
     const prevIdx = selectedOptions.findIndex((option) => option.name === name)
 
@@ -115,6 +116,7 @@ function ProductPanel({ product }: { product?: FullProduct }) {
       setSelectedOptions(newSelectedOptions)
     }
   }
+  
   return (
     <div className='grow grid grid-cols-[repeat(14,_minmax(0,_1fr))] gap-5 place-items-start'>
       <div className='col-span-4 w-full '>
