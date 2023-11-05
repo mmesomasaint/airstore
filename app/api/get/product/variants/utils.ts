@@ -1,4 +1,4 @@
-import { Variant, cleanProductVariant } from "../utils"
+import { Variant, cleanProductVariant } from '../utils'
 
 interface VariantByOptionsResult {
   handle: string
