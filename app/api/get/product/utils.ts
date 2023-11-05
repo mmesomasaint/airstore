@@ -96,7 +96,7 @@ query Product($handle: String!) {
 export const VARIANT_FROM_OPTIONS = `
 query VariantByOptions($handle:String!, $selectedOptions: [SelectedOptionInput!]!) {
   product (handle: $handle) {
-    title
+    handle
     variantBySelectedOptions (selectedOptions:$selectedOptions) {
       price {
         amount
