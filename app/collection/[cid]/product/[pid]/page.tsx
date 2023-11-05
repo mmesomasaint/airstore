@@ -53,7 +53,7 @@ export default function Home() {
   useEffect(() => {
     setLoading(true)
 
-    fetch(`/api/get/producthandle=${pid.toString()}`, {
+    fetch(`/api/get/product?handle=${pid.toString()}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
