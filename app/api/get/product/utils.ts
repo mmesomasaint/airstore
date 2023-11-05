@@ -60,6 +60,11 @@ query Product($handle: String!) {
 }
 `
 
+/**
+ * Cleans up a product returned from query.
+ * @param product A full product result from querying shopify for a product.
+ * @returns A cleaner version of the returned product that can be used by components
+ */
 export function cleanProduct(product: FullProductQueryResult) {
   return {
     id: product.id,

@@ -88,6 +88,11 @@ query AllProducts($first: Int, $query: String) {
 }
 `
 
+/**
+ * Generates a query usable filter from raw object.
+ * @param filter The raw filter object from the user
+ * @returns A filter that can be used by the query
+ */
 export const generateFilterQuery = (filter: Filter) => {
   const { categories, price, colors, dateAdded } = filter
   const activeDateAdded = Object.keys(dateAdded).filter((key) => dateAdded[key])
@@ -104,6 +109,11 @@ export const generateFilterQuery = (filter: Filter) => {
   }
 }
 
+/**
+ * Cleans up the filter query results
+ * @param queryResult The result of passing the filter query
+ * @returns A cleaner version of the query result that can be used by components
+ */
 export const cleanFilterQueryResult = (
   queryResult: FilterQueryResult
 ): Filter => {
@@ -170,6 +180,11 @@ export const cleanFilterQueryResult = (
   )
 }
 
+/**
+ * Cleans up the query result of mini product
+ * @param queryResult The result of fetching the mini product query.
+ * @returns A cleaner version of mini product that can be used by components
+ */
 export function cleanMiniProduct(queryResult: MiniProductQueryResult) {
   const {
     id,

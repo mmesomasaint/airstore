@@ -34,6 +34,11 @@ query VariantByOptions($handle:String!, $selectedOptions: [SelectedOptionInput!]
 }
 `
 
+/**
+ * Converts a product containing majorly a variant result to a variant type.
+ * @param product - The product containing the varaint to convert.
+ * @returns variant - A variant type 
+ */
 export function cleanProductToVariant(product: VariantByOptionsResult) {
   return {
     ...cleanProductVariant(product.variantBySelectedOptions),

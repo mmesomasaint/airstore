@@ -1,3 +1,9 @@
+/**
+ * Fetches data from the shopify GraphQL API
+ * @param query The query to return from shopify
+ * @param variables The variables the query depends on
+ * @returns An Object containing status, which states the status of the fetch, and body, the data received. 
+ */
 export async function shopifyFetch({
   query,
   variables,

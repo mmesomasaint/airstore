@@ -46,6 +46,11 @@ export interface FilterQueryResult {
   }[]
 }
 
+/**
+ * Cleans up filter query result
+ * @param queryResult The result gotten from the filter query 
+ * @returns A more cleaner version that can be used by components
+ */
 export const cleanFilterQueryResult = (
   queryResult: FilterQueryResult
 ): Filter => {
