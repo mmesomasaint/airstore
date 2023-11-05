@@ -2,7 +2,7 @@ import { shopifyFetch } from '@/lib/fetch'
 import { query, cleanProductWithVariant } from './utils'
 import { NextRequest } from 'next/server'
 
-export async function GET(Request: NextRequest) {
+export async function POST(Request: NextRequest) {
   const searchParams = Request.nextUrl.searchParams
   const handle = searchParams.get('handle')
   const selectedOptions = Request.json()
