@@ -110,15 +110,7 @@ query VariantByOptions($handle:String!, $selectedOptions: [SelectedOptionInput!]
 `
 
 export function cleanProduct(product: FullProductQueryResult) {
-  const variants = product.variants.nodes.map((variant: Variant) => ({
-    id: variant.id,
-    sku: variant.sku,
-    price: variant.price ? Number(variant.price.amount) : null,
-    compareAtPrice: variant.compareAtPrice
-      ? Number(variant.compareAtPrice.amount)
-      : null,
-    selectedOptions: variant.selectedOptions,
-  }))
+  const variants = product.variants.nodes.map((variant: Variant) => cleanProductVariant(variant))
 
   return {
     id: product.id,
@@ -133,5 +125,17 @@ export function cleanProduct(product: FullProductQueryResult) {
     discount: product.compareAtPriceRange
       ? Number(product.compareAtPriceRange.maxVariantPrice.amount)
       : null,
+  }
+}
+
+export function cleanProductVariant(variant: Variant) {
+  return {
+    id: variant.id,
+    sku: variant.sku,
+    price: variant.price ? Number(variant.price.amount) : null,
+    discount: variant.compareAtPrice
+      ? Number(variant.compareAtPrice.amount)
+      : null,
+    selectedOptions: variant.selectedOptions,
   }
 }
