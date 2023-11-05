@@ -53,7 +53,7 @@ export default function Home() {
   useEffect(() => {
     setLoading(true)
 
-    fetch(`/api/get/product?handle=${pid.toString()}`, {
+    fetch(`/api/get/producthandle=${pid.toString()}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ export default function Home() {
 }
 
 function ProductPanel({ product }: { product: FullProduct }) {
-  const initialSelectedOptions = product?.options.map((option) => ({
+  const initialSelectedOptions = product.options.map((option) => ({
     name: option.name,
     value: option.values[0],
   }))
@@ -133,7 +133,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
   }
 
   useEffect(() => {
-    fetch(`/api/get/product/variant?handle=${product?.handle}`, {
+    fetch(`/api/get/product/variant?handle=${product.handle}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -149,25 +149,25 @@ function ProductPanel({ product }: { product: FullProduct }) {
   return (
     <div className='grow grid grid-cols-[repeat(14,_minmax(0,_1fr))] gap-5 place-items-start'>
       <div className='col-span-4 w-full '>
-        <Slider srcList={product?.images.map((img) => img.url) ?? []} />
+        <Slider srcList={product.images.map((img) => img.url) ?? []} />
       </div>
       <div className='col-span-7 flex flex-col justify-between items-stretch gap-5 w-full'>
         <HR>
           <div className='flex flex-col gap-4'>
-            <TextMid faded>{product?.title}</TextMid>
+            <TextMid faded>{product.title}</TextMid>
             <TextIntro>
-              &#8358;{product?.price?.toLocaleString('en-US')}
+              &#8358;{(variant?.price ?? product.price).toLocaleString('en-US')}
             </TextIntro>
             <span className='line-through text-red-500'>
               <TextBase faded>
-                &#8358;{product?.discount?.toLocaleString('en-US')}
+                &#8358;{(variant?.discount ?? product.discount)?.toLocaleString('en-US')}
               </TextBase>
             </span>
           </div>
         </HR>
         <HR>
           <div className='flex flex-col gap-5'>
-            {product?.options.map((option) => (
+            {product.options.map((option) => (
               <div key={option.name} className='flex flex-col gap-2'>
                 <TextXSmall>{option.name}</TextXSmall>
                 {option.name === 'Color' ? (
@@ -225,7 +225,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
         </HR>
         <Tab titles={['Detail', 'Specification']}>
           <TextTiny faded copy>
-            {product?.descriptionHTML ?? 'No description'}
+            {product.descriptionHTML ?? 'No description'}
           </TextTiny>
           <div className='flex flex-col gap-2 text-store-faded'>
             <div className='flex justify-start items-center gap-1'>
@@ -291,7 +291,9 @@ function ProductPanel({ product }: { product: FullProduct }) {
         <div className='flex flex-col gap-3'>
           <div className='flex justify-between items-center gap-2'>
             <TextTiny faded>Sum Total</TextTiny>
-            <TextMid>$2,915</TextMid>
+            <TextMid>
+              &#8358;{((variant?.price ?? product.price) * amount).toLocaleString('en-US')}
+            </TextMid>
           </div>
           <div className='flex flex-col gap-2'>
             <Button fillPrimary>Buy Now</Button>
