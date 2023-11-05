@@ -135,7 +135,7 @@ export function cleanProduct(product: FullProductQueryResult) {
   }
 }
 
-export function cleanProductVariantByOptions(product: VariantByOptionsResult) {
+export function cleanProductWithVariant(product: VariantByOptionsResult) {
   return {
     handle: product.handle,
     variant: cleanProductVariant(product.variantBySelectedOptions),
