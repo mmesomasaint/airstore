@@ -266,7 +266,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
             <EditAmount value={amount} setValue={setAmount} full />
             <div className='flex justify-start items-center gap-1'>
               <TextTiny faded>Only</TextTiny>
-              <TextTiny primary>10 items</TextTiny>
+              <TextTiny primary>{variant?.quantityAvailable ?? 0} items</TextTiny>
               <TextTiny faded>left</TextTiny>
             </div>
           </div>
