@@ -2,14 +2,10 @@
 
 import DropDown from '@/theme/components/dropdown'
 import Filter from '@/theme/components/filter'
-import { TextMid, TextTiny, TextXSmall } from '@/theme/elements/text'
+import { TextTiny, TextXSmall } from '@/theme/elements/text'
 import { MiniProduct } from '@/lib/product'
 import { VCard } from '@/theme/components/product/card'
 import useSearch from '@/theme/components/useSearch'
-import { HR } from '@/theme/elements/rule'
-import Accordion from '@/theme/components/accordion'
-import CheckBox from '@/theme/components/checkbox'
-import Range from '@/theme/components/range'
 import Header from '@/theme/components/header'
 
 export default function Home() {

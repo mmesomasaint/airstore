@@ -12,7 +12,6 @@ import {
   TextXSmall,
 } from '@/theme/elements/text'
 import { HR } from '@/theme/elements/rule'
-import { BsStarFill } from 'react-icons/bs'
 import { LuCircleDollarSign, LuPackageCheck, LuHeart } from 'react-icons/lu'
 import Slider from '@/theme/components/product/slider'
 import { OneOptionSelector } from '@/theme/components/outline-btns'
