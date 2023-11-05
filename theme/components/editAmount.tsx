@@ -13,7 +13,7 @@ export default function EditAmount({
     <div
       className={`flex justify-start items-center ${full ? 'w-full' : 'w-1/3'}`}
     >
-      <button className='self-stretch px-4 bg-store-pri text-white rounded-l-full'>
+      <button className='self-stretch px-4 bg-store-pri text-white rounded-l-full' onClick={() => setValue?.(value - 1)}>
         <TextBase>-</TextBase>
       </button>
       <input
@@ -22,7 +22,7 @@ export default function EditAmount({
         className={`grow w-full p-2 text-center placeholder:text-store-faded placeholder:text-sm placeholder:font-semibold text-store-faded font-semibold text-sm border border-store-outline-faded-max focus:outline-none focus:border-store-pri`}
         onChange={(e) => setValue?.(parseInt(e.target.value))}
       />
-      <button className='self-stretch px-4 bg-store-pri text-white rounded-r-full'>
+      <button className='self-stretch px-4 bg-store-pri text-white rounded-r-full' onClick={() => setValue?.(value + 1)}>
         <TextBase>+</TextBase>
       </button>
     </div>
