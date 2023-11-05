@@ -112,6 +112,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
     name: option.name,
     value: option.values[0],
   }))
+  const [amount, setAmount] = useState<number>(0)
   const [variant, setVariant] = useState<Variant>()
   const [selectedOptions, setSelectedOptions] = useState<
     Record<string, string>[]
@@ -262,7 +263,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
         <HR>
           <div className='flex flex-col gap-2'>
             <TextXSmall>Set Quantity</TextXSmall>
-            <EditAmount value={1} full />
+            <EditAmount value={amount} setValue={setAmount} full />
             <div className='flex justify-start items-center gap-1'>
               <TextTiny faded>Only</TextTiny>
               <TextTiny primary>10 items</TextTiny>
