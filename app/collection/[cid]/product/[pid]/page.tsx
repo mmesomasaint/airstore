@@ -133,7 +133,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
   }
 
   useEffect(() => {
-    fetch(`/api/get/product/variant?handle=${product?.id.toString()}`, {
+    fetch(`/api/get/product/variant?handle=${product?.handle}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

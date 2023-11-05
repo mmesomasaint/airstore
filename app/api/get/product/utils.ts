@@ -1,5 +1,6 @@
 interface FullProductQueryResult {
   id: string
+  handle: string
   title: string
   descriptionHTML: string
   images: {
@@ -63,6 +64,7 @@ export function cleanProduct(product: FullProductQueryResult) {
   return {
     id: product.id,
     title: product.title,
+    handle: product.handle,
     descriptionHTML: product.descriptionHTML,
     images: product.images.nodes,
     options: product.options,

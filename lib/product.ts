@@ -22,6 +22,7 @@ export interface MiniProduct {
 
 export interface FullProduct {
   id: string
+  handle: string
   title: string
   descriptionHTML: string
   images: {
