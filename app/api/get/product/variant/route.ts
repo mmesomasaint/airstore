@@ -5,8 +5,8 @@ import { NextRequest } from 'next/server'
 export async function POST(Request: NextRequest) {
   const searchParams = Request.nextUrl.searchParams
   const handle = searchParams.get('handle')
-  const selectedOptions = Request.json()
-
+  const {selectedOptions} = await Request.json()
+  
   const variables = {
     handle,
     selectedOptions,
