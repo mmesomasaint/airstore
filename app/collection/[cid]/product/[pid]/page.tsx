@@ -263,7 +263,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
         <HR>
           <div className='flex flex-col gap-2'>
             <TextXSmall>Set Quantity</TextXSmall>
-            <EditAmount value={amount} setValue={setAmount} full />
+            <EditAmount value={amount} max={variant?.quantityAvailable ?? amount} setValue={setAmount} full />
             <div className='flex justify-start items-center gap-1'>
               <TextTiny faded>Only</TextTiny>
               <TextTiny primary>{variant?.quantityAvailable ?? 0} items</TextTiny>
