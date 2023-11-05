@@ -1,18 +1,3 @@
-export type Variant = {
-  id: string
-  sku: string
-  price: {
-    amount: string
-  }
-  compareAtPrice: {
-    amount: string
-  }
-  selectedOptions: {
-    name: string
-    value: string
-  }[]
-}
-
 interface FullProductQueryResult {
   id: string
   title: string
@@ -87,17 +72,5 @@ export function cleanProduct(product: FullProductQueryResult) {
     discount: product.compareAtPriceRange
       ? Number(product.compareAtPriceRange.maxVariantPrice.amount)
       : null,
-  }
-}
-
-export function cleanProductVariant(variant: Variant) {
-  return {
-    id: variant.id,
-    sku: variant.sku,
-    price: variant.price ? Number(variant.price.amount) : null,
-    discount: variant.compareAtPrice
-      ? Number(variant.compareAtPrice.amount)
-      : null,
-    selectedOptions: variant.selectedOptions,
   }
 }

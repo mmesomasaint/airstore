@@ -1,4 +1,13 @@
-import { Variant, cleanProductVariant } from '../utils'
+type Variant = {
+  id: string
+  sku: string
+  price: {
+    amount: string
+  }
+  compareAtPrice: {
+    amount: string
+  }
+}
 
 interface VariantByOptionsResult {
   handle: string
@@ -25,5 +34,16 @@ export function cleanProductWithVariant(product: VariantByOptionsResult) {
   return {
     handle: product.handle,
     variant: cleanProductVariant(product.variantBySelectedOptions),
+  }
+}
+
+export function cleanProductVariant(variant: Variant) {
+  return {
+    id: variant.id,
+    sku: variant.sku,
+    price: variant.price ? Number(variant.price.amount) : null,
+    discount: variant.compareAtPrice
+      ? Number(variant.compareAtPrice.amount)
+      : null,
   }
 }
