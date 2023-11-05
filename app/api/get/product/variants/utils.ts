@@ -7,6 +7,7 @@ type Variant = {
   compareAtPrice: {
     amount: string
   }
+  quantityAvailable: number
 }
 
 interface VariantByOptionsResult {
@@ -27,12 +28,13 @@ query VariantByOptions($handle:String!, $selectedOptions: [SelectedOptionInput!]
       compareAtPrice {
         amount
       }
+      quantityAvailable
     }
   }
 }
 `
 
-export function cleanProductVariant(product: VariantByOptionsResult) {
+export function cleanProductToVariant(product: VariantByOptionsResult) {
   return {
     ...cleanProductVariant(product.variantBySelectedOptions),
     productHandle: product.handle,
@@ -47,5 +49,6 @@ export function cleanProductVariant(variant: Variant) {
     discount: variant.compareAtPrice
       ? Number(variant.compareAtPrice.amount)
       : null,
+    quantityAvailable: variant.quantityAvailable,
   }
 }
