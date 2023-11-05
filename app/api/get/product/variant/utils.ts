@@ -19,7 +19,7 @@ export const query = `
 query VariantByOptions($handle:String!, $selectedOptions: [SelectedOptionInput!]!) {
   product (handle: $handle) {
     handle
-    variantBySelectedOptions (selectedOptions:$selectedOptions) {
+    variantBySelectedOptions (selectedOptions: $selectedOptions) {
       id
       sku
       price {
