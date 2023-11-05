@@ -120,41 +120,31 @@ function ProductPanel({ product }: { product?: FullProduct }) {
         </HR>
         <HR>
           <div className='flex flex-col gap-5'>
-            <div className='flex flex-col gap-2'>
-              <TextXSmall>Color</TextXSmall>
-              <div className='flex justify-start items-center gap-2'>
-                {['gray', 'lime', 'red'].map((color) => (
-                  <div
-                    key={color}
-                    className='w-6 h-6 rounded-full border border-store-outline-faded-max'
-                    style={{ backgroundColor: color }}
-                  />
-                ))}
+            {product?.options.map(option => (
+              <div className='flex flex-col gap-2'>
+                <TextXSmall>{option.name}</TextXSmall>
+                {option.name === 'Color' ? (
+                    <div className='flex justify-start items-center gap-2'>
+                      {option.values.map((color) => (
+                        <div
+                          key={color}
+                          className='w-6 h-6 rounded-full border border-store-outline-faded-max'
+                          style={{ backgroundColor: color }}
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <OneOptionSelector
+                      selected={option.values[0]}
+                      options={option.values}
+                      setSelected={(value: string) => {
+                        return
+                      }}
+                    />
+                  )
+                }
               </div>
-            </div>
-            <div className='flex flex-col gap-2'>
-              <TextXSmall>Processor</TextXSmall>
-              <OneOptionSelector
-                selected='16GB, 16 Core GPU Apple M2 Chip'
-                options={[
-                  '32GB, 32 Core GPU Apple M2 Chip',
-                  '16GB, 16 Core GPU Apple M2 Chip',
-                ]}
-                setSelected={(value: string) => {
-                  return
-                }}
-              />
-            </div>
-            <div className='flex flex-col gap-2'>
-              <TextXSmall>Memory Size</TextXSmall>
-              <OneOptionSelector
-                selected='512GB'
-                options={['512GB', '1TB']}
-                setSelected={(value: string) => {
-                  return
-                }}
-              />
-            </div>
+            ))}
           </div>
         </HR>
         <HR>
