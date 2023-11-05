@@ -135,6 +135,13 @@ export function cleanProduct(product: FullProductQueryResult) {
   }
 }
 
+export function cleanProductVariantByOptions(product: VariantByOptionsResult) {
+  return {
+    handle: product.handle,
+    variant: cleanProductVariant(product.variantBySelectedOptions),
+  }
+}
+
 function cleanProductVariant(variant: Variant) {
   return {
     id: variant.id,
