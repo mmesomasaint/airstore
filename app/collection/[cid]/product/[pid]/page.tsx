@@ -41,13 +41,14 @@ export default function Home() {
 
   const getNormText = (text: any) => text.toString().split('-').join(' ')
 
-  const DisplayProduct = () => product ? (
-    <ProductPanel product={product} />
-  ) : (
-    <div className='flex justify-center items-center'>
-      <TextXSmall faded>Product doesn&apos;t exist.</TextXSmall>
-    </div>
-  )
+  const DisplayProduct = () =>
+    product ? (
+      <ProductPanel product={product} />
+    ) : (
+      <div className='flex justify-center items-center'>
+        <TextXSmall faded>Product doesn&apos;t exist.</TextXSmall>
+      </div>
+    )
 
   useEffect(() => {
     setLoading(true)
@@ -98,14 +99,19 @@ export default function Home() {
           <div className='flex justify-center items-center'>
             <TextXSmall faded>Loading...</TextXSmall>
           </div>
-        ) : <DisplayProduct />}
+        ) : (
+          <DisplayProduct />
+        )}
       </div>
     </main>
   )
 }
 
 function ProductPanel({ product }: { product: FullProduct }) {
-  const initialSelectedOptions = product?.options.map(option => ({name: option.name, value: option.values[0]}))
+  const initialSelectedOptions = product?.options.map((option) => ({
+    name: option.name,
+    value: option.values[0],
+  }))
   const [variant, setVariant] = useState<Variant>()
   const [selectedOptions, setSelectedOptions] = useState<
     Record<string, string>[]
@@ -131,7 +137,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ selectedOptions })
+      body: JSON.stringify({ selectedOptions }),
     })
       .then((res) => res.json())
       .then((data) => {
