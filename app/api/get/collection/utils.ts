@@ -111,6 +111,11 @@ export const FILTER_QUERY = `
   }
 `
 
+/**
+ * Generates a filter that can be passed as query.
+ * @param filter The filter object used by collection page
+ * @returns A filter that can be passed to query
+ */
 export function generateFilters(filter: CollectionFilter) {
   const activeColors = Object.keys(filter.colors).filter(
     (color) => filter.colors[color]
@@ -137,6 +142,12 @@ export function generateFilters(filter: CollectionFilter) {
   return filters
 }
 
+/**
+ * Converts a query result to a clean filter
+ * @param priceRange The priceRange field from the product query
+ * @param options The options field from the product query
+ * @returns A cleaner filter that can be used by collection page
+ */
 export function convertToFilter({
   priceRange,
   options,
