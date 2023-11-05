@@ -39,9 +39,6 @@ interface FullProductQueryResult {
       amount: string
     }
   }
-  variants: {
-    nodes: Variant[]
-  }
 }
 
 export const query = `
@@ -73,37 +70,16 @@ query Product($handle: String!) {
         amount
       }
     }
-    variants (first: 20) {
-      nodes {
-        id
-        sku
-        price {
-          amount
-        }
-        compareAtPrice {
-          amount
-        }
-        selectedOptions {
-          name
-          value
-        }
-      }
-    }
   }
 }
 `
 
 export function cleanProduct(product: FullProductQueryResult) {
-  const variants = product.variants.nodes.map((variant: Variant) =>
-    cleanProductVariant(variant)
-  )
-
   return {
     id: product.id,
     title: product.title,
     descriptionHTML: product.descriptionHTML,
     images: product.images.nodes,
-    variants,
     options: product.options,
     price: product.priceRange
       ? Number(product.priceRange.minVariantPrice.amount)
