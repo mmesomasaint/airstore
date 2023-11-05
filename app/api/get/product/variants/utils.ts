@@ -19,6 +19,8 @@ query VariantByOptions($handle:String!, $selectedOptions: [SelectedOptionInput!]
   product (handle: $handle) {
     handle
     variantBySelectedOptions (selectedOptions:$selectedOptions) {
+      id
+      sku
       price {
         amount
       }
