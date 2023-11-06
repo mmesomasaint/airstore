@@ -64,7 +64,8 @@ export default function Home() {
       .then((data) => {
         setProducts(data.body?.products)
         setLoadingProducts(false)
-      }).catch(e => console.log("Error: ", e))
+      })
+      .catch((e) => console.log('Error: ', e))
   }, [collectionFilter])
 
   useEffect(() => {
@@ -81,6 +82,7 @@ export default function Home() {
         setCollectionFilter(data.body)
         setLoadingColFilter(false)
       })
+      .catch((e) => console.log('Error: ', e))
   }, [])
 
   return (

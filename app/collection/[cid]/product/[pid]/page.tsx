@@ -62,7 +62,8 @@ export default function Home() {
       .then((data) => {
         setProduct(data.body)
         setLoading(false)
-      }).catch(e => console.log("Error: ", e))
+      })
+      .catch((e) => console.log('Error: ', e))
   }, [])
 
   return (
@@ -142,7 +143,8 @@ function ProductPanel({ product }: { product: FullProduct }) {
       .then((res) => res.json())
       .then((data) => {
         setVariant(data.body)
-      }).catch(e => console.log("Error: ", e))
+      })
+      .catch((e) => console.log('Error: ', e))
   }, [selectedOptions])
 
   return (
