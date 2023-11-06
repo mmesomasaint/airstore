@@ -23,6 +23,7 @@ import useSearch from '@/theme/components/useSearch'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { FullProduct, Variant } from '@/lib/product'
+import Loading from '@/theme/components/loading'
 
 export default function Home() {
   const { cid, pid } = useParams()
@@ -96,9 +97,7 @@ export default function Home() {
           </span>
         </div>
         {loading ? (
-          <div className='flex justify-center items-center'>
-            <TextXSmall faded>Loading...</TextXSmall>
-          </div>
+          <Loading />
         ) : (
           <DisplayProduct />
         )}
