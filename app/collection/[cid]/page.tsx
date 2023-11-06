@@ -64,7 +64,7 @@ export default function Home() {
       .then((data) => {
         setProducts(data.body?.products)
         setLoadingProducts(false)
-      })
+      }).catch(e => console.log("Error: ", e))
   }, [collectionFilter])
 
   useEffect(() => {

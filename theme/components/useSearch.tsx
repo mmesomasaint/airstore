@@ -45,7 +45,7 @@ export default function useSearch() {
         setSearchResults(data.body)
         setSearchedText(searchText)
         setLoading(false)
-      })
+      }).catch(e => console.log("Error: ", e))
   }
 
   useEffect(() => {
@@ -68,7 +68,7 @@ export default function useSearch() {
         .then((data) => {
           setFilter(data.body)
           setLoadingFilter(false)
-        })
+        }).catch(e => console.log("Error: ", e))
     }
 
     fetchFilter()
