@@ -16,6 +16,8 @@ export default function useSearch() {
   const [searchText, setSearchText] = useState(query ?? undefined)
   const [searchedText, setSearchedText] = useState(searchText)
   const [searchResults, setSearchResults] = useState<MiniProduct[]>([])
+  const [hasFilterError, setHasFilterError] = useState(false)
+  const [hasSearchError, setHasSearchError] = useState(false)
   const [filter, setFilter] = useState<Filter>(DefaultFilter)
   const isSearchPg = pathname === '/search'
 
@@ -32,6 +34,7 @@ export default function useSearch() {
 
   const getSearchResults = async () => {
     setLoading(true)
+    setHasSearchError(false)
 
     await fetch(`/api/search?title=${searchText}`, {
       method: 'POST',
@@ -45,7 +48,7 @@ export default function useSearch() {
         setSearchResults(data.body)
         setSearchedText(searchText)
       })
-      .catch((e) => console.log('Error: ', e))
+      .catch((e) => setHasSearchError(true))
       .finally(() => setLoading(false))
   }
 
@@ -57,6 +60,7 @@ export default function useSearch() {
 
   useEffect(() => {
     setLoadingFilter(true)
+    setHasFilterError(false)
 
     const fetchFilter = async () => {
       await fetch(`/api/get/filters`, {
@@ -67,7 +71,7 @@ export default function useSearch() {
       })
         .then((res) => res.json())
         .then((data) => setFilter(data.body))
-        .catch((e) => console.log('Error: ', e))
+        .catch((e) => setHasFilterError(true))
         .finally(() => setLoadingFilter(false))
     }
 
@@ -80,6 +84,8 @@ export default function useSearch() {
     setSearchText,
     searchResults,
     filter,
+    hasFilterError,
+    hasSearchError,
     loading,
     loadingFilter,
     categories: useMemo<string[]>(

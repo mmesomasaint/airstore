@@ -14,6 +14,8 @@ export default function Home() {
     searchedText,
     searchResults,
     filter,
+    hasFilterError,
+    hasSearchError,
     categories,
     loading,
     loadingFilter,

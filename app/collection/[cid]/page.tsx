@@ -16,6 +16,8 @@ export default function Home() {
   const { cid } = useParams()
   const [loadingColFilter, setLoadingColFilter] = useState(true)
   const [loadingProducts, setLoadingProducts] = useState(true)
+  const [hasFilterError, setHasFilterError] = useState(false)
+  const [hasProductError, setHasProductError] = useState(false)
   const [products, setProducts] = useState([])
   const [collectionFilter, setCollectionFilter] = useState<CollectionFilter>(
     DefaultCollectionFilter
@@ -52,6 +54,7 @@ export default function Home() {
 
   useEffect(() => {
     setLoadingProducts(true)
+    setHasProductError(false)
 
     fetch(`/api/get/collection?handle=${cid.toString()}`, {
       method: 'POST',
@@ -62,12 +65,13 @@ export default function Home() {
     })
       .then((res) => res.json())
       .then((data) => setProducts(data.body?.products))
-      .catch((e) => console.log('Error: ', e))
+      .catch((e) => setHasProductError(true))
       .finally(() => setLoadingProducts(false))
   }, [collectionFilter])
 
   useEffect(() => {
     setLoadingColFilter(true)
+    setHasFilterError(false)
 
     fetch(`/api/get/collection?handle=${cid.toString()}`, {
       method: 'GET',
@@ -77,7 +81,7 @@ export default function Home() {
     })
       .then((res) => res.json())
       .then((data) => setCollectionFilter(data.body))
-      .catch((e) => console.log('Error: ', e))
+      .catch((e) => setHasFilterError(true))
       .finally(() => setLoadingColFilter(false))
   }, [])
 
