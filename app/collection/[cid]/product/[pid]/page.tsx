@@ -59,11 +59,9 @@ export default function Home() {
       },
     })
       .then((res) => res.json())
-      .then((data) => {
-        setProduct(data.body)
-        setLoading(false)
-      })
+      .then((data) => setProduct(data.body))
       .catch((e) => console.log('Error: ', e))
+      .finally(() => setLoading(false))
   }, [])
 
   return (

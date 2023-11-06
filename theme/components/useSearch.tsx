@@ -44,9 +44,9 @@ export default function useSearch() {
       .then((data) => {
         setSearchResults(data.body)
         setSearchedText(searchText)
-        setLoading(false)
       })
       .catch((e) => console.log('Error: ', e))
+      .finally(() => setLoading(false))
   }
 
   useEffect(() => {
@@ -66,11 +66,9 @@ export default function useSearch() {
         },
       })
         .then((res) => res.json())
-        .then((data) => {
-          setFilter(data.body)
-          setLoadingFilter(false)
-        })
+        .then((data) => setFilter(data.body))
         .catch((e) => console.log('Error: ', e))
+        .finally(() => setLoadingFilter(false))
     }
 
     fetchFilter()

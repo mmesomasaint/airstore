@@ -61,11 +61,9 @@ export default function Home() {
       body: JSON.stringify({ collectionFilter }),
     })
       .then((res) => res.json())
-      .then((data) => {
-        setProducts(data.body?.products)
-        setLoadingProducts(false)
-      })
+      .then((data) => setProducts(data.body?.products))
       .catch((e) => console.log('Error: ', e))
+      .finally(() => setLoadingProducts(false))
   }, [collectionFilter])
 
   useEffect(() => {
@@ -78,11 +76,9 @@ export default function Home() {
       },
     })
       .then((res) => res.json())
-      .then((data) => {
-        setCollectionFilter(data.body)
-        setLoadingColFilter(false)
-      })
+      .then((data) => setCollectionFilter(data.body))
       .catch((e) => console.log('Error: ', e))
+      .finally(() => setLoadingColFilter(false))
   }, [])
 
   return (
