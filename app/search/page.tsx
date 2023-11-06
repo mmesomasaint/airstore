@@ -29,7 +29,7 @@ export default function Home() {
     setPrice,
   } = useSearch()
 
-  const DisplayProducts = () => searchResults ? (
+  const DisplayProducts = () => searchResults.length > 0 ? (
     searchResults.map((product: MiniProduct, id) => (
       <VCard
         key={`${product.src + id}`}
