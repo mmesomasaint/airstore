@@ -26,6 +26,7 @@ import { FullProduct, Variant } from '@/lib/product'
 
 export default function Home() {
   const { cid, pid } = useParams()
+  const [errorOccured, setErrorOccured] = useState(false)
   const [product, setProduct] = useState<FullProduct>()
   const [loading, setLoading] = useState(true)
   const {
@@ -45,12 +46,13 @@ export default function Home() {
       <ProductPanel product={product} />
     ) : (
       <div className='flex justify-center items-center'>
-        <TextXSmall faded>Product doesn&apos;t exist.</TextXSmall>
+        <TextXSmall faded>{errorOccured ? 'An error occured' : "Product doesn't exist."}</TextXSmall>
       </div>
     )
 
   useEffect(() => {
     setLoading(true)
+    setErrorOccured(false)
 
     fetch(`/api/get/product?handle=${pid.toString()}`, {
       method: 'GET',
@@ -60,7 +62,7 @@ export default function Home() {
     })
       .then((res) => res.json())
       .then((data) => setProduct(data.body))
-      .catch((e) => console.log('Error: ', e))
+      .catch((e) => setErrorOccured(true))
       .finally(() => setLoading(false))
   }, [])
 
