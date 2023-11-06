@@ -33,7 +33,7 @@ query Product($handle: String!) {
     id
     handle
     title
-    description
+    descriptionHTML
     images (first: 10) {
       nodes {
         url
