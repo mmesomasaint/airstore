@@ -73,7 +73,6 @@ export async function POST(req: NextRequest) {
     const cleanedResults = results.map(({ node }: { node: MiniProductQueryResult }) =>
       cleanMiniProduct(node)
     )
-    console.log('Cleaned results len: ', cleanedResults.length)
 
     return Response.json({ status: 200, body: cleanedResults })
   } else {
