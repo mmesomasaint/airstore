@@ -1,4 +1,4 @@
-import { TextXSmall } from "../elements/text";
+import { TextXSmall } from '../elements/text'
 
 export default function Loading() {
   return (
