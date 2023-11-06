@@ -7,6 +7,7 @@ import { MiniProduct } from '@/lib/product'
 import { VCard } from '@/theme/components/product/card'
 import useSearch from '@/theme/components/useSearch'
 import Header from '@/theme/components/header'
+import Loading from '@/theme/components/loading'
 
 export default function Home() {
   const {
@@ -28,6 +29,27 @@ export default function Home() {
     setPrice,
   } = useSearch()
 
+  const DisplayProducts = () => searchResults ? (
+    searchResults.map((product: MiniProduct, id) => (
+      <VCard
+        key={`${product.src + id}`}
+        title={product.title}
+        handle={product.handle}
+        src={product.src}
+        price={product.price}
+        discount={product.discount}
+        colors={product.colors}
+        collectionHandle={product.collectionHandle}
+      />
+    ))
+  ) : (
+    <div className='flex justify-center items-center'>
+      <TextXSmall faded>
+        {hasSearchError ? 'An error occured' : "No products found."}
+      </TextXSmall>
+    </div>
+  )
+
   return (
     <main className='min-h-screen flex flex-col'>
       <Header
@@ -44,6 +66,7 @@ export default function Home() {
           <Filter
             filter={filter}
             pending={loadingFilter}
+            hasError={hasFilterError}
             setCategory={setCategory}
             setPrice={setPrice}
             setColor={setColor}
@@ -67,23 +90,8 @@ export default function Home() {
           </div>
           <div className='grid grid-cols-4 items-stretch gap-9'>
             {loading ? (
-              <div className='col-span-full place-self-stretch flex justify-center items-center h-full w-full'>
-                <TextXSmall faded>Loading...</TextXSmall>
-              </div>
-            ) : (
-              searchResults.map((product: MiniProduct, id) => (
-                <VCard
-                  key={`${product.src + id}`}
-                  title={product.title}
-                  handle={product.handle}
-                  src={product.src}
-                  price={product.price}
-                  discount={product.discount}
-                  colors={product.colors}
-                  collectionHandle={product.collectionHandle}
-                />
-              ))
-            )}
+              <Loading />
+            ) : <DisplayProducts />}
           </div>
         </div>
       </div>
