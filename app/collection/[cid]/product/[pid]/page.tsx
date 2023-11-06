@@ -226,7 +226,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
         </HR>
         <Tab titles={['Detail', 'Specification']}>
           <TextTiny faded copy>
-            {product.descriptionHTML ?? 'No description'}
+            {product.descriptionHtml ?? 'No description'}
           </TextTiny>
           <div className='flex flex-col gap-2 text-store-faded'>
             <div className='flex justify-start items-center gap-1'>

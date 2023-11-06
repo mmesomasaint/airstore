@@ -24,7 +24,7 @@ export interface FullProduct {
   id: string
   handle: string
   title: string
-  descriptionHTML: string
+  descriptionHtml: string
   images: {
     url: string
     width: number

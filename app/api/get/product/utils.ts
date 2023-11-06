@@ -2,7 +2,7 @@ interface FullProductQueryResult {
   id: string
   handle: string
   title: string
-  descriptionHTML: string
+  descriptionHtml: string
   images: {
     nodes: {
       url: string
@@ -33,7 +33,7 @@ query Product($handle: String!) {
     id
     handle
     title
-    descriptionHTML
+    descriptionHtml
     images (first: 10) {
       nodes {
         url
@@ -70,7 +70,7 @@ export function cleanProduct(product: FullProductQueryResult) {
     id: product.id,
     title: product.title,
     handle: product.handle,
-    descriptionHTML: product.descriptionHTML,
+    descriptionHtml: product.descriptionHtml,
     images: product.images.nodes,
     options: product.options,
     price: product.priceRange
