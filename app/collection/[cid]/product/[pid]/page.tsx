@@ -47,7 +47,9 @@ export default function Home() {
       <ProductPanel product={product} />
     ) : (
       <div className='flex justify-center items-center'>
-        <TextXSmall faded>{errorOccured ? 'An error occured' : "Product doesn't exist."}</TextXSmall>
+        <TextXSmall faded>
+          {errorOccured ? 'An error occured' : "Product doesn't exist."}
+        </TextXSmall>
       </div>
     )
 
@@ -96,11 +98,7 @@ export default function Home() {
             </TextTiny>
           </span>
         </div>
-        {loading ? (
-          <Loading />
-        ) : (
-          <DisplayProduct />
-        )}
+        {loading ? <Loading /> : <DisplayProduct />}
       </div>
     </main>
   )
