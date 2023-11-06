@@ -43,7 +43,7 @@ export default function Home() {
       />
     ))
   ) : (
-    <div className='flex justify-center items-center'>
+    <div className='col-span-full flex justify-center items-center'>
       <TextXSmall faded>
         {hasSearchError ? 'An error occured' : "No products found."}
       </TextXSmall>
