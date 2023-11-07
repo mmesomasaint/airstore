@@ -76,8 +76,8 @@ export default function Home() {
         <div className='col-span-9 gap-5 flex flex-col w-full'>
           <div className='flex justify-between items-center gap-10'>
             <span className='flex justify-start items-center gap-1'>
-              <TextTiny>Showing {searchResults.length} items for</TextTiny>
-              <TextTiny primary>"{searchedText}"</TextTiny>
+              {!loading && <><TextTiny>Showing {searchResults.length} items for</TextTiny>
+              <TextTiny primary>"{searchedText}"</TextTiny></>}
             </span>
             <div className='flex justify-end items-center gap-3'>
               <TextTiny>Sort by:</TextTiny>
