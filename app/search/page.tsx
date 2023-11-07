@@ -29,26 +29,27 @@ export default function Home() {
     setPrice,
   } = useSearch()
 
-  const DisplayProducts = () => searchResults.length > 0 ? (
-    searchResults.map((product: MiniProduct, id) => (
-      <VCard
-        key={`${product.src + id}`}
-        title={product.title}
-        handle={product.handle}
-        src={product.src}
-        price={product.price}
-        discount={product.discount}
-        colors={product.colors}
-        collectionHandle={product.collectionHandle}
-      />
-    ))
-  ) : (
-    <div className='col-span-full flex justify-center items-center'>
-      <TextXSmall faded>
-        {hasSearchError ? 'An error occured' : "No products found."}
-      </TextXSmall>
-    </div>
-  )
+  const DisplayProducts = () =>
+    searchResults.length > 0 ? (
+      searchResults.map((product: MiniProduct, id) => (
+        <VCard
+          key={`${product.src + id}`}
+          title={product.title}
+          handle={product.handle}
+          src={product.src}
+          price={product.price}
+          discount={product.discount}
+          colors={product.colors}
+          collectionHandle={product.collectionHandle}
+        />
+      ))
+    ) : (
+      <div className='col-span-full flex justify-center items-center'>
+        <TextXSmall faded>
+          {hasSearchError ? 'An error occured' : 'No products found.'}
+        </TextXSmall>
+      </div>
+    )
 
   return (
     <main className='min-h-screen flex flex-col'>
@@ -76,8 +77,12 @@ export default function Home() {
         <div className='col-span-9 gap-5 flex flex-col w-full'>
           <div className='flex justify-between items-center gap-10'>
             <span className='flex justify-start items-center gap-1'>
-              {!loading && <><TextTiny>Showing {searchResults.length} items for</TextTiny>
-              <TextTiny primary>"{searchedText}"</TextTiny></>}
+              {!loading && (
+                <>
+                  <TextTiny>Showing {searchResults.length} items for</TextTiny>
+                  <TextTiny primary>"{searchedText}"</TextTiny>
+                </>
+              )}
             </span>
             <div className='flex justify-end items-center gap-3'>
               <TextTiny>Sort by:</TextTiny>
@@ -89,9 +94,7 @@ export default function Home() {
             </div>
           </div>
           <div className='grid grid-cols-4 items-stretch gap-9'>
-            {loading ? (
-              <Loading />
-            ) : <DisplayProducts />}
+            {loading ? <Loading /> : <DisplayProducts />}
           </div>
         </div>
       </div>
