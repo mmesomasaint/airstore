@@ -146,6 +146,7 @@ export default function Home() {
             <CollectionFilterer
               filter={collectionFilter}
               pending={loadingColFilter}
+              hasError={hasFilterError}
               setColor={setColor}
               setPrice={setPrice}
             />
