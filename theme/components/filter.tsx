@@ -115,14 +115,63 @@ export default function Filter({
 export function CollectionFilterer({
   filter,
   pending,
+  hasError,
   setColor,
   setPrice,
 }: {
   filter: CollectionFilter
   pending: boolean
+  hasError: boolean
   setColor: (value: boolean, color: string) => void
   setPrice: (value: number, price: string) => void
 }) {
+  const DisplayFilter = () => hasError ? (
+    <div className='flex justify-center items-center w-full'>
+      <TextXSmall faded>An error occured</TextXSmall>
+    </div>
+  ) : (
+    <>
+      {filter.colors && (
+        <HR>
+          <Accordion title='Colors' defaultOpen>
+            <div className='grow grid grid-cols-2 gap-x-5 gap-y-3'>
+              {Object.keys(filter.colors).map((color) => (
+                <CheckBox
+                  key={color}
+                  check={filter.colors[color]}
+                  setCheck={(value: boolean) => setColor(value, color)}
+                >
+                  {color}
+                </CheckBox>
+              ))}
+            </div>
+          </Accordion>
+        </HR>
+      )}
+      {filter.price.tooMax > 0 && (
+        <Accordion title='Price' defaultOpen>
+          <Range
+            ranges={(() => {
+              const by2 = filter.price.tooMax / 2
+              const by4 = filter.price.tooMax / 4
+
+              return [
+                [0, by4],
+                [by4, by4 + by4],
+                [by4 + by4, by2 + by4],
+                [by2 + by4, filter.price.tooMax],
+              ]
+            })()}
+            min={filter.price.min}
+            max={filter.price.max}
+            setMin={(value: number) => setPrice(value, 'min')}
+            setMax={(value: number) => setPrice(value, 'max')}
+          />
+        </Accordion>
+      )}
+    </>
+  )
+
   return (
     <div className='h-fit w-full flex flex-col gap-5 bg-white rounded-xl border border-store-outline-faded-max p-5'>
       <TextMid>Filters</TextMid>
@@ -130,48 +179,7 @@ export function CollectionFilterer({
         <div className='flex justify-center items-center w-full'>
           <TextXSmall faded>Loading...</TextXSmall>
         </div>
-      ) : (
-        <>
-          {filter.colors && (
-            <HR>
-              <Accordion title='Colors' defaultOpen>
-                <div className='grow grid grid-cols-2 gap-x-5 gap-y-3'>
-                  {Object.keys(filter.colors).map((color) => (
-                    <CheckBox
-                      key={color}
-                      check={filter.colors[color]}
-                      setCheck={(value: boolean) => setColor(value, color)}
-                    >
-                      {color}
-                    </CheckBox>
-                  ))}
-                </div>
-              </Accordion>
-            </HR>
-          )}
-          {filter.price.tooMax > 0 && (
-            <Accordion title='Price' defaultOpen>
-              <Range
-                ranges={(() => {
-                  const by2 = filter.price.tooMax / 2
-                  const by4 = filter.price.tooMax / 4
-
-                  return [
-                    [0, by4],
-                    [by4, by4 + by4],
-                    [by4 + by4, by2 + by4],
-                    [by2 + by4, filter.price.tooMax],
-                  ]
-                })()}
-                min={filter.price.min}
-                max={filter.price.max}
-                setMin={(value: number) => setPrice(value, 'min')}
-                setMax={(value: number) => setPrice(value, 'max')}
-              />
-            </Accordion>
-          )}
-        </>
-      )}
+      ) : <DisplayFilter />}
     </div>
   )
 }
