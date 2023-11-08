@@ -53,6 +53,28 @@ export default function Home() {
     setSectionValue(value, 'price', price)
   }
 
+  const DisplayProducts = () =>
+    products.length > 0 ? (
+      products.map((product: MiniProduct, id) => (
+        <VCard
+          key={`${product.src + id}`}
+          title={product.title}
+          handle={product.handle}
+          src={product.src}
+          price={product.price}
+          discount={product.discount}
+          colors={product.colors}
+          collectionHandle={product.collectionHandle}
+        />
+      ))
+    ) : (
+      <div className='col-span-full flex justify-center items-center'>
+        <TextXSmall faded>
+          {hasProductError ? 'An error occured' : 'No products found.'}
+        </TextXSmall>
+      </div>
+    )
+
   useEffect(() => {
     setLoadingProducts(true)
     setHasProductError(false)
@@ -133,18 +155,7 @@ export default function Home() {
               {loadingProducts ? (
                 <Loading />
               ) : (
-                products.map((product: MiniProduct, id) => (
-                  <VCard
-                    key={`${product.src + id}`}
-                    title={product.title}
-                    handle={product.handle}
-                    src={product.src}
-                    price={product.price}
-                    discount={product.discount}
-                    colors={product.colors}
-                    collectionHandle={product.collectionHandle}
-                  />
-                ))
+                <DisplayProducts />
               )}
             </div>
           </div>
