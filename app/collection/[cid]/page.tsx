@@ -11,6 +11,7 @@ import DropDown from '@/theme/components/dropdown'
 import { CollectionFilterer } from '@/theme/components/filter'
 import { MiniProduct } from '@/lib/product'
 import { VCard } from '@/theme/components/product/card'
+import Loading from '@/theme/components/loading'
 
 export default function Home() {
   const { cid } = useParams()
@@ -130,9 +131,7 @@ export default function Home() {
           <div className='col-span-9 gap-5 flex flex-col w-full'>
             <div className='grid grid-cols-4 items-stretch gap-9'>
               {loadingProducts ? (
-                <div className='col-span-full place-self-stretch flex justify-center items-center h-full w-full'>
-                  <TextXSmall faded>Loading...</TextXSmall>
-                </div>
+                <Loading />
               ) : (
                 products.map((product: MiniProduct, id) => (
                   <VCard
