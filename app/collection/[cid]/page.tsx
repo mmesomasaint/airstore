@@ -65,7 +65,7 @@ export default function Home() {
     })
       .then((res) => res.json())
       .then((data) => setProducts(data.body?.products))
-      .catch((e) => setHasProductError(true))
+      .catch(() => setHasProductError(true))
       .finally(() => setLoadingProducts(false))
   }, [collectionFilter])
 
@@ -81,7 +81,7 @@ export default function Home() {
     })
       .then((res) => res.json())
       .then((data) => setCollectionFilter(data.body))
-      .catch((e) => setHasFilterError(true))
+      .catch(() => setHasFilterError(true))
       .finally(() => setLoadingColFilter(false))
   }, [])
 
