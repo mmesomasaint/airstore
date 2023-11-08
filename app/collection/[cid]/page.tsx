@@ -152,11 +152,7 @@ export default function Home() {
           </div>
           <div className='col-span-9 gap-5 flex flex-col w-full'>
             <div className='grid grid-cols-4 items-stretch gap-9'>
-              {loadingProducts ? (
-                <Loading />
-              ) : (
-                <DisplayProducts />
-              )}
+              {loadingProducts ? <Loading /> : <DisplayProducts />}
             </div>
           </div>
         </div>
