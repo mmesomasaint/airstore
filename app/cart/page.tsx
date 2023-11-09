@@ -11,6 +11,7 @@ import {
 import { HR } from '@/theme/elements/rule'
 import { HCard } from '@/theme/components/product/card'
 import { BsStar } from 'react-icons/bs'
+import { IoIosArrowForward } from 'react-icons/io'
 import { OutlineButton } from '@/theme/components/outline-btns'
 import Button from '@/theme/elements/button'
 import useSearch from '@/theme/components/useSearch'
@@ -43,7 +44,7 @@ export default function Checkout() {
           <span className='flex justify-start items-center gap-10'>
             <TextTiny faded>Home</TextTiny>
             <TextTiny faded>
-              <BsStar className='text-base' />
+              <IoIosArrowForward className='text-base' />
             </TextTiny>
             <TextTiny faded>Cart</TextTiny>
           </span>
