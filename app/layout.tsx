@@ -1,6 +1,7 @@
+
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Cookies from 'js-cookie'
+import cookies from 'js-cookie'
 import CartContext from './cart/context'
 import './globals.css'
 
@@ -11,6 +12,12 @@ export const metadata: Metadata = {
   description: 'Apple gadgets online retail store',
 }
 
+let cartId = cookies.get('cart_id')
+if (!cartId) {
+  cartId = ''
+  cookies.set('cart_id', cartId, { expires: 1 })
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -19,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <CartContext.Provider value={{ cartId: null }}>
+        <CartContext.Provider value={{ cartId }}>
           {children}
         </CartContext.Provider>
       </body>
