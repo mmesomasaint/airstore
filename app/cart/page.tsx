@@ -10,7 +10,8 @@ import {
 } from '@/theme/elements/text'
 import { HR } from '@/theme/elements/rule'
 import { HCard } from '@/theme/components/product/card'
-import { BsStar } from 'react-icons/bs'
+import { BsBox2Heart } from 'react-icons/bs'
+import { LuPackageCheck } from 'react-icons/lu'
 import { IoIosArrowForward } from 'react-icons/io'
 import { OutlineButton } from '@/theme/components/outline-btns'
 import Button from '@/theme/elements/button'
@@ -91,12 +92,12 @@ export default function Checkout() {
                 </div>
                 <div className='flex justify-start items-center gap-4'>
                   <div className='flex items-center gap-2'>
-                    <BsStar className='text-base text-apple-store-faded-max' />
+                    <LuPackageCheck className='text-base text-apple-store-faded-max' />
                     <TextTiny fadedMax>Estimated Delivery in 3 days</TextTiny>
                   </div>
                   <TextLabel fadedMax>|</TextLabel>
                   <div className='flex items-center gap-2'>
-                    <BsStar className='text-base text-apple-store-faded-max' />
+                    <BsBox2Heart className='text-base text-apple-store-faded-max' />
                     <TextTiny fadedMax>Free shipping insurance</TextTiny>
                   </div>
                 </div>
