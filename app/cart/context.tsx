@@ -4,4 +4,6 @@ type CartContextType = {
   cartId: string | null
 }
 
-export const CartContext = createContext<CartContextType>({cartId: null})
+const CartContext = createContext<CartContextType>({cartId: null})
+
+export default CartContext
