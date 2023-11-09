@@ -55,7 +55,7 @@ export default function Checkout() {
             <TextIntro faded copy>
               Your Items &amp; Shipment
             </TextIntro>
-            <div className='h-fit w-full flex flex-col mt-4 gap-6 bg-white rounded-xl border border-apple-store-outline-faded-max p-5'>
+            <div className='h-fit w-full flex flex-col mt-4 gap-6 bg-white rounded-xl border border-store-outline-faded-max p-5'>
               <HR>
                 <HCard
                   src='/imgs/macbook-pro-fv-1.webp'
@@ -76,7 +76,7 @@ export default function Checkout() {
                   <Button outlinePrimary>Edit Address</Button>
                 </div>
                 <div className='flex justify-start items-center gap-3'>
-                  <div className='w-20 h-20 rounded-2xl border border-apple-store-outline-faded-max' />
+                  <div className='w-20 h-20 rounded-2xl border border-store-outline-faded-max' />
                   <div className='flex flex-col gap-4'>
                     <div className='flex flex-col gap-1'>
                       <TextXSmall>Bayu Onyedike</TextXSmall>
@@ -92,19 +92,19 @@ export default function Checkout() {
                 </div>
                 <div className='flex justify-start items-center gap-4'>
                   <div className='flex items-center gap-2'>
-                    <LuPackageCheck className='text-base text-apple-store-faded-max' />
+                    <LuPackageCheck className='text-base text-store-faded-max' />
                     <TextTiny fadedMax>Estimated Delivery in 3 days</TextTiny>
                   </div>
                   <TextLabel fadedMax>|</TextLabel>
                   <div className='flex items-center gap-2'>
-                    <BsBox2Heart className='text-base text-apple-store-faded-max' />
+                    <BsBox2Heart className='text-base text-store-faded-max' />
                     <TextTiny fadedMax>Free shipping insurance</TextTiny>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className='col-span-3 h-fit w-full flex flex-col gap-6 bg-white rounded-xl border border-apple-store-outline-faded-max p-5'>
+          <div className='col-span-3 h-fit w-full flex flex-col gap-6 bg-white rounded-xl border border-store-outline-faded-max p-5'>
             <HR>
               <div className='flex flex-col gap-3'>
                 <TextXSmall>Get Promo</TextXSmall>
