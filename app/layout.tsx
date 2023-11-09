@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <CartContext.Provider value={{ cartId }}>
+        <CartContext.Provider value={{ cartId: cartId ?? null }}>
           {children}
         </CartContext.Provider>
       </body>
