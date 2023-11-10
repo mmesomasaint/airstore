@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import cookies from 'js-cookie'
 import CartProvider from './cart'
 import './globals.css'
 
