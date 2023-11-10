@@ -1,12 +1,12 @@
-export function generateCreateCartInput() {
+type Merchandise = {
+  quantity: number
+  merchandisId: string
+}
+
+export function generateCreateCartInput(lines: Merchandise[]) {
   return {
     input: {
-      lines: [
-        {
-          quantity: 3,
-          merchandiseId: 'gid://shopify/ProductVariant/47270066651448',
-        },
-      ],
+      lines,
       buyerIdentity: {
         email: 'exampler@example.com',
         countryCode: 'NG',
