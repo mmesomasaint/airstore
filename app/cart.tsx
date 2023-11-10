@@ -17,7 +17,15 @@ type CartContextType = {
   size: number
 }
 
-const CartContext = createContext<CartContextType>({ cartId: null, size: 0, latest: null, updating: false, updateCart: (newMerchandise: Merchandise) => {return} })
+const CartContext = createContext<CartContextType>({
+  cartId: null,
+  size: 0,
+  latest: null,
+  updating: false,
+  updateCart: (newMerchandise: Merchandise) => {
+    return
+  },
+})
 
 export const useCart = () => useContext(CartContext)
 
@@ -33,7 +41,9 @@ export default function CartProvider({
   const [cartLines, setCartLines] = useState<Merchandise[]>([])
 
   const updateCart = (newMerchandise: Merchandise) => {
-    const idx = cartLines.findIndex((merchandise: Merchandise) => merchandise.id === newMerchandise.id)
+    const idx = cartLines.findIndex(
+      (merchandise: Merchandise) => merchandise.id === newMerchandise.id
+    )
 
     if (idx === -1) setCartLines([...cartLines, newMerchandise])
     else {
@@ -50,7 +60,7 @@ export default function CartProvider({
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({cartLines})
+        body: JSON.stringify({ cartLines }),
       })
         .then((res) => res.json())
         .then((data) => {
@@ -68,8 +78,16 @@ export default function CartProvider({
   }, [cartLines])
 
   return (
-        <CartContext.Provider value={{ cartId, updateCart, updating: loading, latest: cartLines[cartLines.length - 1] ?? null, size: cartLines.length }}>
-          {loading ? <Loading /> : children}
-        </CartContext.Provider>
-      )
+    <CartContext.Provider
+      value={{
+        cartId,
+        updateCart,
+        updating: loading,
+        latest: cartLines[cartLines.length - 1] ?? null,
+        size: cartLines.length,
+      }}
+    >
+      {loading ? <Loading /> : children}
+    </CartContext.Provider>
+  )
 }
