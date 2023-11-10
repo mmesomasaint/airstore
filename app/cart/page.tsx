@@ -51,7 +51,7 @@ export default function Checkout() {
           </span>
         </div>
         <div className='grow grid grid-cols-[repeat(14,_minmax(0,_1fr))] gap-5 place-items-start'>
-          <div className='col-span-11 '>
+          <div className='col-span-11 w-full'>
             <TextIntro faded copy>
               Your Items &amp; Shipment
             </TextIntro>
