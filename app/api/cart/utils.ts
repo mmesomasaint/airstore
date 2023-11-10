@@ -1,62 +1,58 @@
 export function generateCartInput() {
-  return ({
-    "input": {
-      "attributes": [
+  return {
+    input: {
+      attributes: [
         {
-          "key": "",
-          "value": ""
-        }
+          key: '',
+          value: '',
+        },
       ],
-      "buyerIdentity": {
-        "countryCode": "",
-        "customerAccessToken": "",
-        "deliveryAddressPreferences": [
+      buyerIdentity: {
+        countryCode: '',
+        customerAccessToken: '',
+        deliveryAddressPreferences: [
           {
-            "customerAddressId": "",
-            "deliveryAddress": {
-              "address1": "",
-              "address2": "",
-              "city": "",
-              "company": "",
-              "country": "",
-              "firstName": "",
-              "lastName": "",
-              "phone": "",
-              "province": "",
-              "zip": ""
-            }
-          }
+            customerAddressId: '',
+            deliveryAddress: {
+              address1: '',
+              address2: '',
+              city: '',
+              company: '',
+              country: '',
+              firstName: '',
+              lastName: '',
+              phone: '',
+              province: '',
+              zip: '',
+            },
+          },
         ],
-        "email": "",
-        "phone": "",
-        "walletPreferences": [
-          ""
-        ]
+        email: '',
+        phone: '',
+        walletPreferences: [''],
       },
-      "discountCodes": [
-        ""
-      ],
-      "lines": [
+      discountCodes: [''],
+      lines: [
         {
-          "attributes": [
+          attributes: [
             {
-              "key": "",
-              "value": ""
-            }
+              key: '',
+              value: '',
+            },
           ],
-          "merchandiseId": "",
-          "quantity": 1,
-          "sellingPlanId": ""
-        }
+          merchandiseId: '',
+          quantity: 1,
+          sellingPlanId: '',
+        },
       ],
-      "metafields": [
+      metafields: [
         {
-          "key": "",
-          "type": "",
-          "value": ""
-        }
+          key: '',
+          type: '',
+          value: '',
+        },
       ],
-      "note": ""
-    }
-  })
+      note: '',
+    },
+  }
 }
