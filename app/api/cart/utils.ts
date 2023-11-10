@@ -1,4 +1,4 @@
-export function generateCartInput() {
+export function generateCreateCartInput() {
   return {
     input: {
       lines: [
