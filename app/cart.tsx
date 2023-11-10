@@ -54,7 +54,7 @@ export default function CartProvider({
   }
 
   useEffect(() => {
-    if (!cartId) {
+    if (cartLines.length > 0) {
       fetch('/api/cart', {
         method: 'GET',
         headers: {
