@@ -1,58 +1,30 @@
 export function generateCartInput() {
   return {
     input: {
-      attributes: [
+      "lines": [
         {
-          key: '',
-          value: '',
-        },
+          "quantity": 3,
+          "merchandiseId": "gid://shopify/ProductVariant/47270066651448"
+        }
       ],
-      buyerIdentity: {
-        countryCode: '',
-        customerAccessToken: '',
-        deliveryAddressPreferences: [
-          {
-            customerAddressId: '',
-            deliveryAddress: {
-              address1: '',
-              address2: '',
-              city: '',
-              company: '',
-              country: '',
-              firstName: '',
-              lastName: '',
-              phone: '',
-              province: '',
-              zip: '',
-            },
-          },
-        ],
-        email: '',
-        phone: '',
-        walletPreferences: [''],
+      "buyerIdentity": {
+        "email": "exampler@example.com",
+        "countryCode": "NG",
+        "deliveryAddressPreferences": {
+          "deliveryAddress": {
+            "address1": "No Example Street",
+            "address2": "8th Example Floor",
+            "city": "Enugu",
+            "province": "South-east",
+            "country": "NG",
+            "zip": "41001"
+          }
+        }
       },
-      discountCodes: [''],
-      lines: [
-        {
-          attributes: [
-            {
-              key: '',
-              value: '',
-            },
-          ],
-          merchandiseId: '',
-          quantity: 1,
-          sellingPlanId: '',
-        },
-      ],
-      metafields: [
-        {
-          key: '',
-          type: '',
-          value: '',
-        },
-      ],
-      note: '',
-    },
+      "attributes": {
+        "key": "cart_attribute",
+        "value": "This is a cart attribute"
+      }
+  },
   }
 }
