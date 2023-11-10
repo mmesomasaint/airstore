@@ -42,7 +42,7 @@ export default function Checkout() {
       />
       <div className='bg-gray-100/70 px-7 py-4 min-h-full grow gap-5 flex flex-col w-full'>
         <div className='flex justify-between items-center gap-10'>
-          <span className='flex justify-start items-center gap-10'>
+          <span className='flex justify-start items-center gap-5'>
             <TextTiny faded>Home</TextTiny>
             <TextTiny faded>
               <IoIosArrowForward className='text-base' />
