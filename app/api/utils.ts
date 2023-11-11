@@ -164,7 +164,7 @@ export function convertToFilter({
 
 /**
  * Cleans up filter query result
- * @param queryResult The result gotten from the filter query 
+ * @param queryResult The result gotten from the filter query
  * @returns A more cleaner version that can be used by components
  */
 export const cleanFilterQueryResult = (
@@ -236,7 +236,7 @@ export const cleanFilterQueryResult = (
 /**
  * Converts a product containing majorly a variant result to a variant type.
  * @param product - The product containing the varaint to convert.
- * @returns variant - A variant type 
+ * @returns variant - A variant type
  */
 export function cleanProductToVariant(product: VariantByOptionsResult) {
   return {
