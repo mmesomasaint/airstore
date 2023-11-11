@@ -1,6 +1,7 @@
 import { shopifyFetch } from '@/lib/fetch'
-import { query, cleanProduct } from './utils'
+import { cleanProduct } from './utils'
 import { NextRequest } from 'next/server'
+import { RETRIEVE_PRODUCT } from '../../query'
 
 const LIMIT = 20
 
@@ -11,7 +12,7 @@ export async function GET(Request: NextRequest) {
     handle,
     first: LIMIT,
   }
-  const { status, body } = await shopifyFetch({ query, variables })
+  const { status, body } = await shopifyFetch({ query: RETRIEVE_PRODUCT, variables })
 
   if (status === 200) {
     const product = cleanProduct(body.data?.product)
