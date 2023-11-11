@@ -12,7 +12,10 @@ export async function POST(Request: NextRequest) {
     handle,
     selectedOptions,
   }
-  const { status, body } = await shopifyFetch({ query: GET_VARIANTS_BY_SELECTED_OPTIONS, variables })
+  const { status, body } = await shopifyFetch({
+    query: GET_VARIANTS_BY_SELECTED_OPTIONS,
+    variables,
+  })
 
   if (status === 200) {
     const product = cleanProductToVariant(body.data?.product)

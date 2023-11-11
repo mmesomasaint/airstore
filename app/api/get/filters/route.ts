@@ -8,7 +8,10 @@ export async function GET() {
   const variables = {
     first: LIMIT,
   }
-  const { status, body } = await shopifyFetch({ query: GET_SEARCH_FILTER_KEYS, variables })
+  const { status, body } = await shopifyFetch({
+    query: GET_SEARCH_FILTER_KEYS,
+    variables,
+  })
 
   if (status === 200) {
     const filter = cleanFilterQueryResult(body.data?.products)

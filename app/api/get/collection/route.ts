@@ -1,7 +1,13 @@
 import { shopifyFetch } from '@/lib/fetch'
 import { NextRequest } from 'next/server'
-import { GET_COLLECTION_FILTER_KEYS, GET_COLLECTION_PRODUCTS } from '../../query'
-import { CollectionFilterQueryResult, MiniProductQueryResult } from '../../types'
+import {
+  GET_COLLECTION_FILTER_KEYS,
+  GET_COLLECTION_PRODUCTS,
+} from '../../query'
+import {
+  CollectionFilterQueryResult,
+  MiniProductQueryResult,
+} from '../../types'
 import { cleanMiniProduct, convertToFilter, generateFilters } from '../../utils'
 
 export async function POST(Request: NextRequest) {

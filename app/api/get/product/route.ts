@@ -12,7 +12,10 @@ export async function GET(Request: NextRequest) {
     handle,
     first: LIMIT,
   }
-  const { status, body } = await shopifyFetch({ query: RETRIEVE_PRODUCT, variables })
+  const { status, body } = await shopifyFetch({
+    query: RETRIEVE_PRODUCT,
+    variables,
+  })
 
   if (status === 200) {
     const product = cleanProduct(body.data?.product)

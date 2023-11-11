@@ -20,7 +20,10 @@ export async function POST(req: NextRequest) {
       parsedFilter?.dateAdded ? ' AND ' + parsedFilter.dateAdded : ''
     }`,
   }
-  const { status, body } = await shopifyFetch({ query: SEARCH_AND_FILTER_PRODUCTS, variables })
+  const { status, body } = await shopifyFetch({
+    query: SEARCH_AND_FILTER_PRODUCTS,
+    variables,
+  })
 
   if (status === 200) {
     let results = body.data?.products.edges
@@ -67,8 +70,8 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    const cleanedResults = results.map(({ node }: { node: MiniProductQueryResult }) =>
-      cleanMiniProduct(node)
+    const cleanedResults = results.map(
+      ({ node }: { node: MiniProductQueryResult }) => cleanMiniProduct(node)
     )
 
     return Response.json({ status: 200, body: cleanedResults })
