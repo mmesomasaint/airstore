@@ -54,7 +54,7 @@ export default function CartProvider({
   }
 
   useEffect(() => {
-    if (cartLines.length > 0) {
+    if (!cartId) {
       fetch('/api/cart/create', {
         method: 'POST',
         headers: {
