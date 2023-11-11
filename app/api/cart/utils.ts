@@ -250,13 +250,13 @@ export function generateCartLinesInput(lines: Merchandise[]) {
  * @returns A cleaner format that can be used by components
  */
 export function cleanCartLinesResult(line: CartLine) {
-  const {id, quantity, merchandise, attributes} = line
+  const { id, quantity, merchandise, attributes } = line
 
   return {
     id,
     quantity,
     merchandiseId: merchandise.id,
-    attributes
+    attributes,
   }
 }
 
@@ -266,12 +266,12 @@ export function cleanCartLinesResult(line: CartLine) {
  * @returns A cleaner format of cart that can be used by components
  */
 export function cleanMiniCartResult(miniCartResult: MiniCartQueryResult) {
-  const {id, lines} = miniCartResult
-  const cartLines = lines.nodes.map(node => cleanCartLinesResult(node))
+  const { id, lines } = miniCartResult
+  const cartLines = lines.nodes.map((node) => cleanCartLinesResult(node))
 
   return {
     id,
-    cartLines
+    cartLines,
   }
 }
 
@@ -281,8 +281,8 @@ export function cleanMiniCartResult(miniCartResult: MiniCartQueryResult) {
  * @returns A cleaner formart of cart that can be used by components
  */
 export function cleanFullCartResult(fullCartResult: FullCartQueryResult) {
-  const {id, lines, attributes, cost, buyerIdentity} = fullCartResult
-  const cartLines = lines.nodes.map(node => cleanCartLinesResult(node))
+  const { id, lines, attributes, cost, buyerIdentity } = fullCartResult
+  const cartLines = lines.nodes.map((node) => cleanCartLinesResult(node))
 
   return {
     id,
@@ -292,7 +292,7 @@ export function cleanFullCartResult(fullCartResult: FullCartQueryResult) {
       totalAmount: cost.totalAmount.amount,
       subtotalAmount: cost.subtotalAmount.amount,
       totalTaxAmount: cost.totalTaxAmount.amount,
-      totalDutyAmount: cost.totalDutyAmount.amount
+      totalDutyAmount: cost.totalDutyAmount.amount,
     },
     buyerIdentity: {
       email: buyerIdentity.email,
@@ -301,7 +301,7 @@ export function cleanFullCartResult(fullCartResult: FullCartQueryResult) {
       address1: buyerIdentity.deliveryAddressPreferences.address1,
       address2: buyerIdentity.deliveryAddressPreferences.address2,
       city: buyerIdentity.deliveryAddressPreferences.city,
-      zip: buyerIdentity.deliveryAddressPreferences.zip
-    }
+      zip: buyerIdentity.deliveryAddressPreferences.zip,
+    },
   }
 }
