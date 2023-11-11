@@ -150,3 +150,32 @@ export interface VariantByOptionsResult {
   handle: string
   variantBySelectedOptions: Variant
 }
+
+export interface FullProductQueryResult {
+  id: string
+  handle: string
+  title: string
+  descriptionHtml: string
+  images: {
+    nodes: {
+      url: string
+      width: number
+      height: number
+      altText: string
+    }[]
+  }
+  options: {
+    name: string
+    values: string[]
+  }[]
+  priceRange: {
+    minVariantPrice: {
+      amount: string
+    }
+  }
+  compareAtPriceRange: {
+    maxVariantPrice: {
+      amount: string
+    }
+  }
+}
