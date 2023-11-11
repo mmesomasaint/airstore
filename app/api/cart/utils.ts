@@ -3,7 +3,7 @@ type Merchandise = {
   id: string
 }
 
-type CartLines = {
+type CartLine = {
   id: string
   quantity: number
   merchandise: {
@@ -18,14 +18,14 @@ type CartLines = {
 interface MiniCartQueryResult {
   id: string
   lines: {
-    nodes: CartLines[]
+    nodes: CartLine[]
   }
 }
 
 interface FullCartQueryResult {
   id: string
   lines: {
-    nodes: CartLines[]
+    nodes: CartLine[]
   }
   attributes: {
     key: string
