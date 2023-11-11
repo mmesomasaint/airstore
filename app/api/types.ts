@@ -133,3 +133,20 @@ export interface MiniProductQueryResult {
     }[]
   }
 }
+
+export type Variant = {
+  id: string
+  sku: string
+  price: {
+    amount: string
+  }
+  compareAtPrice: {
+    amount: string
+  }
+  quantityAvailable: number
+}
+
+export interface VariantByOptionsResult {
+  handle: string
+  variantBySelectedOptions: Variant
+}
