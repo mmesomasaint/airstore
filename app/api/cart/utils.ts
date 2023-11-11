@@ -4,41 +4,10 @@ type Merchandise = {
 }
 
 export const CREATE_CART_QUERY = `
-mutation {
-  cartCreate(
-    input: {
-      lines: [
-        {
-          quantity: 1
-          merchandiseId: "gid://shopify/ProductVariant/1"
-        }
-      ],
-      # The information about the buyer that's interacting with the cart.
-      buyerIdentity: {
-        email: "example@example.com",
-        countryCode: CA,
-        # An ordered set of delivery addresses associated with the buyer that's interacting with the cart. The rank of the preferences is determined by the order of the addresses in the array. You can use preferences to populate relevant fields in the checkout flow.
-        deliveryAddressPreferences: {
-          deliveryAddress: {
-            address1: "150 Elgin Street",
-            address2: "8th Floor",
-            city: "Ottawa",
-            province: "Ontario",
-            country: "CA",
-            zip: "K2P 1L4"
-          },
-        }
-      }
-      attributes: {
-        key: "cart_attribute",
-        value: "This is a cart attribute"
-      }
-    }
-  ) {
+mutation ($input: CartInput) {
+  cartCreate(input: $input) {
     cart {
       id
-      createdAt
-      updatedAt
       lines(first: 10) {
         edges {
           node {
@@ -49,37 +18,6 @@ mutation {
               }
             }
           }
-        }
-      }
-      buyerIdentity {
-        deliveryAddressPreferences {
-          __typename
-        }
-      }
-      attributes {
-        key
-        value
-      }
-      # The estimated total cost of all merchandise that the customer will pay at checkout.
-      cost {
-        totalAmount {
-          amount
-          currencyCode
-        }
-        # The estimated amount, before taxes and discounts, for the customer to pay at checkout.
-        subtotalAmount {
-          amount
-          currencyCode
-        }
-        # The estimated tax amount for the customer to pay at checkout.
-        totalTaxAmount {
-          amount
-          currencyCode
-        }
-        # The estimated duty amount for the customer to pay at checkout.
-        totalDutyAmount {
-          amount
-          currencyCode
         }
       }
     }
