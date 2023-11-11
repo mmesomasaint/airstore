@@ -22,6 +22,17 @@ interface MiniCartQueryResult {
   }
 }
 
+export function cleanCartLinesResult(line: CartLine) {
+  const {id, quantity, merchandise, attributes} = line
+  
+  return {
+    id,
+    quantity,
+    merchandiseId: merchandise.id,
+    attributes
+  }
+}
+
 interface FullCartQueryResult {
   id: string
   lines: {
