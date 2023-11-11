@@ -20,7 +20,7 @@ import Header from '@/theme/components/header'
 import { useCart } from '../cart'
 
 export default function Checkout() {
-  const {cartId} = useCart()
+  const { cartId } = useCart()
   const {
     searchText,
     filter,
