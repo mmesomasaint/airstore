@@ -248,7 +248,7 @@ export function generateCartLinesInput(lines: Merchandise[]) {
 
 /**
  * Converts lines query results to a cleaner format.
- * @param line - List of merchandise gotten from querying for cart
+ * @param line List of merchandise gotten from querying for cart
  * @returns A cleaner format that can be used by components
  */
 export function cleanCartLinesResult(line: CartLine) {
