@@ -15,6 +15,18 @@ export type CartLine = {
   }[]
 }
 
+export type Variant = {
+  id: string
+  sku: string
+  price: {
+    amount: string
+  }
+  compareAtPrice: {
+    amount: string
+  }
+  quantityAvailable: number
+}
+
 export interface MiniCartQueryResult {
   id: string
   lines: {
@@ -132,18 +144,6 @@ export interface MiniProductQueryResult {
       title: string
     }[]
   }
-}
-
-export type Variant = {
-  id: string
-  sku: string
-  price: {
-    amount: string
-  }
-  compareAtPrice: {
-    amount: string
-  }
-  quantityAvailable: number
 }
 
 export interface VariantByOptionsResult {
