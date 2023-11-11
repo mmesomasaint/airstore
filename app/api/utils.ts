@@ -13,7 +13,7 @@ import {
 
 /**
  * Generates an input object from a list of products.
- * @param lines - List of products id and quantity choosen by customer.
+ * @param lines The list of products id and quantity choosen by customer.
  * @returns An input object that is passed to query to create a cart.
  */
 export function generateCreateCartInput(lines: Merchandise[]) {
@@ -44,7 +44,7 @@ export function generateCreateCartInput(lines: Merchandise[]) {
 
 /**
  * Generates a list of products that can be passed as parameter to query.
- * @param lines - List of products id and quantity choosen by customer
+ * @param lines The list of products id and quantity choosen by customer
  * @returns A list of products(merchandise) that can be passed to query
  */
 export function generateCartLinesInput(lines: Merchandise[]) {
@@ -246,8 +246,8 @@ export const cleanFilterQueryResult = (
 
 /**
  * Converts a product containing majorly a variant result to a variant type.
- * @param product - The product containing the varaint to convert.
- * @returns variant - A variant type
+ * @param product The product containing the varaint to convert.
+ * @returns A variant type object
  */
 export function cleanProductToVariant(product: VariantByOptionsResult) {
   return {
@@ -256,6 +256,11 @@ export function cleanProductToVariant(product: VariantByOptionsResult) {
   }
 }
 
+/**
+ * Converts a query result variant into a usable object.
+ * @param variant The version of the product based on some key options
+ * @returns A version that can be used by components
+ */
 export function cleanProductVariant(variant: Variant) {
   return {
     id: variant.id,
@@ -270,7 +275,7 @@ export function cleanProductVariant(variant: Variant) {
 
 /**
  * Cleans up a product returned from query.
- * @param product A full product result from querying shopify for a product.
+ * @param product The full product result from querying shopify for a product.
  * @returns A cleaner version of the returned product that can be used by components
  */
 export function cleanProduct(product: FullProductQueryResult) {
