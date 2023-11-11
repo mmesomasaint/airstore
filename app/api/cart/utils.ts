@@ -52,10 +52,8 @@ mutation ($cartId: String!, $lines: [CartLineInput!]) {
 `
 
 export const RETRIEVE_CART_QUERY = `
-query {
-  cart(
-    id: "gid://shopify/Cart/1"
-  ) {
+query ($cartId: String!) {
+  cart(id: $cartId) {
     id
     createdAt
     updatedAt
