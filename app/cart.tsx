@@ -55,8 +55,8 @@ export default function CartProvider({
 
   useEffect(() => {
     if (cartLines.length > 0) {
-      fetch('/api/cart', {
-        method: 'GET',
+      fetch('/api/cart/create', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
