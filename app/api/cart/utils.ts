@@ -38,6 +38,16 @@ export function cleanCartLinesResult(line: CartLine) {
   }
 }
 
+export function cleanMiniCartResult(miniCartResult: MiniCartQueryResult) {
+  const {id, lines} = miniCartResult
+  const cartLines = lines.nodes.map(node => cleanCartLinesResult(node))
+
+  return {
+    id,
+    cartLines
+  }
+}
+
 interface FullCartQueryResult {
   id: string
   lines: {
