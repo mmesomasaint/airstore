@@ -38,6 +38,11 @@ export function cleanCartLinesResult(line: CartLine) {
   }
 }
 
+/**
+ * Converts cart query result to a cleaner format.
+ * @param miniCartResult A result gotten from querying for mini cart
+ * @returns A cleaner format of cart that can be used by components
+ */
 export function cleanMiniCartResult(miniCartResult: MiniCartQueryResult) {
   const {id, lines} = miniCartResult
   const cartLines = lines.nodes.map(node => cleanCartLinesResult(node))
