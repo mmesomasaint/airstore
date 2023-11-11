@@ -218,3 +218,22 @@ query GetFilters($first: Int) {
   }
 }
 `
+
+export const GET_VARIANTS_BY_SELECTED_OPTIONS = `
+query VariantByOptions($handle:String!, $selectedOptions: [SelectedOptionInput!]!) {
+  product (handle: $handle) {
+    handle
+    variantBySelectedOptions (selectedOptions: $selectedOptions) {
+      id
+      sku
+      price {
+        amount
+      }
+      compareAtPrice {
+        amount
+      }
+      quantityAvailable
+    }
+  }
+}
+`
