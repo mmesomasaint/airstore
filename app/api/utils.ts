@@ -1,5 +1,5 @@
 import { CollectionFilter, Filter } from '@/lib/filter'
-import { CartLine, FullCartQueryResult, Merchandise, MiniCartQueryResult } from './types'
+import { CartLine, FilterQueryResult, FullCartQueryResult, Merchandise, MiniCartQueryResult } from './types'
 
 /**
  * Generates an input object from a list of products.

@@ -2,10 +2,10 @@ import { shopifyFetch } from '@/lib/fetch'
 import { NextRequest } from 'next/server'
 import {
   cleanMiniProduct,
-  MiniProductQueryResult,
   generateFilterQuery,
 } from './utils'
 import { SEARCH_AND_FILTER_PRODUCTS } from '../query'
+import { MiniProductQueryResult } from '../types'
 
 export async function POST(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams
