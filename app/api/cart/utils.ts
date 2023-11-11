@@ -26,13 +26,10 @@ mutation ($input: CartInput) {
 `
 
 export const UPDATE_LINES_QUERY = `
-mutation {
+mutation ($cartId: String!, $lines: [CartLineInput!]) {
   cartLinesUpdate(
-    cartId: "gid://shopify/Cart/1"
-    lines: {
-      id: "gid://shopify/CartLine/1"
-      quantity: 3
-    }
+    cartId: $cartId
+    lines: $lines
   ) {
     cart {
       id
@@ -47,24 +44,6 @@ mutation {
               }
             }
           }
-        }
-      }
-      cost {
-        totalAmount {
-          amount
-          currencyCode
-        }
-        subtotalAmount {
-          amount
-          currencyCode
-        }
-        totalTaxAmount {
-          amount
-          currencyCode
-        }
-        totalDutyAmount {
-          amount
-          currencyCode
         }
       }
     }
