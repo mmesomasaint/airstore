@@ -1,6 +1,6 @@
 type Merchandise = {
   quantity: number
-  merchandisId: string
+  id: string
 }
 
 export const CREATE_CART_QUERY = `
@@ -147,7 +147,7 @@ mutation ($cartId: String!, $buyerIdentity: BuyerIdentity) {
 export function generateCreateCartInput(lines: Merchandise[]) {
   return {
     input: {
-      lines,
+      lines: generateCartLinesInput(lines),
       buyerIdentity: {
         email: 'exampler@example.com',
         countryCode: 'NG',
@@ -176,7 +176,7 @@ export function generateCreateCartInput(lines: Merchandise[]) {
  * @returns A list of products(merchandise) that can be passed to query
  */
 export function generateCartLinesInput(
-  lines: { id: string; quantity: number }[]
+  lines: Merchandise[]
 ) {
   return lines.map(({ id, quantity }) => ({ merchandiseId: id, quantity }))
 }
