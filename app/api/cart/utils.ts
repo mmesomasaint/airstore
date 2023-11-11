@@ -124,8 +124,6 @@ export const RETRIEVE_CART_QUERY = `
 query ($cartId: String!) {
   cart(id: $cartId) {
     id
-    createdAt
-    updatedAt
     lines(first: 10) {
       node {
         id
