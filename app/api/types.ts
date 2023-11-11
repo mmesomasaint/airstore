@@ -66,3 +66,19 @@ export interface FullCartQueryResult {
     }
   }
 }
+
+export interface CollectionFilterQueryResult {
+  products: {
+    nodes: {
+      priceRange: {
+        minVariantPrice: {
+          amount: string
+        }
+      }
+      options: {
+        name: string
+        values: string[]
+      }[]
+    }[]
+  }
+}

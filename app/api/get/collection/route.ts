@@ -2,11 +2,11 @@ import { shopifyFetch } from '@/lib/fetch'
 import { MiniProductQueryResult, cleanMiniProduct } from '../../search/utils'
 import { NextRequest } from 'next/server'
 import {
-  CollectionFilterQueryResult,
   convertToFilter,
   generateFilters,
 } from './utils'
 import { GET_COLLECTION_FILTER_KEYS, GET_COLLECTION_PRODUCTS } from '../../query'
+import { CollectionFilterQueryResult } from '../../types'
 
 export async function POST(Request: NextRequest) {
   const searchParams = Request.nextUrl.searchParams
