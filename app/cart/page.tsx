@@ -17,8 +17,10 @@ import { OutlineButton } from '@/theme/components/outline-btns'
 import Button from '@/theme/elements/button'
 import useSearch from '@/theme/components/useSearch'
 import Header from '@/theme/components/header'
+import { useCart } from '../cart'
 
 export default function Checkout() {
+  const {cartId} = useCart()
   const {
     searchText,
     filter,
