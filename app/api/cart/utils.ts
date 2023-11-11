@@ -139,6 +139,11 @@ mutation ($cartId: String!, $buyerIdentity: BuyerIdentity) {
 }
 `
 
+/**
+ * Generates an input object from a list of products.
+ * @param lines - List of products id and quantity choosen by customer.
+ * @returns An input object that is passed to query to create a cart.
+ */
 export function generateCreateCartInput(lines: Merchandise[]) {
   return {
     input: {
@@ -165,6 +170,11 @@ export function generateCreateCartInput(lines: Merchandise[]) {
   }
 }
 
+/**
+ * Generates a list of products that can be passed as parameter to query.
+ * @param lines - List of products id and quantity choosen by customer 
+ * @returns A list of products(merchandise) that can be passed to query
+ */
 export function generateCartLinesInput(lines: {id: string, quantity: number}[]) {
   return lines.map(({id, quantity}) => ({merchandiseId: id, quantity}))
 }
