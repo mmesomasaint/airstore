@@ -117,17 +117,16 @@ query ($cartId: String!) {
   }
 }
 `
+// check this as BuyerIdentity
+// {
+//   email: "example@example.com"
+//   phone: "555-555-555"
+//   countryCode: CA
+// }
 
 export const UPDATE_CUSTOMER_QUERY = `
-mutation {
-  cartBuyerIdentityUpdate(
-    cartId: "gid://shopify/Cart/1"
-    buyerIdentity: {
-      email: "example@example.com"
-      phone: "555-555-555"
-      countryCode: CA
-    }
-  ) {
+mutation ($cartId: String!, $buyerIdentity: BuyerIdentity) {
+  cartBuyerIdentityUpdate(cartId: $cartId, buyerIdentity: $buyerIdentity) {
     cart {
       id
       buyerIdentity {
