@@ -172,9 +172,11 @@ export function generateCreateCartInput(lines: Merchandise[]) {
 
 /**
  * Generates a list of products that can be passed as parameter to query.
- * @param lines - List of products id and quantity choosen by customer 
+ * @param lines - List of products id and quantity choosen by customer
  * @returns A list of products(merchandise) that can be passed to query
  */
-export function generateCartLinesInput(lines: {id: string, quantity: number}[]) {
-  return lines.map(({id, quantity}) => ({merchandiseId: id, quantity}))
+export function generateCartLinesInput(
+  lines: { id: string; quantity: number }[]
+) {
+  return lines.map(({ id, quantity }) => ({ merchandiseId: id, quantity }))
 }
