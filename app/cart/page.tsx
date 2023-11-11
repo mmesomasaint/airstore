@@ -35,21 +35,20 @@ export default function Checkout() {
 
   useEffect(() => {
     if (cartId) {
-      
-    fetch(`/api/cart?cartId${cartId}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.body) {
-          // Store the retrieved cart.
-        }
+      fetch(`/api/cart?cartId${cartId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
       })
-      .catch((e) => console.error(e))
-      .finally(() => setLoading(false))
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.body) {
+            // Store the retrieved cart.
+          }
+        })
+        .catch((e) => console.error(e))
+        .finally(() => setLoading(false))
     }
   }, [cartId])
 
