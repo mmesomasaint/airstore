@@ -2,12 +2,11 @@ import { shopifyFetch } from '@/lib/fetch'
 import { MiniProductQueryResult, cleanMiniProduct } from '../../search/utils'
 import { NextRequest } from 'next/server'
 import {
-  COLLECTION_QUERY,
   CollectionFilterQueryResult,
-  FILTER_QUERY,
   convertToFilter,
   generateFilters,
 } from './utils'
+import { GET_COLLECTION_FILTER_KEYS, GET_COLLECTION_PRODUCTS } from '../../query'
 
 export async function POST(Request: NextRequest) {
   const searchParams = Request.nextUrl.searchParams
@@ -20,7 +19,7 @@ export async function POST(Request: NextRequest) {
     filter: generateFilters(collectionFilter),
   }
   const { status, body } = await shopifyFetch({
-    query: COLLECTION_QUERY,
+    query: GET_COLLECTION_PRODUCTS,
     variables,
   })
 
@@ -52,7 +51,7 @@ export async function GET(Request: NextRequest) {
     limit: 24,
   }
   const { status, body } = await shopifyFetch({
-    query: FILTER_QUERY,
+    query: GET_COLLECTION_FILTER_KEYS,
     variables,
   })
 
