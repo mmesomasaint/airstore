@@ -22,37 +22,6 @@ interface MiniCartQueryResult {
   }
 }
 
-/**
- * Converts lines query results to a cleaner format.
- * @param line - List of merchandise gotten from querying for cart
- * @returns A cleaner format that can be used by components
- */
-export function cleanCartLinesResult(line: CartLine) {
-  const {id, quantity, merchandise, attributes} = line
-
-  return {
-    id,
-    quantity,
-    merchandiseId: merchandise.id,
-    attributes
-  }
-}
-
-/**
- * Converts cart query result to a cleaner format.
- * @param miniCartResult A result gotten from querying for mini cart
- * @returns A cleaner format of cart that can be used by components
- */
-export function cleanMiniCartResult(miniCartResult: MiniCartQueryResult) {
-  const {id, lines} = miniCartResult
-  const cartLines = lines.nodes.map(node => cleanCartLinesResult(node))
-
-  return {
-    id,
-    cartLines
-  }
-}
-
 interface FullCartQueryResult {
   id: string
   lines: {
@@ -275,4 +244,35 @@ export function generateCreateCartInput(lines: Merchandise[]) {
  */
 export function generateCartLinesInput(lines: Merchandise[]) {
   return lines.map(({ id, quantity }) => ({ merchandiseId: id, quantity }))
+}
+
+/**
+ * Converts lines query results to a cleaner format.
+ * @param line - List of merchandise gotten from querying for cart
+ * @returns A cleaner format that can be used by components
+ */
+export function cleanCartLinesResult(line: CartLine) {
+  const {id, quantity, merchandise, attributes} = line
+
+  return {
+    id,
+    quantity,
+    merchandiseId: merchandise.id,
+    attributes
+  }
+}
+
+/**
+ * Converts cart query result to a cleaner format.
+ * @param miniCartResult A result gotten from querying for mini cart
+ * @returns A cleaner format of cart that can be used by components
+ */
+export function cleanMiniCartResult(miniCartResult: MiniCartQueryResult) {
+  const {id, lines} = miniCartResult
+  const cartLines = lines.nodes.map(node => cleanCartLinesResult(node))
+
+  return {
+    id,
+    cartLines
+  }
 }
