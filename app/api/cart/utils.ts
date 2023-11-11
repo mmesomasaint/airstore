@@ -12,6 +12,10 @@ interface MiniCartQueryResult {
       merchandise: {
         id: string
       }
+      attributes: {
+        key: string
+        value: string
+      }[]
     }[]
   }
 }
@@ -29,6 +33,10 @@ mutation ($input: CartInput) {
             ... on ProductVariant {
               id
             }
+          }
+          attributes {
+            key
+            value
           }
         }
       }
@@ -53,6 +61,10 @@ mutation ($cartId: String!, $lines: [CartLineInput!]) {
             ... on ProductVariant {
               id
             }
+          }
+          attributes {
+            key
+            value
           }
         }
       }
