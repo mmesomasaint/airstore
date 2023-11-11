@@ -72,6 +72,24 @@ export default function CartProvider({
         })
         .catch((e) => console.error(e))
         .finally(() => setLoading(false))
+    } else {
+      fetch(`/api/cart/update?cartId=${cartId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ cartLines }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.body) {
+            setCartId(data.body?.cartId)
+            setCartLines(data.body?.cartLines)
+            cookies.set('cart_id', data.body?.cartId)
+          }
+        })
+        .catch((e) => console.error(e))
+        .finally(() => setLoading(false))
     }
 
     setLoading(false)
