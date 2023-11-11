@@ -1,6 +1,10 @@
 import { shopifyFetch } from '@/lib/fetch'
 import { NextRequest } from 'next/server'
-import { CREATE_CART_QUERY, cleanMiniCartResult, generateCreateCartInput } from '../utils'
+import {
+  CREATE_CART_QUERY,
+  cleanMiniCartResult,
+  generateCreateCartInput,
+} from '../utils'
 
 export default async function POST(Request: NextRequest) {
   const { cartLines } = await Request.json()
