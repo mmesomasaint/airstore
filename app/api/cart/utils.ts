@@ -3,19 +3,31 @@ type Merchandise = {
   id: string
 }
 
+interface MiniCartQueryResult {
+  id: string
+  lines: {
+    nodes: {
+      id: string
+      quantity: number
+      merchandise: {
+        id: string
+      }
+    }[]
+  }
+}
+
 export const CREATE_CART_QUERY = `
 mutation ($input: CartInput) {
   cartCreate(input: $input) {
     cart {
       id
       lines(first: 10) {
-        edges {
-          node {
-            id
-            merchandise {
-              ... on ProductVariant {
-                id
-              }
+        nodes {
+          id
+          quantity
+          merchandise {
+            ... on ProductVariant {
+              id
             }
           }
         }
@@ -34,14 +46,12 @@ mutation ($cartId: String!, $lines: [CartLineInput!]) {
     cart {
       id
       lines(first: 10) {
-        edges {
-          node {
-            id
-            quantity
-            merchandise {
-              ... on ProductVariant {
-                id
-              }
+        nodes {
+          id
+          quantity
+          merchandise {
+            ... on ProductVariant {
+              id
             }
           }
         }
@@ -58,19 +68,17 @@ query ($cartId: String!) {
     createdAt
     updatedAt
     lines(first: 10) {
-      edges {
-        node {
-          id
-          quantity
-          merchandise {
-            ... on ProductVariant {
-              id
-            }
+      node {
+        id
+        quantity
+        merchandise {
+          ... on ProductVariant {
+            id
           }
-          attributes {
-            key
-            value
-          }
+        }
+        attributes {
+          key
+          value
         }
       }
     }
