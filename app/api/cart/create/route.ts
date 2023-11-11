@@ -4,8 +4,8 @@ import { CREATE_CART_QUERY, cleanMiniCartResult } from '../utils'
 
 export default async function POST(Request: NextRequest) {
   const { cartLines } = await Request.json()
-
   const variables = { cartLines }
+  
   const { status, body } = await shopifyFetch({
     query: CREATE_CART_QUERY,
     variables,
