@@ -1,6 +1,6 @@
 import { shopifyFetch } from '@/lib/fetch'
-import { cleanFilterQueryResult } from './utils'
 import { GET_SEARCH_FILTER_KEYS } from '../../query'
+import { cleanFilterQueryResult } from '../../utils'
 
 const LIMIT = 20
 

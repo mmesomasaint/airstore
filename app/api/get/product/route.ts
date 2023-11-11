@@ -1,7 +1,7 @@
 import { shopifyFetch } from '@/lib/fetch'
-import { cleanProduct } from './utils'
 import { NextRequest } from 'next/server'
 import { RETRIEVE_PRODUCT } from '../../query'
+import { cleanProduct } from '../../utils'
 
 const LIMIT = 20
 

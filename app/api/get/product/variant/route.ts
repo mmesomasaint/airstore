@@ -1,7 +1,7 @@
 import { shopifyFetch } from '@/lib/fetch'
-import { cleanProductToVariant } from './utils'
 import { NextRequest } from 'next/server'
 import { GET_VARIANTS_BY_SELECTED_OPTIONS } from '@/app/api/query'
+import { cleanProductToVariant } from '@/app/api/utils'
 
 export async function POST(Request: NextRequest) {
   const searchParams = Request.nextUrl.searchParams

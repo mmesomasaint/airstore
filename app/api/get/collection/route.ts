@@ -1,5 +1,4 @@
 import { shopifyFetch } from '@/lib/fetch'
-import { cleanMiniProduct } from '../../search/utils'
 import { NextRequest } from 'next/server'
 import {
   convertToFilter,
@@ -7,6 +6,7 @@ import {
 } from './utils'
 import { GET_COLLECTION_FILTER_KEYS, GET_COLLECTION_PRODUCTS } from '../../query'
 import { CollectionFilterQueryResult, MiniProductQueryResult } from '../../types'
+import { cleanMiniProduct } from '../../utils'
 
 export async function POST(Request: NextRequest) {
   const searchParams = Request.nextUrl.searchParams
