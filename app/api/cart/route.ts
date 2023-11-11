@@ -1,6 +1,7 @@
 import { NextRequest } from 'next/server'
-import { RETRIEVE_CART_QUERY, cleanFullCartResult } from './utils'
+import { cleanFullCartResult } from './utils'
 import { shopifyFetch } from '@/lib/fetch'
+import { RETRIEVE_CART } from '../query'
 
 export async function GET(Request: NextRequest) {
   const searchParams = Request.nextUrl.searchParams
@@ -8,7 +9,7 @@ export async function GET(Request: NextRequest) {
 
   const variables = { cartId }
   const { status, body } = await shopifyFetch({
-    query: RETRIEVE_CART_QUERY,
+    query: RETRIEVE_CART,
     variables,
   })
 

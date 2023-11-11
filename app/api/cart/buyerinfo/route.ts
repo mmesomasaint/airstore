@@ -1,6 +1,6 @@
 import { shopifyFetch } from '@/lib/fetch'
 import { NextRequest } from 'next/server'
-import { UPDATE_CUSTOMER_QUERY } from '../utils'
+import { UPDATE_CUSTOMER_INFO } from '../../query'
 
 export default async function POST(Request: NextRequest) {
   const searchParams = Request.nextUrl.searchParams
@@ -12,7 +12,7 @@ export default async function POST(Request: NextRequest) {
     buyerIdentity,
   }
   const { status, body } = await shopifyFetch({
-    query: UPDATE_CUSTOMER_QUERY,
+    query: UPDATE_CUSTOMER_INFO,
     variables,
   })
 

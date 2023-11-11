@@ -1,17 +1,17 @@
 import { NextRequest } from 'next/server'
 import {
-  UPDATE_LINES_QUERY,
   cleanMiniCartResult,
   generateCartLinesInput,
 } from '../utils'
 import { shopifyFetch } from '@/lib/fetch'
+import { UPDATE_CART_LINES } from '../../query'
 
 export default async function POST(Request: NextRequest) {
   const { cartLines } = await Request.json()
   const variables = { cartLines: generateCartLinesInput(cartLines) }
 
   const { status, body } = await shopifyFetch({
-    query: UPDATE_LINES_QUERY,
+    query: UPDATE_CART_LINES,
     variables,
   })
 
