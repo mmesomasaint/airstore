@@ -1,5 +1,6 @@
 import { shopifyFetch } from '@/lib/fetch'
-import { query, cleanFilterQueryResult } from './utils'
+import { cleanFilterQueryResult } from './utils'
+import { GET_SEARCH_FILTER_KEYS } from '../../query'
 
 const LIMIT = 20
 
@@ -7,7 +8,7 @@ export async function GET() {
   const variables = {
     first: LIMIT,
   }
-  const { status, body } = await shopifyFetch({ query, variables })
+  const { status, body } = await shopifyFetch({ query: GET_SEARCH_FILTER_KEYS, variables })
 
   if (status === 200) {
     const filter = cleanFilterQueryResult(body.data?.products)

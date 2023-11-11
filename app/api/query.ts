@@ -193,3 +193,28 @@ export const GET_COLLECTION_FILTER_KEYS = `
     }
   }
 `
+
+export const GET_SEARCH_FILTER_KEYS = `
+query GetFilters($first: Int) {
+  products(first: $first) {
+    nodes {
+      id
+      createdAt
+      priceRange {
+        minVariantPrice {
+          amount
+        }
+      }
+      options {
+        name
+        values
+      }
+      collections (first: $first) {
+        nodes {
+          title
+        }
+      }
+    }
+  }
+}
+`
