@@ -164,3 +164,7 @@ export function generateCreateCartInput(lines: Merchandise[]) {
     },
   }
 }
+
+export function generateCartLinesInput(lines: {id: string, quantity: number}[]) {
+  return lines.map(({id, quantity}) => ({merchandiseId: id, quantity}))
+}
