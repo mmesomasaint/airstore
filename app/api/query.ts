@@ -270,3 +270,40 @@ query Product($handle: String!) {
   }
 }
 `
+
+export const SEARCH_AND_FILTER_PRODUCTS = `
+query AllProducts($first: Int, $query: String) {
+  products(first: $first, query: $query) {
+    edges {
+      node {
+        id
+        title
+        handle
+        featuredImage {
+          url
+        }
+        priceRange {
+          minVariantPrice {
+            amount
+          }
+        }
+        compareAtPriceRange {
+          maxVariantPrice {
+            amount
+          }
+        }
+        options {
+          name
+          values
+        }
+        collections(first: 10) {
+          nodes {
+            handle
+            title
+          }
+        }
+      }
+    }
+  }
+}
+`

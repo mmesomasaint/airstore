@@ -1,11 +1,11 @@
 import { shopifyFetch } from '@/lib/fetch'
 import { NextRequest } from 'next/server'
 import {
-  query,
   cleanMiniProduct,
   MiniProductQueryResult,
   generateFilterQuery,
 } from './utils'
+import { SEARCH_AND_FILTER_PRODUCTS } from '../query'
 
 export async function POST(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams
@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
       parsedFilter?.dateAdded ? ' AND ' + parsedFilter.dateAdded : ''
     }`,
   }
-  const { status, body } = await shopifyFetch({ query, variables })
+  const { status, body } = await shopifyFetch({ query: SEARCH_AND_FILTER_PRODUCTS, variables })
 
   if (status === 200) {
     let results = body.data?.products.edges
