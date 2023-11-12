@@ -88,6 +88,9 @@ export default function Checkout() {
 }
 
 function DisplayCartInfo({ cart }: { cart: Cart }) {
+  const {id, cartLines, attributes, cost, buyerIdentity} = cart
+  const toCurrency = (value: number) => value.toLocaleString('en-US')
+
   return (
     <div className='grow grid grid-cols-[repeat(14,_minmax(0,_1fr))] gap-5 place-items-start'>
       <div className='col-span-11 w-full'>
@@ -118,14 +121,14 @@ function DisplayCartInfo({ cart }: { cart: Cart }) {
               <div className='w-20 h-20 rounded-2xl border border-store-outline-faded-max' />
               <div className='flex flex-col gap-4'>
                 <div className='flex flex-col gap-1'>
-                  <TextXSmall>Bayu Onyedike</TextXSmall>
-                  <TextTiny fadedMax>0805332803</TextTiny>
+                  <TextXSmall>{buyerIdentity.email}</TextXSmall>
+                  <TextTiny fadedMax>{buyerIdentity.phone}</TextTiny>
                 </div>
                 <div className='flex flex-col gap-1'>
                   <TextTiny fadedMax>
-                    No 1709, lockestreet avenue nwanghabu
+                    {buyerIdentity.address1}
                   </TextTiny>
-                  <TextTiny fadedMax>Port Harcourt</TextTiny>
+                  <TextTiny fadedMax>{buyerIdentity.city}</TextTiny>
                 </div>
               </div>
             </div>
@@ -165,22 +168,22 @@ function DisplayCartInfo({ cart }: { cart: Cart }) {
             <div className='flex flex-col gap-2'>
               <div className='flex justify-between items-center gap-2'>
                 <TextTiny faded>Sum Total</TextTiny>
-                <TextXSmall>$2,690.16</TextXSmall>
+                <TextXSmall>&#8358;{toCurrency(cost.subtotalAmount)}</TextXSmall>
               </div>
               <div className='flex justify-between items-center gap-2'>
                 <TextTiny faded>Shipping Cost</TextTiny>
-                <TextXSmall>$25</TextXSmall>
+                <TextXSmall>&#8358;{toCurrency(cost.totalDutyAmount)}</TextXSmall>
               </div>
               <div className='flex justify-between items-center gap-2'>
                 <TextTiny faded>Tax(10%)</TextTiny>
-                <TextXSmall>$538.3</TextXSmall>
+                <TextXSmall>&#8358;{toCurrency(cost.totalTaxAmount)}</TextXSmall>
               </div>
             </div>
           </HR>
           <div className='flex flex-col gap-3'>
             <div className='flex justify-between items-center gap-2'>
               <TextXSmall faded>Total</TextXSmall>
-              <TextMid>$3,252.19</TextMid>
+              <TextMid>&#8358;{toCurrency(cost.totalAmount)}</TextMid>
             </div>
             <Button fillPrimary>Pay Now</Button>
           </div>
