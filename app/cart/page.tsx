@@ -114,8 +114,10 @@ function DisplayCartInfo({ cart }: { cart: Cart }) {
             {cartLines.map((cartLine) => {
               const { quantity, attributes } = cartLine
 
-              const optionsidx = attributes.findIndex(attribute => attribute.key === 'options')
-              const {variants} = JSON.parse(attributes[optionsidx].value)
+              const optionsidx = attributes.findIndex(
+                (attribute) => attribute.key === 'options'
+              )
+              const { variants } = JSON.parse(attributes[optionsidx].value)
 
               const src = attributes.findIndex(
                 (attribute) => attribute.key === 'src'

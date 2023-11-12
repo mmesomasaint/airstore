@@ -135,7 +135,10 @@ function ProductPanel({ product }: { product: FullProduct }) {
   }
 
   const addToCart = () => {
-    const options = JSON.stringify({options: selectedOptions.map((option) => option.value)})
+    const options = JSON.stringify({
+      options: selectedOptions.map((option) => option.value),
+    })
+    
     const newMerchandise = {
       id: '',
       quantity: amount,
@@ -144,7 +147,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
         { key: 'price', value: `${variant?.price ?? product.price}` },
         { key: 'src', value: product.images[0].url ?? '' },
         { key: 'note', value: note ?? '' },
-        {key: 'options', value: options}
+        { key: 'options', value: options },
       ],
     }
 
