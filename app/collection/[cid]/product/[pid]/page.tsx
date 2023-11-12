@@ -142,9 +142,9 @@ function ProductPanel({ product }: { product: FullProduct }) {
       quantity: amount,
       attributes: [
         { key: 'title', value: product.title },
-        { key: 'price', value: variant?.price },
-        { key: 'src', value: product.images[0].url },
-        { key: 'note', value: note },
+        { key: 'price', value: `${variant?.price ?? product.price}` },
+        { key: 'src', value: product.images[0].url ?? '' },
+        { key: 'note', value: note ?? '' },
         ...options,
       ],
     }
