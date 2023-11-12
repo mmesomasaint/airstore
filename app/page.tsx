@@ -1,5 +1,5 @@
-import Header from "@/theme/components/header";
-import useSearch from "@/theme/components/useSearch";
+import Header from '@/theme/components/header'
+import useSearch from '@/theme/components/useSearch'
 
 export default function Home() {
   const {
