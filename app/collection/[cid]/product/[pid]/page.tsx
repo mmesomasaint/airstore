@@ -110,7 +110,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
     name: option.name,
     value: option.values[0],
   }))
-  const {updateCart} = useCart()
+  const { updateCart } = useCart()
   const [amount, setAmount] = useState<number>(1)
   const [variant, setVariant] = useState<Variant>()
   const [selectedOptions, setSelectedOptions] = useState<
@@ -132,17 +132,20 @@ function ProductPanel({ product }: { product: FullProduct }) {
   }
 
   const addToCart = () => {
-    const options = selectedOptions.map(option => ({key: `option-${option.name}`, value: option.value}))
+    const options = selectedOptions.map((option) => ({
+      key: `option-${option.name}`,
+      value: option.value,
+    }))
     const newMerchandise = {
       id: '',
       quantity: amount,
       attributes: [
-        {key: 'title', value: product.title},
-        {key: 'price', value: variant?.price},
-        {key: 'src', value: product.images[0].url},
-        {key: 'note', value: note},
-        ...options
-      ]
+        { key: 'title', value: product.title },
+        { key: 'price', value: variant?.price },
+        { key: 'src', value: product.images[0].url },
+        { key: 'note', value: note },
+        ...options,
+      ],
     }
 
     updateCart(newMerchandise)
