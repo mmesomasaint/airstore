@@ -117,7 +117,7 @@ function DisplayCartInfo({ cart }: { cart: Cart }) {
               const optionsidx = attributes.findIndex(
                 (attribute) => attribute.key === 'options'
               )
-              const { variants } = JSON.parse(attributes[optionsidx].value)
+              const { options } = JSON.parse(attributes[optionsidx].value)
 
               const src = attributes.findIndex(
                 (attribute) => attribute.key === 'src'
@@ -137,7 +137,7 @@ function DisplayCartInfo({ cart }: { cart: Cart }) {
                   src={attributes[src].value}
                   title={attributes[title].value}
                   amount={quantity}
-                  variants={variants}
+                  variants={options}
                   note={attributes[note].value}
                   price={parseInt(attributes[price].value)}
                 />
