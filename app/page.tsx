@@ -1,11 +1,28 @@
-import Link from "next/link";
+import Header from "@/theme/components/header";
+import useSearch from "@/theme/components/useSearch";
 
 export default function Home() {
+  const {
+    searchText,
+    filter,
+    categories,
+    setSearchText,
+    resetCategories,
+    setCategory,
+    searchHandler,
+  } = useSearch()
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Link href='/search/' className="bg-store-pri rounded-md shadow-sm text-white text-lg font-semibold tracking-wider px-4 py-2">
-        Search
-      </Link>
+    <main className='min-h-screen flex flex-col'>
+      <Header
+        searchText={searchText}
+        setSearchText={setSearchText}
+        filter={filter}
+        categories={categories}
+        resetCategories={resetCategories}
+        setCategory={setCategory}
+        searchClick={searchHandler}
+      />
     </main>
   )
 }
