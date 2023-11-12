@@ -111,6 +111,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
     value: option.values[0],
   }))
   const { updateCart } = useCart()
+  const [note, setNote] = useState<string>()
   const [amount, setAmount] = useState<number>(1)
   const [variant, setVariant] = useState<Variant>()
   const [selectedOptions, setSelectedOptions] = useState<
@@ -306,8 +307,10 @@ function ProductPanel({ product }: { product: FullProduct }) {
             <TextXSmall>Add Notes</TextXSmall>
             <textarea
               rows={6}
+              value={note}
               className='p-2 border border-store-outline-faded-max rounded-xl text-xs'
               placeholder='Type here..'
+              onChange={(e) => setNote(e.target.value)}
             />
           </div>
         </HR>
