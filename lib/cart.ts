@@ -10,7 +10,7 @@ export interface Cart {
     quantity: number
     merchandiseId: string
     attributes: CartAttribute[]
-  }
+  }[]
   attributes: CartAttribute[]
   cost: {
     totalAmount: number
