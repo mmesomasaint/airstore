@@ -75,7 +75,9 @@ export default function Checkout() {
             <TextTiny faded>Cart</TextTiny>
           </span>
         </div>
-        {cart?.id ? <DisplayCartInfo cart={cart} /> : (
+        {cart?.id ? (
+          <DisplayCartInfo cart={cart} />
+        ) : (
           <div className='flex justify-center items-center'>
             <TextXSmall faded>Your cart is empty.</TextXSmall>
           </div>
@@ -85,7 +87,7 @@ export default function Checkout() {
   )
 }
 
-function DisplayCartInfo({cart}: {cart: Cart}) {
+function DisplayCartInfo({ cart }: { cart: Cart }) {
   return (
     <div className='grow grid grid-cols-[repeat(14,_minmax(0,_1fr))] gap-5 place-items-start'>
       <div className='col-span-11 w-full'>
@@ -185,5 +187,5 @@ function DisplayCartInfo({cart}: {cart: Cart}) {
         </div>
       </div>
     </div>
-    )
+  )
 }
