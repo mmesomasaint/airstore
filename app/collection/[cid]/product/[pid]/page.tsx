@@ -326,7 +326,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
           </div>
           <div className='flex flex-col gap-2'>
             <Button fillPrimary>Buy Now</Button>
-            <Button outlinePrimary>Add to Cart</Button>
+            <Button onClick={addToCart} outlinePrimary>Add to Cart</Button>
           </div>
           <div className='flex justify-between items-center gap-2 text-store-outline-faded-max'>
             <div className='flex justify-start items-center gap-1'>
