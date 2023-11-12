@@ -22,6 +22,7 @@ import Header from '@/theme/components/header'
 import useSearch from '@/theme/components/useSearch'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { FullProduct, Variant } from '@/lib/product'
 import Loading from '@/theme/components/loading'
 import { useCart } from '@/app/cart'
@@ -117,6 +118,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
   const [selectedOptions, setSelectedOptions] = useState<
     Record<string, string>[]
   >(initialSelectedOptions)
+  const router = useRouter()
 
   const addToSelectedOptions = (name: string, value: string) => {
     const prevIdx = selectedOptions.findIndex((option) => option.name === name)
@@ -325,7 +327,10 @@ function ProductPanel({ product }: { product: FullProduct }) {
             </TextMid>
           </div>
           <div className='flex flex-col gap-2'>
-            <Button fillPrimary>Buy Now</Button>
+            <Button onClick={() => {
+              addToCart()
+              router.push('/cart')
+            }} fillPrimary>Buy Now</Button>
             <Button onClick={addToCart} outlinePrimary>Add to Cart</Button>
           </div>
           <div className='flex justify-between items-center gap-2 text-store-outline-faded-max'>
