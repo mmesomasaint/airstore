@@ -24,6 +24,7 @@ import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { FullProduct, Variant } from '@/lib/product'
 import Loading from '@/theme/components/loading'
+import { useCart } from '@/app/cart'
 
 export default function Home() {
   const { cid, pid } = useParams()
@@ -109,6 +110,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
     name: option.name,
     value: option.values[0],
   }))
+  const {updateCart} = useCart()
   const [amount, setAmount] = useState<number>(1)
   const [variant, setVariant] = useState<Variant>()
   const [selectedOptions, setSelectedOptions] = useState<
@@ -127,6 +129,23 @@ function ProductPanel({ product }: { product: FullProduct }) {
       newSelectedOptions[prevIdx].value = value
       setSelectedOptions(newSelectedOptions)
     }
+  }
+
+  const addToCart = () => {
+    const options = selectedOptions.map(option => ({key: `option-${option.name}`, value: option.value}))
+    const newMerchandise = {
+      id: '',
+      quantity: amount,
+      attributes: [
+        {key: 'title', value: product.title},
+        {key: 'price', value: variant?.price},
+        {key: 'src', value: product.images[0].url},
+        {key: 'note', value: note},
+        ...options
+      ]
+    }
+
+    updateCart(newMerchandise)
   }
 
   useEffect(() => {
