@@ -88,7 +88,7 @@ export default function Checkout() {
 }
 
 function DisplayCartInfo({ cart }: { cart: Cart }) {
-  const { id, cartLines, attributes, cost, buyerIdentity } = cart
+  const { cartLines, cost, buyerIdentity } = cart
   const toCurrency = (value: number) => value.toLocaleString('en-US')
 
   return (
