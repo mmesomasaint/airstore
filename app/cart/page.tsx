@@ -88,7 +88,7 @@ export default function Checkout() {
 }
 
 function DisplayCartInfo({ cart }: { cart: Cart }) {
-  const {id, cartLines, attributes, cost, buyerIdentity} = cart
+  const { id, cartLines, attributes, cost, buyerIdentity } = cart
   const toCurrency = (value: number) => value.toLocaleString('en-US')
 
   return (
@@ -125,9 +125,7 @@ function DisplayCartInfo({ cart }: { cart: Cart }) {
                   <TextTiny fadedMax>{buyerIdentity.phone}</TextTiny>
                 </div>
                 <div className='flex flex-col gap-1'>
-                  <TextTiny fadedMax>
-                    {buyerIdentity.address1}
-                  </TextTiny>
+                  <TextTiny fadedMax>{buyerIdentity.address1}</TextTiny>
                   <TextTiny fadedMax>{buyerIdentity.city}</TextTiny>
                 </div>
               </div>
@@ -168,15 +166,21 @@ function DisplayCartInfo({ cart }: { cart: Cart }) {
             <div className='flex flex-col gap-2'>
               <div className='flex justify-between items-center gap-2'>
                 <TextTiny faded>Sum Total</TextTiny>
-                <TextXSmall>&#8358;{toCurrency(cost.subtotalAmount)}</TextXSmall>
+                <TextXSmall>
+                  &#8358;{toCurrency(cost.subtotalAmount)}
+                </TextXSmall>
               </div>
               <div className='flex justify-between items-center gap-2'>
                 <TextTiny faded>Shipping Cost</TextTiny>
-                <TextXSmall>&#8358;{toCurrency(cost.totalDutyAmount)}</TextXSmall>
+                <TextXSmall>
+                  &#8358;{toCurrency(cost.totalDutyAmount)}
+                </TextXSmall>
               </div>
               <div className='flex justify-between items-center gap-2'>
                 <TextTiny faded>Tax(10%)</TextTiny>
-                <TextXSmall>&#8358;{toCurrency(cost.totalTaxAmount)}</TextXSmall>
+                <TextXSmall>
+                  &#8358;{toCurrency(cost.totalTaxAmount)}
+                </TextXSmall>
               </div>
             </div>
           </HR>
