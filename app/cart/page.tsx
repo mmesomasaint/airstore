@@ -111,6 +111,25 @@ function DisplayCartInfo({ cart }: { cart: Cart }) {
               note='Please send quickly'
               price={2690.16}
             />
+            {cartLines.map(cartLine => {
+              const {quantity, attributes} = cartLine
+              const variants = attributes.filter(attribute => attribute.key.startsWith('option')).map(attribute => attribute.value)
+              const src = attributes.findIndex(attribute => attribute.key === 'src')
+              const title = attributes.findIndex(attribute => attribute.key === 'title')
+              const note = attributes.findIndex(attribute => attribute.key === 'note')
+              const price = attributes.findIndex(attribute => attribute.key === 'price')
+
+              return (
+                <HCard
+                  src={attributes[src].value}
+                  title={attributes[title].value}
+                  amount={quantity}
+                  variants={variants}
+                  note={attributes[note].value}
+                  price={parseInt(attributes[price].value)}
+                />
+              )
+            })}
           </HR>
           <div className='flex flex-col gap-4'>
             <div className='flex justify-between items-center gap-4'>
