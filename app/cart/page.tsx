@@ -19,11 +19,12 @@ import useSearch from '@/theme/components/useSearch'
 import Header from '@/theme/components/header'
 import { useCart } from '../cart'
 import { useEffect, useState } from 'react'
+import { Cart } from '@/lib/cart'
 
 export default function Checkout() {
   const { cartId } = useCart()
   const [loading, setLoading] = useState(true)
-  const [cart, setCart] = useState()
+  const [cart, setCart] = useState<Cart>()
   const {
     searchText,
     filter,
@@ -45,7 +46,7 @@ export default function Checkout() {
         .then((res) => res.json())
         .then((data) => {
           if (data.body) {
-            // Store the retrieved cart.
+            setCart(data.body)
           }
         })
         .catch((e) => console.error(e))
