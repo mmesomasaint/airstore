@@ -327,11 +327,18 @@ function ProductPanel({ product }: { product: FullProduct }) {
             </TextMid>
           </div>
           <div className='flex flex-col gap-2'>
-            <Button onClick={() => {
-              addToCart()
-              router.push('/cart')
-            }} fillPrimary>Buy Now</Button>
-            <Button onClick={addToCart} outlinePrimary>Add to Cart</Button>
+            <Button
+              onClick={() => {
+                addToCart()
+                router.push('/cart')
+              }}
+              fillPrimary
+            >
+              Buy Now
+            </Button>
+            <Button onClick={addToCart} outlinePrimary>
+              Add to Cart
+            </Button>
           </div>
           <div className='flex justify-between items-center gap-2 text-store-outline-faded-max'>
             <div className='flex justify-start items-center gap-1'>
