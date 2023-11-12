@@ -2,7 +2,6 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import cookies from 'js-cookie'
-import Loading from '@/theme/components/loading'
 
 type Merchandise = {
   id: string
@@ -109,7 +108,7 @@ export default function CartProvider({
         size: cartLines.length,
       }}
     >
-      {loading ? <Loading /> : children}
+      {children}
     </CartContext.Provider>
   )
 }
