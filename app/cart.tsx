@@ -7,6 +7,10 @@ import Loading from '@/theme/components/loading'
 type Merchandise = {
   id: string
   quantity: number
+  attributes: {
+    key: string
+    value: string
+  }[]
 }
 
 type CartContextType = {
