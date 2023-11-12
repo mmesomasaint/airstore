@@ -23,6 +23,7 @@ import { useEffect, useState } from 'react'
 export default function Checkout() {
   const { cartId } = useCart()
   const [loading, setLoading] = useState(true)
+  const [cart, setCart] = useState()
   const {
     searchText,
     filter,
