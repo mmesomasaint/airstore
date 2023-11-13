@@ -23,6 +23,9 @@ export default function Home() {
         setCategory={setCategory}
         searchClick={searchHandler}
       />
+      <div className='bg-gray-100/70 px-7 py-4 min-h-full grow grid grid-cols-6 gap-9 items-stretch'>
+        
+      </div>
     </main>
   )
 }
