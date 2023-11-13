@@ -3,7 +3,7 @@ import { NextRequest } from 'next/server'
 import { CREATE_CART } from '../../query'
 import { cleanMiniCartResult, generateCreateCartInput } from '../../utils'
 
-export default async function POST(Request: NextRequest) {
+export async function POST(Request: NextRequest) {
   const { cartLines } = await Request.json()
   const variables = { input: generateCreateCartInput(cartLines) }
 
