@@ -4,6 +4,7 @@ import Loading from '@/theme/components/loading'
 import { VCard } from '@/theme/components/product/card'
 import useSearch from '@/theme/components/useSearch'
 import Button from '@/theme/elements/button'
+import { TextXSmall } from '@/theme/elements/text'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
@@ -20,8 +21,6 @@ export default function Home() {
     setCategory,
     searchHandler,
   } = useSearch()
-
-  const DisplayLoading = () => loading && products.length <= 0 && <Loading />
 
   useEffect(() => {
     setLoading(true)
@@ -54,7 +53,8 @@ export default function Home() {
         searchClick={searchHandler}
       />
       <div className='bg-gray-100/70 px-7 py-4 min-h-full grow grid grid-cols-6 gap-9 items-stretch'>
-        <DisplayLoading />
+        {loading && products.length <= 0 && <Loading />}
+        {hasError && (<div className='flex justify-center items-center'><TextXSmall faded>An Error Occured!</TextXSmall></div>)}
         {products.length > 0 &&
           products.map((product: MiniProduct, id) => (
             <VCard
