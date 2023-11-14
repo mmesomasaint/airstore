@@ -19,4 +19,3 @@ export async function POST(Request: NextRequest) {
     return Response.json({ status: 500, message: 'Error receiving data' })
   }
 }
- 
