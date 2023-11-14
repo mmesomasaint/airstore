@@ -4,7 +4,7 @@ import Loading from '@/theme/components/loading'
 import { VCard } from '@/theme/components/product/card'
 import useSearch from '@/theme/components/useSearch'
 import Button from '@/theme/elements/button'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
   const [hasMore, setHasMore] = useState<boolean>(false)
@@ -21,6 +21,20 @@ export default function Home() {
   } = useSearch()
 
   const DisplayLoading = () => loading && products.length <= 0 && <Loading />
+
+  useEffect(() => {
+    setLoading(true)
+    fetch('/api/get/product/all', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((res) => res.json()).then((data) => {
+      setProducts(data.body?.results)
+      setHasMore(data.body?.pageInfo.hasNext)
+      setLoading(false)
+    })
+  }, [])
 
   return (
     <main className='min-h-screen flex flex-col'>
