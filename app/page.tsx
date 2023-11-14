@@ -23,6 +23,26 @@ export default function Home() {
     searchHandler,
   } = useSearch()
 
+  const loadMore = () => {
+    setLoading(true)
+    setHasError(false)
+
+    fetch(`/api/get/product/all?cursor=${cursor}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data.body?.results)
+        setHasMore(data.body?.pageInfo?.hasNext)
+        setCursor(data.body?.pageInfo?.cursor)
+      })
+      .catch(() => setHasError(true))
+      .finally(() => setLoading(false))
+  }
+
   useEffect(() => {
     setLoading(true)
     setHasError(false)
@@ -75,7 +95,7 @@ export default function Home() {
             />
           ))}
         {hasMore && (
-          <Button outlinePrimary>{loading ? 'Loading..' : 'Load More'}</Button>
+          <Button onClick={loadMore} outlinePrimary>{loading ? 'Loading..' : 'Load More'}</Button>
         )}
       </div>
     </main>
