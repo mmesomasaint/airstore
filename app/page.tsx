@@ -20,7 +20,7 @@ export default function Home() {
     searchHandler,
   } = useSearch()
 
-  const DisplayLoading = () => (loading && products.length <= 0) && <Loading />
+  const DisplayLoading = () => loading && products.length <= 0 && <Loading />
 
   return (
     <main className='min-h-screen flex flex-col'>
@@ -35,7 +35,7 @@ export default function Home() {
       />
       <div className='bg-gray-100/70 px-7 py-4 min-h-full grow grid grid-cols-6 gap-9 items-stretch'>
         <DisplayLoading />
-        {products.length > 0 && (
+        {products.length > 0 &&
           products.map((product: MiniProduct, id) => (
             <VCard
               key={`${product.src + id}`}
@@ -47,8 +47,10 @@ export default function Home() {
               colors={product.colors}
               collectionHandle={product.collectionHandle}
             />
-          )))}
-        {hasMore && <Button outlinePrimary>{loading ? 'Loading..' : 'Load More'}</Button>}
+          ))}
+        {hasMore && (
+          <Button outlinePrimary>{loading ? 'Loading..' : 'Load More'}</Button>
+        )}
       </div>
     </main>
   )
