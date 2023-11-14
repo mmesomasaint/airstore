@@ -24,7 +24,10 @@ export async function GET() {
       ({ node }: { node: MiniProductQueryResult }) => cleanMiniProduct(node)
     )
 
-    return Response.json({ status, body: {results: cleanedResults, pageInfo} })
+    return Response.json({
+      status,
+      body: { results: cleanedResults, pageInfo },
+    })
   } else
     return Response.json({ status: 500, message: 'Error receiving data..' })
 }
@@ -35,7 +38,7 @@ export async function POST(Request: NextRequest) {
 
   const variables = {
     first: LIMIT,
-    cursor
+    cursor,
   }
 
   const { status, body } = await shopifyFetch({
@@ -51,7 +54,10 @@ export async function POST(Request: NextRequest) {
       ({ node }: { node: MiniProductQueryResult }) => cleanMiniProduct(node)
     )
 
-    return Response.json({ status, body: {results: cleanedResults, pageInfo} })
+    return Response.json({
+      status,
+      body: { results: cleanedResults, pageInfo },
+    })
   } else
     return Response.json({ status: 500, message: 'Error receiving data..' })
 }
