@@ -2,11 +2,10 @@ import { RETRIEVE_ALL_PRODUCTS } from '@/app/api/query'
 import { MiniProductQueryResult } from '@/app/api/types'
 import { cleanMiniProduct } from '@/app/api/utils'
 import { shopifyFetch } from '@/lib/fetch'
-import { NextRequest } from 'next/server'
 
 const LIMIT = 24
 
-export async function GET(Request: NextRequest) {
+export async function GET() {
   const variables = {
     first: LIMIT,
   }
