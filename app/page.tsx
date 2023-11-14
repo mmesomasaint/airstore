@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react'
 export default function Home() {
   const [hasMore, setHasMore] = useState<boolean>(false)
   const [loading, setLoading] = useState<boolean>(true)
+  const [hasError, setHasError] = useState<boolean>(false)
   const [products, setProducts] = useState<MiniProduct[]>([])
   const {
     searchText,
@@ -24,6 +25,8 @@ export default function Home() {
 
   useEffect(() => {
     setLoading(true)
+    setHasError(false)
+
     fetch('/api/get/product/all', {
       method: 'GET',
       headers: {
@@ -34,8 +37,9 @@ export default function Home() {
       .then((data) => {
         setProducts(data.body?.results)
         setHasMore(data.body?.pageInfo.hasNext)
-        setLoading(false)
       })
+      .catch(() => setHasError(true))
+      .finally(() => setLoading(false))
   }, [])
 
   return (
