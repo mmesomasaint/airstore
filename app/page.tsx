@@ -8,6 +8,7 @@ import { TextXSmall } from '@/theme/elements/text'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
+  const [cursor, setCursor] = useState<string>('')
   const [hasMore, setHasMore] = useState<boolean>(false)
   const [loading, setLoading] = useState<boolean>(true)
   const [hasError, setHasError] = useState<boolean>(false)
@@ -35,7 +36,8 @@ export default function Home() {
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.body?.results)
-        setHasMore(data.body?.pageInfo.hasNext)
+        setHasMore(data.body?.pageInfo?.hasNext)
+        setCursor(data.body?.pageInfo?.cursor)
       })
       .catch(() => setHasError(true))
       .finally(() => setLoading(false))
