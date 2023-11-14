@@ -27,13 +27,15 @@ export default function Home() {
     fetch('/api/get/product/all', {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then((res) => res.json()).then((data) => {
-      setProducts(data.body?.results)
-      setHasMore(data.body?.pageInfo.hasNext)
-      setLoading(false)
+        'Content-Type': 'application/json',
+      },
     })
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data.body?.results)
+        setHasMore(data.body?.pageInfo.hasNext)
+        setLoading(false)
+      })
   }, [])
 
   return (
