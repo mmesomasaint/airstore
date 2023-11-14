@@ -54,7 +54,11 @@ export default function Home() {
       />
       <div className='bg-gray-100/70 px-7 py-4 min-h-full grow grid grid-cols-6 gap-9 items-stretch'>
         {loading && products.length <= 0 && <Loading />}
-        {hasError && (<div className='flex justify-center items-center'><TextXSmall faded>An Error Occured!</TextXSmall></div>)}
+        {hasError && (
+          <div className='flex justify-center items-center'>
+            <TextXSmall faded>An Error Occured!</TextXSmall>
+          </div>
+        )}
         {products.length > 0 &&
           products.map((product: MiniProduct, id) => (
             <VCard
