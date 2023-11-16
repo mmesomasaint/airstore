@@ -7,6 +7,7 @@ export default function Button({
   fillPrimary,
   fillFaded,
   onClick,
+  disabled,
   children,
 }: {
   children: React.ReactNode
@@ -15,11 +16,13 @@ export default function Button({
   outlinePrimary?: boolean
   fillPrimary?: boolean
   fillFaded?: boolean
+  disabled?: boolean
   onClick?: () => void
 }) {
   return (
     <button
       onClick={onClick}
+      disabled={disabled}
       className={`inline-block p-5 rounded-3xl border ${
         large && 'p-6 rounded-3xl'
       } ${full && 'w-full'} ${
