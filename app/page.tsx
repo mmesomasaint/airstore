@@ -95,7 +95,7 @@ export default function Home() {
             />
           ))}
         {hasMore && (
-          <Button onClick={loadMore} outlinePrimary>
+          <Button disabled={loading} onClick={loadMore} outlinePrimary>
             {loading ? 'Loading..' : 'Load More'}
           </Button>
         )}
