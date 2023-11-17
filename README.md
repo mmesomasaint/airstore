@@ -20,7 +20,7 @@ This store was deployed using the [Vercel Platform](https://vercel.com/). You ca
 
 Contributions are welcomed. Both for solving issues or for improvement of code.
 
-Remember to follow best practices.
+Remember to follow both react.js and Next.js best prodctices.
 
 ## Author
 
