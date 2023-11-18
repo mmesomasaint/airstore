@@ -24,4 +24,4 @@ Remember to follow both react.js and Next.js best prodctices.
 
 ## Author
 
-This store was developed by [Mmesoma Saint](https://github.com/mmesomasaint).
+This online store was developed by [Mmesoma Saint](https://github.com/mmesomasaint).
