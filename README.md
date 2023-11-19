@@ -1,6 +1,6 @@
 # `Airstore` - A Next.js And Shopify Store
 
-**`Airstore`** is an online `apple gadgets retail store` that was bootstrapped with `Next.js` as the framework handling the integration between the `frontend` and the `Shopify storefront API`. Utilizing the `GRAPHQL` feature for querying stores in shopify, this online store has an increased `page load speed`.
+**`Airstore`** is an online `apple gadgets retail store` that was bootstrapped with `Next.js` as the framework handling the integration between the `frontend` and the `Shopify storefront API`. The framework utilized for styling is `Tailwind CSS`, making the UI of this storefront not only usable, inclusive and accessesible but converting as well. Utilizing the `GRAPHQL` feature for querying stores in shopify, this online store has an increased `page load speed`.
 
 ## Tech Stack 
 
