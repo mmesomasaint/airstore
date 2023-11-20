@@ -20,6 +20,8 @@ This store was deployed using the [Vercel Platform](https://vercel.com/). You ca
 
 Contributions are welcomed. Both for solving issues or for improvement of code.
 
+Rules for contribution is under development.
+
 Remember to follow both react.js and Next.js best prodctices.
 
 ## Author
