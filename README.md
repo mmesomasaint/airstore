@@ -4,7 +4,7 @@
 
 ## Tech Stack 
 
-The `Stack` used for this project are --
+The `Stack` used for this project are ---
 - **Tailwind CSS** - Learn more about `TailwindCSS` [here](https://tailwindcss.com/docs)
 - **Next.js** - A framework build on top of `react.js`. [check it out](https://nextjs.org/docs)
 - **Shopify API** - [Learn to build an ecommerce site with Next.js and Shopify](https://vercel.com/guides/building-ecommerce-sites-with-next-js-and-shopify)
