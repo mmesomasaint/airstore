@@ -13,7 +13,7 @@ The `Stack` used for this project are ---
 
 ## Live Site
 
-This store was deployed using the [Vercel Platform](https://vercel.com/). You can view the live retail store [here](https://airstore.vercel.app)
+This store was deployed using the [Vercel Hosting Platform](https://vercel.com/). You can view the live retail store [here](https://airstore.vercel.app)
 
 
 ## Contribution
