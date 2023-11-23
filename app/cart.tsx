@@ -90,7 +90,7 @@ export default function CartProvider({
           if (data.body) {
             setCartId(data.body?.cartId)
             setCartLines(data.body?.cartLines)
-            cookies.set('cart_id', data.body?.cartId, {expires: 7})
+            cookies.set('cart_id', data.body?.cartId, { expires: 7 })
           }
         })
         .catch((e) => console.error(e))
