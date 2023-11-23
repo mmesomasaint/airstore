@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server'
 import { shopifyFetch } from '@/lib/fetch'
-import { UPDATE_CART_LINES } from '../../query'
-import { cleanMiniCartResult, generateCartLinesInput } from '../../utils'
+import { UPDATE_CART_LINES } from '@/app/api/query'
+import { cleanMiniCartResult, generateCartLinesInput } from '@/app/api/utils'
 
 export async function POST(Request: NextRequest) {
   const searchParams = Request.nextUrl.searchParams
