@@ -9,7 +9,7 @@ export async function POST(Request: NextRequest) {
   const { lines } = await Request.json()
 
   const variables = { cartId, lines: generateCartLinesInput(lines) }
-  
+
   const { status, body } = await shopifyFetch({
     query: ADD_CART_LINES,
     variables,
