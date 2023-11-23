@@ -148,7 +148,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
     })
 
     const newMerchandise = {
-      id: '',
+      id: product.id,
       quantity: amount,
       attributes: [
         { key: 'title', value: product.title },
