@@ -50,6 +50,35 @@ mutation ($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
   }
 }
 `
+
+export const ADD_CART_LINES = `
+mutation ($cartId: ID!, $lines: [CartLineInput!]!) {
+  cartLinesUpdate(
+    cartId: $cartId
+    lines: $lines
+  ) {
+    cart {
+      id
+      lines(first: 10) {
+        nodes {
+          id
+          quantity
+          merchandise {
+            ... on ProductVariant {
+              id
+            }
+          }
+          attributes {
+            key
+            value
+          }
+        }
+      }
+    }
+  }
+}
+`
+
 export const RETRIEVE_CART = `
 query ($cartId: String!) {
   cart(id: $cartId) {
