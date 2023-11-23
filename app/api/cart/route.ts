@@ -16,7 +16,7 @@ export async function GET(Request: NextRequest) {
   if (status === 200) {
     return Response.json({
       status: 200,
-      body: cleanFullCartResult(body.data?.cart),
+      body: cleanFullCartResult(body.data?.cartCreate?.cart),
     })
   } else return Response.json({ status: 500, message: 'Error fetching data' })
 }
