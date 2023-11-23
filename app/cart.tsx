@@ -12,6 +12,16 @@ type Merchandise = {
   }[]
 }
 
+type Line = {
+  id: string
+  merchandiseId: string
+  quantity: number
+  attributes: {
+    key: string
+    value: string
+  }[]
+}
+
 type CartContextType = {
   cartId: string | null
   updateCart: (newMerchandise: Merchandise) => void
@@ -41,19 +51,20 @@ export default function CartProvider({
   const [cartId, setCartId] = useState<string | null>(
     cookies.get('cart_id') ?? null
   )
-  const [cartLines, setCartLines] = useState<Merchandise[]>([])
+  const [cartLines, setCartLines] = useState<Line[]>([])
 
   const updateCart = (newMerchandise: Merchandise) => {
     const idx = cartLines.findIndex(
-      (merchandise: Merchandise) => merchandise.id === newMerchandise.id
+      (line: Line) => line.merchandiseId === newMerchandise.id
     )
 
-    if (idx === -1) setCartLines([...cartLines, newMerchandise])
-    else {
-      const newCartLines = [...cartLines]
-      newCartLines[idx] = newMerchandise
-      setCartLines(newCartLines)
-    }
+    if (idx === -1) {}
+    else {}
+  }
+
+  const AddLine = (newMerchandise: Merchandise) => {}
+  const updateLine = (lineId: string, newMerchandise: Merchandise) => {
+
   }
 
   useEffect(() => {
