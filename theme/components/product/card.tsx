@@ -39,7 +39,7 @@ export function VCard({
         <div className='flex flex-col gap-2 my-1'>
           <TextXSmall faded>
             <Link
-              className='hover:underline hover:underline-offset-4 hover:border-primary'
+              className='hover:underline hover:underline-offset-4 hover:border-primary hover:bg-store-pri'
               href={`/collection/${collectionHandle}/product/${handle}`}
             >
               {title}
