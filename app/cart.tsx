@@ -58,14 +58,13 @@ export default function CartProvider({
       (line: Line) => line.merchandiseId === newMerchandise.id
     )
 
-    if (idx === -1) {}
-    else {}
+    if (idx === -1) {
+    } else {
+    }
   }
 
   const AddLine = (newMerchandise: Merchandise) => {}
-  const updateLine = (lineId: string, newMerchandise: Merchandise) => {
-
-  }
+  const updateLine = (lineId: string, newMerchandise: Merchandise) => {}
 
   useEffect(() => {
     if (cartLines.length === 0) return
