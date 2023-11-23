@@ -120,7 +120,13 @@ function ProductPanel({ product }: { product: FullProduct }) {
   >(initialSelectedOptions)
   const router = useRouter()
 
-  const isSelected = useCallback((option: {name: string, value: string}) => selectedOptions.findIndex(selected => selected.value === option.value) >= 0, [selectedOptions])
+  const isSelected = useCallback(
+    (option: { name: string; value: string }) =>
+      selectedOptions.findIndex(
+        (selected) => selected.value === option.value
+      ) >= 0,
+    [selectedOptions]
+  )
 
   const addToSelectedOptions = (name: string, value: string) => {
     const prevIdx = selectedOptions.findIndex((option) => option.name === name)
@@ -140,7 +146,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
     const options = JSON.stringify({
       options: selectedOptions.map((option) => option.value),
     })
-    
+
     const newMerchandise = {
       id: '',
       quantity: amount,
@@ -203,7 +209,11 @@ function ProductPanel({ product }: { product: FullProduct }) {
                     {option.values.map((color) => (
                       <div
                         key={color}
-                        className={`w-6 h-6 rounded-full border ${isSelected({name: option.name, value: color}) ? 'border-store-pri' : 'border-store-outline-faded-max'}`}
+                        className={`w-6 h-6 rounded-full border ${
+                          isSelected({ name: option.name, value: color })
+                            ? 'border-store-pri'
+                            : 'border-store-outline-faded-max'
+                        }`}
                         style={{ backgroundColor: color }}
                         onClick={() => addToSelectedOptions(option.name, color)}
                       />
