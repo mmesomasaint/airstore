@@ -59,7 +59,7 @@ export default function CartProvider({
     )
 
     if (idx === -1) {
-      if (cartId) addLine(newMerchandise)
+      if (cartId && cartId !== 'undefined') addLine(newMerchandise)
       else createCart(newMerchandise)
     } else updateLine(cartLines[idx].id, newMerchandise)
   }
