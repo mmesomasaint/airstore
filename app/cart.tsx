@@ -65,7 +65,7 @@ export default function CartProvider({
   }
 
   const addLine = (newMerchandise: Merchandise) => {
-    fetch(`/api/cart/updateLine?cartId=${cartId}`, {
+    fetch(`/api/cart/addLine?cartId=${cartId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
