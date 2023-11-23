@@ -108,6 +108,25 @@ export default function CartProvider({
       .finally(() => setLoading(false))
   }
 
+  const createCart = (newMerchandise: Merchandise) => {
+    fetch('/api/cart/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ lines: [newMerchandise] }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.body) {
+          setCartId(data.body?.id)
+          cookies.set('cart_id', data.body?.cartId, { expires: 7 })
+        }
+      })
+      .catch((e) => console.error(e))
+      .finally(() => setLoading(false))
+  }
+
   useEffect(() => {
     if (cartLines.length === 0) return
 
