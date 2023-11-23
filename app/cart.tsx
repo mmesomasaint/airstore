@@ -59,8 +59,10 @@ export default function CartProvider({
     )
 
     if (idx === -1) {
-    } else {
+      if (cartId) addLine(newMerchandise)
+      else createCart(newMerchandise)
     }
+    else updateLine(cartLines[idx].id, newMerchandise)
   }
 
   const addLine = (newMerchandise: Merchandise) => {
