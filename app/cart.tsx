@@ -63,7 +63,26 @@ export default function CartProvider({
     }
   }
 
-  const AddLine = (newMerchandise: Merchandise) => {}
+  const AddLine = (newMerchandise: Merchandise) => {
+    fetch(`/api/cart/updateLine?cartId=${cartId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ lines: [newMerchandise] }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.body) {
+          setCartId(data.body?.id)
+          setCartLines(data.body?.lines)
+          cookies.set('cart_id', data.body?.cartId)
+        }
+      })
+      .catch((e) => console.error(e))
+      .finally(() => setLoading(false))
+  }
+
   const updateLine = (lineId: string, newMerchandise: Merchandise) => {
     const lines = {
       merchandiseId: newMerchandise.id,
