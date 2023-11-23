@@ -5,7 +5,7 @@ import { cleanMiniCartResult, generateCreateCartInput } from '../../utils'
 
 export async function POST(Request: NextRequest) {
   const { cartLines } = await Request.json()
-  const {input} = generateCreateCartInput(cartLines)
+  const { input } = generateCreateCartInput(cartLines)
   const variables = { input }
 
   const { status, body } = await shopifyFetch({
