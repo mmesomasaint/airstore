@@ -7,10 +7,9 @@ export async function GET(Request: NextRequest) {
   const searchParams = Request.nextUrl.searchParams
   const cartId = searchParams.get('cartId')
 
-  const variables = { cartId }
   const { status, body } = await shopifyFetch({
     query: RETRIEVE_CART,
-    variables,
+    variables: { cartId },
   })
 
   if (status === 200) {
