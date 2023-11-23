@@ -116,7 +116,7 @@ export default function CartProvider({
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ cartLines }),
+      body: JSON.stringify({ lines: [newMerchandise] }),
     })
       .then((res) => res.json())
       .then((data) => {
