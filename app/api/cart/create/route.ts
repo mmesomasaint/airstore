@@ -5,7 +5,8 @@ import { cleanMiniCartResult, generateCreateCartInput } from '../../utils'
 
 export async function POST(Request: NextRequest) {
   const { cartLines } = await Request.json()
-  const variables = { input: generateCreateCartInput(cartLines) }
+  const {input} = generateCreateCartInput(cartLines)
+  const variables = { input }
 
   const { status, body } = await shopifyFetch({
     query: CREATE_CART,
@@ -13,7 +14,7 @@ export async function POST(Request: NextRequest) {
   })
 
   if (status === 200) {
-    const cart = cleanMiniCartResult(body.data?.cart)
+    const cart = cleanMiniCartResult(body.data?.cartCreate?.cart)
     return Response.json({ status: 200, body: cart })
   } else {
     return Response.json({ status: 500, message: 'Error receiving data' })
