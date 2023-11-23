@@ -143,23 +143,25 @@ function ProductPanel({ product }: { product: FullProduct }) {
   }
 
   const addToCart = () => {
-    const options = JSON.stringify({
-      options: selectedOptions.map((option) => option.value),
-    })
-
-    const newMerchandise = {
-      id: product.id,
-      quantity: amount,
-      attributes: [
-        { key: 'title', value: product.title },
-        { key: 'price', value: `${variant?.price ?? product.price}` },
-        { key: 'src', value: product.images[0].url ?? '' },
-        { key: 'note', value: note ?? '' },
-        { key: 'options', value: options },
-      ],
+    if (variant) {
+      const options = JSON.stringify({
+        options: selectedOptions.map((option) => option.value),
+      })
+  
+      const newMerchandise = {
+        id: variant.id,
+        quantity: amount,
+        attributes: [
+          { key: 'title', value: product.title },
+          { key: 'price', value: `${variant?.price ?? product.price}` },
+          { key: 'src', value: product.images[0].url ?? '' },
+          { key: 'note', value: note ?? '' },
+          { key: 'options', value: options },
+        ],
+      }
+  
+      updateCart(newMerchandise)
     }
-
-    updateCart(newMerchandise)
   }
 
   useEffect(() => {
