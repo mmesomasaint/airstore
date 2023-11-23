@@ -57,6 +57,8 @@ export default function CartProvider({
   }
 
   useEffect(() => {
+    if (cartLines.length === 0) return
+
     if (!cartId) {
       fetch('/api/cart/create', {
         method: 'POST',
@@ -70,7 +72,7 @@ export default function CartProvider({
           if (data.body) {
             setCartId(data.body?.cartId)
             setCartLines(data.body?.cartLines)
-            cookies.set('cart_id', data.body?.cartId)
+            cookies.set('cart_id', data.body?.cartId, {expires: 7})
           }
         })
         .catch((e) => console.error(e))
