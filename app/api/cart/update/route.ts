@@ -7,8 +7,9 @@ export async function POST(Request: NextRequest) {
   const searchParams = Request.nextUrl.searchParams
   const cartId = searchParams.get('cartId')
   const { cartLines } = await Request.json()
-  const variables = { cartId, lines: generateCartLinesInput(cartLines) }
 
+  const variables = { cartId, lines: generateCartLinesInput(cartLines) }
+  
   const { status, body } = await shopifyFetch({
     query: UPDATE_CART_LINES,
     variables,
