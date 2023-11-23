@@ -71,7 +71,6 @@ export default function CartProvider({
         .then((data) => {
           if (data.body) {
             setCartId(data.body?.id)
-            setCartLines(data.body?.cartLines)
             cookies.set('cart_id', data.body?.cartId)
           }
         })
@@ -89,7 +88,6 @@ export default function CartProvider({
         .then((data) => {
           if (data.body) {
             setCartId(data.body?.id)
-            setCartLines(data.body?.cartLines)
             cookies.set('cart_id', data.body?.cartId, { expires: 7 })
           }
         })
