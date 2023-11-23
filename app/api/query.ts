@@ -24,7 +24,7 @@ mutation ($input: CartInput) {
 `
 
 export const UPDATE_CART_LINES = `
-mutation ($cartId: String!, $lines: [CartLineInput!]) {
+mutation ($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
   cartLinesUpdate(
     cartId: $cartId
     lines: $lines
