@@ -75,9 +75,7 @@ export default function CartProvider({
       .then((res) => res.json())
       .then((data) => {
         if (data.body) {
-          setCartId(data.body?.id)
           setCartLines(data.body?.cartLines)
-          cookies.set('cart_id', data.body?.cartId)
         }
       })
       .catch((e) => console.error(e))
@@ -101,9 +99,7 @@ export default function CartProvider({
       .then((res) => res.json())
       .then((data) => {
         if (data.body) {
-          setCartId(data.body?.id)
           setCartLines(data.body.cartLines)
-          cookies.set('cart_id', data.body?.cartId)
         }
       })
       .catch((e) => console.error(e))

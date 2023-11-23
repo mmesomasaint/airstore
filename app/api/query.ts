@@ -53,7 +53,7 @@ mutation ($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
 
 export const ADD_CART_LINES = `
 mutation ($cartId: ID!, $lines: [CartLineInput!]!) {
-  cartLinesUpdate(
+  cartLinesAdd(
     cartId: $cartId
     lines: $lines
   ) {
