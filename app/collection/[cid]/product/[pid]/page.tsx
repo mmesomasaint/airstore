@@ -147,7 +147,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
       const options = JSON.stringify({
         options: selectedOptions.map((option) => option.value),
       })
-  
+
       const newMerchandise = {
         id: variant.id,
         quantity: amount,
@@ -159,7 +159,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
           { key: 'options', value: options },
         ],
       }
-  
+
       updateCart(newMerchandise)
     }
   }
