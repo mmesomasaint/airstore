@@ -21,7 +21,7 @@ import Tab from '@/theme/components/tab'
 import Header from '@/theme/components/header'
 import useSearch from '@/theme/components/useSearch'
 import { useParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { FullProduct, Variant } from '@/lib/product'
 import Loading from '@/theme/components/loading'
@@ -120,6 +120,8 @@ function ProductPanel({ product }: { product: FullProduct }) {
   >(initialSelectedOptions)
   const router = useRouter()
 
+  const isSelected = useCallback((option: {name: string, value: string}) => selectedOptions.findIndex(selected => selected.value === option.value) >= 0, [selectedOptions])
+
   const addToSelectedOptions = (name: string, value: string) => {
     const prevIdx = selectedOptions.findIndex((option) => option.name === name)
 
@@ -201,7 +203,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
                     {option.values.map((color) => (
                       <div
                         key={color}
-                        className='w-6 h-6 rounded-full border border-store-outline-faded-max'
+                        className={`w-6 h-6 rounded-full border ${isSelected({name: option.name, value: color}) ? 'border-store-pri' : 'border-store-outline-faded-max'}`}
                         style={{ backgroundColor: color }}
                         onClick={() => addToSelectedOptions(option.name, color)}
                       />
