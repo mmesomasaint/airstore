@@ -155,7 +155,7 @@ function ProductPanel({ product }: { product: FullProduct }) {
           { key: 'title', value: product.title },
           { key: 'price', value: `${variant?.price ?? product.price}` },
           { key: 'src', value: product.images[0].url ?? '' },
-          { key: 'note', value: note ?? '' },
+          { key: 'note', value: note ?? 'Empty..' },
           { key: 'options', value: options },
         ],
       }
