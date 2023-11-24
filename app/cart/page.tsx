@@ -89,7 +89,16 @@ export default function Checkout() {
 
 function DisplayCartInfo({ cart }: { cart: Cart }) {
   const { cartLines, cost, buyerIdentity } = cart
-  const toCurrency = (value: number) => value.toLocaleString('en-US')
+  function formatMoney(number: number) {
+    const formatter = new
+  Intl.NumberFormat('en-NG', {
+      style: 'currency',
+      currency: 'NGN',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+    return formatter.format(number);
+  }
 
   return (
     <div className='grow grid grid-cols-[repeat(14,_minmax(0,_1fr))] gap-5 place-items-start'>
@@ -189,19 +198,19 @@ function DisplayCartInfo({ cart }: { cart: Cart }) {
               <div className='flex justify-between items-center gap-2'>
                 <TextTiny faded>Sum Total</TextTiny>
                 <TextXSmall>
-                  &#8358;{toCurrency(cost.subtotalAmount)}
+                  {formatMoney(cost.subtotalAmount)}
                 </TextXSmall>
               </div>
               <div className='flex justify-between items-center gap-2'>
                 <TextTiny faded>Shipping Cost</TextTiny>
                 <TextXSmall>
-                  &#8358;{toCurrency(cost.totalDutyAmount ?? 0)}
+                  {formatMoney(cost.totalDutyAmount ?? 0)}
                 </TextXSmall>
               </div>
               <div className='flex justify-between items-center gap-2'>
                 <TextTiny faded>Tax(10%)</TextTiny>
                 <TextXSmall>
-                  &#8358;{toCurrency(cost.totalTaxAmount)}
+                  {formatMoney(cost.totalTaxAmount)}
                 </TextXSmall>
               </div>
             </div>
@@ -209,7 +218,7 @@ function DisplayCartInfo({ cart }: { cart: Cart }) {
           <div className='flex flex-col gap-3'>
             <div className='flex justify-between items-center gap-2'>
               <TextXSmall faded>Total</TextXSmall>
-              <TextMid>&#8358;{toCurrency(cost.totalAmount)}</TextMid>
+              <TextMid>{formatMoney(cost.totalAmount)}</TextMid>
             </div>
             <Button fillPrimary>Pay Now</Button>
           </div>
