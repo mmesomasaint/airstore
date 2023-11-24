@@ -101,7 +101,7 @@ export function HCard({
           ))}
         </div>
         <TextXSmall fadedMax>Note: {note}</TextXSmall>
-        <TextIntro>${price}</TextIntro>
+        <TextIntro>&#8358;{price.toLocaleString('en-US')}</TextIntro>
       </div>
     </div>
   )
