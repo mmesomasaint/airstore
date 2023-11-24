@@ -99,41 +99,40 @@ function DisplayCartInfo({ cart }: { cart: Cart }) {
         </TextIntro>
         <div className='h-fit w-full flex flex-col mt-4 gap-6 bg-white rounded-xl border border-store-outline-faded-max p-5'>
           <HR>
-          <div className='flex flex-col w-full gap-4'>
-            
-          {cartLines.map((cartLine) => {
-              const { quantity, attributes } = cartLine
+            <div className='flex flex-col w-full gap-4'>
+              {cartLines.map((cartLine) => {
+                const { quantity, attributes } = cartLine
 
-              const optionsidx = attributes.findIndex(
-                (attribute) => attribute.key === 'options'
-              )
-              const { options } = JSON.parse(attributes[optionsidx].value)
+                const optionsidx = attributes.findIndex(
+                  (attribute) => attribute.key === 'options'
+                )
+                const { options } = JSON.parse(attributes[optionsidx].value)
 
-              const src = attributes.findIndex(
-                (attribute) => attribute.key === 'src'
-              )
-              const title = attributes.findIndex(
-                (attribute) => attribute.key === 'title'
-              )
-              const note = attributes.findIndex(
-                (attribute) => attribute.key === 'note'
-              )
-              const price = attributes.findIndex(
-                (attribute) => attribute.key === 'price'
-              )
+                const src = attributes.findIndex(
+                  (attribute) => attribute.key === 'src'
+                )
+                const title = attributes.findIndex(
+                  (attribute) => attribute.key === 'title'
+                )
+                const note = attributes.findIndex(
+                  (attribute) => attribute.key === 'note'
+                )
+                const price = attributes.findIndex(
+                  (attribute) => attribute.key === 'price'
+                )
 
-              return (
-                <HCard
-                  src={attributes[src].value}
-                  title={attributes[title].value}
-                  amount={quantity}
-                  variants={options}
-                  note={attributes[note].value}
-                  price={parseInt(attributes[price].value)}
-                />
-              )
-            })}
-          </div>
+                return (
+                  <HCard
+                    src={attributes[src].value}
+                    title={attributes[title].value}
+                    amount={quantity}
+                    variants={options}
+                    note={attributes[note].value}
+                    price={parseInt(attributes[price].value)}
+                  />
+                )
+              })}
+            </div>
           </HR>
           <div className='flex flex-col gap-4'>
             <div className='flex justify-between items-center gap-4'>
