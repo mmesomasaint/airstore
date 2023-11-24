@@ -80,11 +80,11 @@ mutation ($cartId: ID!, $lines: [CartLineInput!]!) {
 `
 
 export const RETRIEVE_CART = `
-query ($cartId: String!) {
+query ($cartId: ID!) {
   cart(id: $cartId) {
     id
     lines(first: 10) {
-      node {
+      nodes {
         id
         quantity
         merchandise {
