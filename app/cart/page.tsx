@@ -37,7 +37,7 @@ export default function Checkout() {
 
   useEffect(() => {
     if (cartId) {
-      fetch(`/api/cart?cartId${cartId}`, {
+      fetch(`/api/cart?cartId=${cartId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
