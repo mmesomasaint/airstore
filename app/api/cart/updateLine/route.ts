@@ -16,7 +16,7 @@ export async function POST(Request: NextRequest) {
   })
 
   if (status === 200) {
-    const cart = cleanMiniCartResult(body.data?.cart)
+    const cart = cleanMiniCartResult(body.data?.cartLinesUpdate?.cart)
     return Response.json({ status: 200, body: cart })
   } else {
     return Response.json({ status: 500, message: 'Error receiving data' })
