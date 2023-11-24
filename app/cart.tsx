@@ -119,7 +119,7 @@ export default function CartProvider({
         if (data.body) {
           setCartId(data.body?.id)
           setCartLines(data.body?.cartLines)
-          cookies.set('cart_id', data.body?.cartId, { expires: 7 })
+          cookies.set('cart_id', data.body?.id, { expires: 7 })
         }
       })
       .catch((e) => console.error(e))

@@ -6,6 +6,7 @@ import { cleanFullCartResult } from '../utils'
 export async function GET(Request: NextRequest) {
   const searchParams = Request.nextUrl.searchParams
   const cartId = searchParams.get('cartId')
+  console.log('cartId: ', cartId)
 
   const { status, body } = await shopifyFetch({
     query: RETRIEVE_CART,
@@ -13,6 +14,7 @@ export async function GET(Request: NextRequest) {
   })
 
   if (status === 200) {
+    console.log('body: ', body)
     return Response.json({
       status: 200,
       body: cleanFullCartResult(body.data?.cart),
