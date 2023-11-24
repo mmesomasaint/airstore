@@ -205,7 +205,7 @@ function DisplayCartInfo({ cart }: { cart: Cart }) {
               <div className='flex justify-between items-center gap-2'>
                 <TextTiny faded>Shipping Cost</TextTiny>
                 <TextXSmall>
-                  &#8358;{toCurrency(cost.totalDutyAmount)}
+                  &#8358;{toCurrency(cost.totalDutyAmount ?? 0)}
                 </TextXSmall>
               </div>
               <div className='flex justify-between items-center gap-2'>
