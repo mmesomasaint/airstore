@@ -99,7 +99,9 @@ function DisplayCartInfo({ cart }: { cart: Cart }) {
         </TextIntro>
         <div className='h-fit w-full flex flex-col mt-4 gap-6 bg-white rounded-xl border border-store-outline-faded-max p-5'>
           <HR>
-            {cartLines.map((cartLine) => {
+          <div className='flex flex-col w-full gap-4'>
+            
+          {cartLines.map((cartLine) => {
               const { quantity, attributes } = cartLine
 
               const optionsidx = attributes.findIndex(
@@ -131,6 +133,7 @@ function DisplayCartInfo({ cart }: { cart: Cart }) {
                 />
               )
             })}
+          </div>
           </HR>
           <div className='flex flex-col gap-4'>
             <div className='flex justify-between items-center gap-4'>
