@@ -90,14 +90,13 @@ export default function Checkout() {
 function DisplayCartInfo({ cart }: { cart: Cart }) {
   const { cartLines, cost, buyerIdentity } = cart
   function formatMoney(number: number) {
-    const formatter = new
-  Intl.NumberFormat('en-NG', {
+    const formatter = new Intl.NumberFormat('en-NG', {
       style: 'currency',
       currency: 'NGN',
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
-    });
-    return formatter.format(number);
+    })
+    return formatter.format(number)
   }
 
   return (
@@ -197,9 +196,7 @@ function DisplayCartInfo({ cart }: { cart: Cart }) {
             <div className='flex flex-col gap-2'>
               <div className='flex justify-between items-center gap-2'>
                 <TextTiny faded>Sum Total</TextTiny>
-                <TextXSmall>
-                  {formatMoney(cost.subtotalAmount)}
-                </TextXSmall>
+                <TextXSmall>{formatMoney(cost.subtotalAmount)}</TextXSmall>
               </div>
               <div className='flex justify-between items-center gap-2'>
                 <TextTiny faded>Shipping Cost</TextTiny>
@@ -209,9 +206,7 @@ function DisplayCartInfo({ cart }: { cart: Cart }) {
               </div>
               <div className='flex justify-between items-center gap-2'>
                 <TextTiny faded>Tax(10%)</TextTiny>
-                <TextXSmall>
-                  {formatMoney(cost.totalTaxAmount)}
-                </TextXSmall>
+                <TextXSmall>{formatMoney(cost.totalTaxAmount)}</TextXSmall>
               </div>
             </div>
           </HR>
