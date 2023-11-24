@@ -7,6 +7,7 @@ import { IoMdNotificationsOutline } from 'react-icons/io'
 import { MdOutlineEmail } from 'react-icons/md'
 import Image from 'next/image'
 import { FiMapPin } from 'react-icons/fi'
+import Link from 'next/link'
 
 export default function Header({
   searchText,
@@ -54,7 +55,7 @@ export default function Header({
           />
         </div>
         <div className='flex justify-end items-center gap-3 text-store-outline-faded-max'>
-          <TbShoppingBag className='text-store-faded-max text-xl' />
+          <Link href='/cart'><TbShoppingBag className='text-store-faded-max text-xl' /></Link>
           <IoMdNotificationsOutline className='text-store-faded-max text-xl' />
           <MdOutlineEmail className='text-store-faded-max text-xl' />
           <TextLabel>|</TextLabel>
