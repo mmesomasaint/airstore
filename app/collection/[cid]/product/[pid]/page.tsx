@@ -342,7 +342,8 @@ function ProductPanel({ product }: { product: FullProduct }) {
           </div>
           <div className='flex flex-col gap-2'>
             <Button
-              disabled={Boolean(variant?.id)} onClick={() => {
+              disabled={Boolean(variant?.id)}
+              onClick={() => {
                 addToCart()
                 router.push('/cart')
               }}
@@ -350,7 +351,11 @@ function ProductPanel({ product }: { product: FullProduct }) {
             >
               Buy Now
             </Button>
-            <Button disabled={Boolean(variant?.id)} onClick={addToCart} outlinePrimary>
+            <Button
+              disabled={Boolean(variant?.id)}
+              onClick={addToCart}
+              outlinePrimary
+            >
               Add to Cart
             </Button>
           </div>
