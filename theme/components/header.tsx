@@ -55,7 +55,9 @@ export default function Header({
           />
         </div>
         <div className='flex justify-end items-center gap-3 text-store-outline-faded-max'>
-          <Link href='/cart'><TbShoppingBag className='text-store-faded-max text-xl' /></Link>
+          <Link href='/cart'>
+            <TbShoppingBag className='text-store-faded-max text-xl' />
+          </Link>
           <IoMdNotificationsOutline className='text-store-faded-max text-xl' />
           <MdOutlineEmail className='text-store-faded-max text-xl' />
           <TextLabel>|</TextLabel>
