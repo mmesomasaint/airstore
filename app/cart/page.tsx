@@ -79,7 +79,9 @@ export default function Checkout() {
           <DisplayCartInfo cart={cart} />
         ) : (
           <div className='flex justify-center items-center'>
-            <TextXSmall faded>{loading ? 'Loading...' : 'Your cart is empty.'}</TextXSmall>
+            <TextXSmall faded>
+              {loading ? 'Loading...' : 'Your cart is empty.'}
+            </TextXSmall>
           </div>
         )}
       </div>
