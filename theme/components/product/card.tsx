@@ -82,6 +82,7 @@ export function HCard({
     <div className='grow grid grid-cols-[repeat(14,_minmax(0,_1fr))] gap-7 items-center'>
       <div className='col-span-3 rounded-2xl border border-store-outline-faded-max'>
         <Image
+          loader={() => src}
           src={src}
           width={400}
           height={400}
