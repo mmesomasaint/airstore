@@ -99,18 +99,6 @@ function DisplayCartInfo({ cart }: { cart: Cart }) {
         </TextIntro>
         <div className='h-fit w-full flex flex-col mt-4 gap-6 bg-white rounded-xl border border-store-outline-faded-max p-5'>
           <HR>
-            <HCard
-              src='/imgs/macbook-pro-fv-1.webp'
-              title={`Apple Macbook Pro 14'' 2022 | M2 Max Chip`}
-              amount={2}
-              variants={[
-                'Gray',
-                '16GB RAM, 16 Core GPU Apple M2 Pro Chip',
-                '512GB',
-              ]}
-              note='Please send quickly'
-              price={2690.16}
-            />
             {cartLines.map((cartLine) => {
               const { quantity, attributes } = cartLine
 
