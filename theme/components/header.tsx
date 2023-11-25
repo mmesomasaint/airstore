@@ -10,6 +10,7 @@ import { MdOutlineEmail } from 'react-icons/md'
 import Image from 'next/image'
 import { FiMapPin } from 'react-icons/fi'
 import Link from 'next/link'
+import { useCart } from '@/app/cart'
 
 export default function Header({
   searchText,
@@ -28,6 +29,8 @@ export default function Header({
   setCategory: (value: boolean, category: string) => void
   searchClick: () => void
 }) {
+  const {notEmptyCart} = useCart()
+
   return (
     <>
       <div className='flex border-y border-store-outline-faded-max justify-between items-center gap-40 px-7 py-4'>
@@ -58,7 +61,7 @@ export default function Header({
         </div>
         <div className='flex justify-end items-center gap-3 text-store-outline-faded-max'>
           <Link href='/cart' className='relative'>
-            <div className='absolute -top-0 -right-0 w-2 h-2 rounded-full bg-red-500' />
+            {notEmptyCart && <div className='absolute -top-0 -right-0 w-2 h-2 rounded-full bg-red-500' />}
             <TbShoppingBag className='text-store-faded-max text-xl' />
           </Link>
           <IoMdNotificationsOutline className='text-store-faded-max text-xl' />
