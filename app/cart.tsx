@@ -27,12 +27,12 @@ type CartContextType = {
   updateCart: (newMerchandise: Merchandise) => void
   updating: boolean
   latest: Merchandise | null
-  size: number
+  notEmptyCart: boolean
 }
 
 const CartContext = createContext<CartContextType>({
   cartId: null,
-  size: 0,
+  notEmptyCart: false,
   latest: null,
   updating: false,
   updateCart: (newMerchandise: Merchandise) => {
@@ -133,7 +133,7 @@ export default function CartProvider({
         updateCart,
         updating: loading,
         latest: cartLines[cartLines.length - 1] ?? null,
-        size: cartLines.length,
+        notEmptyCart: cartLines.length > 0
       }}
     >
       {children}
