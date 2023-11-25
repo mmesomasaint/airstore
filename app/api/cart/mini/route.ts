@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { RETRIEVE_MINI_CART } from "../../query";
 import { shopifyFetch } from "@/lib/fetch";
+import { cleanMiniCartResult } from "../../utils";
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
