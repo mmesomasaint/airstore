@@ -143,6 +143,12 @@ export default function CartProvider({
       .finally(() => setLoading(false))
   }
 
+  useEffect(() => {
+    if (cartId) {
+      fetchCart()
+    }
+  }, [cartId])
+
   return (
     <CartContext.Provider
       value={{
