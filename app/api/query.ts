@@ -79,6 +79,29 @@ mutation ($cartId: ID!, $lines: [CartLineInput!]!) {
 }
 `
 
+export const RETRIEVE_MINI_CART = `
+query ($cartId: ID!) {
+  cart(id: $cartId) {
+    id
+    lines(first: 10) {
+      nodes {
+        id
+        quantity
+        merchandise {
+          ... on ProductVariant {
+            id
+          }
+        }
+        attributes {
+          key
+          value
+        }
+      }
+    }
+  }
+}
+`
+
 export const RETRIEVE_CART = `
 query ($cartId: ID!) {
   cart(id: $cartId) {
