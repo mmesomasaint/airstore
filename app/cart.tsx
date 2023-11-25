@@ -133,7 +133,7 @@ export default function CartProvider({
         updateCart,
         updating: loading,
         latest: cartLines[cartLines.length - 1] ?? null,
-        notEmptyCart: cartLines.length > 0
+        notEmptyCart: cartLines.length > 0,
       }}
     >
       {children}
