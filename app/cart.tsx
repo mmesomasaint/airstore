@@ -64,6 +64,23 @@ export default function CartProvider({
     } else updateLine(cartLines[idx].id, newMerchandise)
   }
 
+  const fetchCart = () => {
+    fetch(`/api/cart/mini?cartId=${cartId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.body) {
+          setCartLines(data.body.cartLines)
+        }
+      })
+      .catch((e) => console.error(e))
+      .finally(() => setLoading(false))
+  }
+
   const addLine = (newMerchandise: Merchandise) => {
     fetch(`/api/cart/addLine?cartId=${cartId}`, {
       method: 'POST',
