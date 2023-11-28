@@ -9,10 +9,10 @@ const LIMIT = 24
 export async function GET(Request: NextRequest) {
   const searchParams = Request.nextUrl.searchParams
   const cursor = searchParams.get('cursor')
-  
+
   const variables = {
     first: LIMIT,
-    cursor
+    cursor,
   }
 
   const { status, body } = await shopifyFetch({
