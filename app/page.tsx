@@ -28,7 +28,7 @@ export default function Home() {
     setHasError(false)
 
     fetch(`/api/get/product/all?cursor=${cursor}`, {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
