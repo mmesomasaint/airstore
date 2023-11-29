@@ -76,7 +76,7 @@ export default function Home() {
         setCategory={setCategory}
         searchClick={searchHandler}
       />
-      <div className='bg-gray-100/70 px-7 py-4 min-h-full grow grid grid-cols-6 gap-9 items-stretch'>
+      <div className='bg-gray-100/70 px-7 py-4 min-h-full grow grid grid-cols-5 gap-9 items-stretch'>
         {loading && products.length <= 0 && <Loading />}
         {hasError && (
           <div className='col-span-full flex justify-center items-center'>
