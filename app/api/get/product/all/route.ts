@@ -26,7 +26,10 @@ export async function GET() {
 
     return Response.json({
       status,
-      body: { results: cleanedResults, pageInfo: {...pageInfo, rcursor: results.cursor}},
+      body: {
+        results: cleanedResults,
+        pageInfo: { ...pageInfo, rcursor: results.cursor },
+      },
     })
   } else
     return Response.json({ status: 500, message: 'Error receiving data..' })
