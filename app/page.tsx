@@ -1,3 +1,5 @@
+'use client'
+
 import { MiniProduct } from '@/lib/product'
 import Header from '@/theme/components/header'
 import Loading from '@/theme/components/loading'
