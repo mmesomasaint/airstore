@@ -392,10 +392,10 @@ query AllProducts($first: Int!) {
           }
         }
       }
+      cursor
     }
     pageInfo {
       hasNextPage
-      cursor
     }
   }
 }
